@@ -1,0 +1,16 @@
+C:\HumanaProject\DW\Services\CPSApis\ClinicalPolicyApi\Src\Libraries\Common\bin\Release\netcoreapp3.1\Common.deps.json
+C:\HumanaProject\DW\Services\CPSApis\ClinicalPolicyApi\Src\Libraries\Common\bin\Release\netcoreapp3.1\Common.dll
+C:\HumanaProject\DW\Services\CPSApis\ClinicalPolicyApi\Src\Libraries\Common\bin\Release\netcoreapp3.1\Common.pdb
+C:\HumanaProject\DW\Services\CPSApis\ClinicalPolicyApi\Src\Libraries\Common\obj\Release\netcoreapp3.1\Common.csprojAssemblyReference.cache
+C:\HumanaProject\DW\Services\CPSApis\ClinicalPolicyApi\Src\Libraries\Common\obj\Release\netcoreapp3.1\Common.AssemblyInfoInputs.cache
+C:\HumanaProject\DW\Services\CPSApis\ClinicalPolicyApi\Src\Libraries\Common\obj\Release\netcoreapp3.1\Common.AssemblyInfo.cs
+C:\HumanaProject\DW\Services\CPSApis\ClinicalPolicyApi\Src\Libraries\Common\obj\Release\netcoreapp3.1\Common.dll
+C:\HumanaProject\DW\Services\CPSApis\ClinicalPolicyApi\Src\Libraries\Common\obj\Release\netcoreapp3.1\Common.pdb
+C:\HumanaProject\DW\Services\CPSApis\ClinicalPolicyAdminAPI\Src\Libraries\Common\bin\Release\netcoreapp3.1\Common.deps.json
+C:\HumanaProject\DW\Services\CPSApis\ClinicalPolicyAdminAPI\Src\Libraries\Common\bin\Release\netcoreapp3.1\Common.dll
+C:\HumanaProject\DW\Services\CPSApis\ClinicalPolicyAdminAPI\Src\Libraries\Common\bin\Release\netcoreapp3.1\Common.pdb
+C:\HumanaProject\DW\Services\CPSApis\ClinicalPolicyAdminAPI\Src\Libraries\Common\obj\Release\netcoreapp3.1\Common.csprojAssemblyReference.cache
+C:\HumanaProject\DW\Services\CPSApis\ClinicalPolicyAdminAPI\Src\Libraries\Common\obj\Release\netcoreapp3.1\Common.AssemblyInfoInputs.cache
+C:\HumanaProject\DW\Services\CPSApis\ClinicalPolicyAdminAPI\Src\Libraries\Common\obj\Release\netcoreapp3.1\Common.AssemblyInfo.cs
+C:\HumanaProject\DW\Services\CPSApis\ClinicalPolicyAdminAPI\Src\Libraries\Common\obj\Release\netcoreapp3.1\Common.dll
+C:\HumanaProject\DW\Services\CPSApis\ClinicalPolicyAdminAPI\Src\Libraries\Common\obj\Release\netcoreapp3.1\Common.pdb

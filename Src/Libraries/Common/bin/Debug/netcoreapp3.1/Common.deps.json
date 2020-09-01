@@ -1,0 +1,252 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "Common/1.0.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.3",
+          "System.Configuration.ConfigurationManager": "5.0.0-preview.7.20364.11"
+        },
+        "runtime": {
+          "Common.dll": {}
+        }
+      },
+      "Microsoft.NETCore.Platforms/5.0.0-preview.7.20364.11": {},
+      "Microsoft.Win32.SystemEvents/5.0.0-preview.7.20364.11": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "5.0.0-preview.7.20364.11"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Win32.SystemEvents.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.20.36411"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/netcoreapp3.0/Microsoft.Win32.SystemEvents.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.20.36411"
+          }
+        }
+      },
+      "Newtonsoft.Json/12.0.3": {
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+            "assemblyVersion": "12.0.0.0",
+            "fileVersion": "12.0.3.23909"
+          }
+        }
+      },
+      "System.Configuration.ConfigurationManager/5.0.0-preview.7.20364.11": {
+        "dependencies": {
+          "System.Security.Cryptography.ProtectedData": "5.0.0-preview.7.20364.11",
+          "System.Security.Permissions": "5.0.0-preview.7.20364.11"
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Configuration.ConfigurationManager.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.20.36411"
+          }
+        }
+      },
+      "System.Drawing.Common/5.0.0-preview.7.20364.11": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "5.0.0-preview.7.20364.11",
+          "Microsoft.Win32.SystemEvents": "5.0.0-preview.7.20364.11"
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Drawing.Common.dll": {
+            "assemblyVersion": "4.0.0.1",
+            "fileVersion": "4.6.26919.2"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/unix/lib/netcoreapp3.0/System.Drawing.Common.dll": {
+            "rid": "unix",
+            "assetType": "runtime",
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.20.36411"
+          },
+          "runtimes/win/lib/netcoreapp3.0/System.Drawing.Common.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.20.36411"
+          }
+        }
+      },
+      "System.Security.AccessControl/5.0.0-preview.7.20364.11": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "5.0.0-preview.7.20364.11",
+          "System.Security.Principal.Windows": "5.0.0-preview.7.20364.11"
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Security.AccessControl.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.20.36411"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/netcoreapp2.0/System.Security.AccessControl.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.20.36411"
+          }
+        }
+      },
+      "System.Security.Cryptography.ProtectedData/5.0.0-preview.7.20364.11": {
+        "runtime": {
+          "lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.20.36411"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.20.36411"
+          }
+        }
+      },
+      "System.Security.Permissions/5.0.0-preview.7.20364.11": {
+        "dependencies": {
+          "System.Security.AccessControl": "5.0.0-preview.7.20364.11",
+          "System.Windows.Extensions": "5.0.0-preview.7.20364.11"
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/System.Security.Permissions.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.20.36411"
+          }
+        }
+      },
+      "System.Security.Principal.Windows/5.0.0-preview.7.20364.11": {
+        "runtime": {
+          "lib/netstandard2.0/System.Security.Principal.Windows.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.20.36411"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/unix/lib/netcoreapp2.1/System.Security.Principal.Windows.dll": {
+            "rid": "unix",
+            "assetType": "runtime",
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.20.36411"
+          },
+          "runtimes/win/lib/netcoreapp2.1/System.Security.Principal.Windows.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.20.36411"
+          }
+        }
+      },
+      "System.Windows.Extensions/5.0.0-preview.7.20364.11": {
+        "dependencies": {
+          "System.Drawing.Common": "5.0.0-preview.7.20364.11"
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/System.Windows.Extensions.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.20.36411"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/netcoreapp3.0/System.Windows.Extensions.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.20.36411"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.NETCore.Platforms/5.0.0-preview.7.20364.11": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-wK8YPtEFe3AM5XauQ7Gjnpdqb+k6zoEYrmJ25dg8vUzmblkxTc5SS/yLUFlrGeBrOXvcnv3MtSBSWsPDnUN+gg==",
+      "path": "microsoft.netcore.platforms/5.0.0-preview.7.20364.11",
+      "hashPath": "microsoft.netcore.platforms.5.0.0-preview.7.20364.11.nupkg.sha512"
+    },
+    "Microsoft.Win32.SystemEvents/5.0.0-preview.7.20364.11": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-N8UoHngEaDa3VSYTgXz9oTdlwzQrPaFEoKWuNE4g1dp8xCEMzyGy8Z/EIMTqVzZzB0xtgMLSYUBkxmKogO6UCQ==",
+      "path": "microsoft.win32.systemevents/5.0.0-preview.7.20364.11",
+      "hashPath": "microsoft.win32.systemevents.5.0.0-preview.7.20364.11.nupkg.sha512"
+    },
+    "Newtonsoft.Json/12.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6mgjfnRB4jKMlzHSl+VD+oUc1IebOZabkbyWj2RiTgWwYPPuaK1H97G1sHqGwPlS5npiF5Q0OrxN1wni2n5QWg==",
+      "path": "newtonsoft.json/12.0.3",
+      "hashPath": "newtonsoft.json.12.0.3.nupkg.sha512"
+    },
+    "System.Configuration.ConfigurationManager/5.0.0-preview.7.20364.11": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-anXfFGQfiVo7HlbmGtzi5eEv/CGwc+/fsbrFTG6qjSSVTGdrOdt7eiDZ6/uIR/Gni2fZnaTIUmTBL2H+MHy1gg==",
+      "path": "system.configuration.configurationmanager/5.0.0-preview.7.20364.11",
+      "hashPath": "system.configuration.configurationmanager.5.0.0-preview.7.20364.11.nupkg.sha512"
+    },
+    "System.Drawing.Common/5.0.0-preview.7.20364.11": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ARe8WzFiE7MGqkPPl4Hnx75eOB/U84HhH/tWIXyBoX6y8dJrjCikuPx6mFu58ygTxcNcutH1I9LHDVv2X3UEKQ==",
+      "path": "system.drawing.common/5.0.0-preview.7.20364.11",
+      "hashPath": "system.drawing.common.5.0.0-preview.7.20364.11.nupkg.sha512"
+    },
+    "System.Security.AccessControl/5.0.0-preview.7.20364.11": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/JWmXYrDPXVN2317R7kZWt9S5dx2mjKZ0s+Zs1+MGRn6utT+oYpKUEVXoWLjqIWX0wUNu2bwLjudaBirf7J6eA==",
+      "path": "system.security.accesscontrol/5.0.0-preview.7.20364.11",
+      "hashPath": "system.security.accesscontrol.5.0.0-preview.7.20364.11.nupkg.sha512"
+    },
+    "System.Security.Cryptography.ProtectedData/5.0.0-preview.7.20364.11": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-L7SIbYTHVd4pHQeWwsHMuCPUY8q6F6C5YPHWg+RB9jHybeLoMqNyEAxnq3aIIyrotkvdfVrztKZUpJz81C62ew==",
+      "path": "system.security.cryptography.protecteddata/5.0.0-preview.7.20364.11",
+      "hashPath": "system.security.cryptography.protecteddata.5.0.0-preview.7.20364.11.nupkg.sha512"
+    },
+    "System.Security.Permissions/5.0.0-preview.7.20364.11": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-uwWIHawmb17ATPmDE5UThcw+Wb1VK51aZXmbmf+7ORvQp6Qs5VravJszda5ZpoLsnFNkYOfuAeoB20RGBrutaA==",
+      "path": "system.security.permissions/5.0.0-preview.7.20364.11",
+      "hashPath": "system.security.permissions.5.0.0-preview.7.20364.11.nupkg.sha512"
+    },
+    "System.Security.Principal.Windows/5.0.0-preview.7.20364.11": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-UAuPpgLE1u7Aflefr0vyfmkzfoTDHtHFtQe8dArZicLKSfKRakf1gOE/D4xTpLmUm55LBqu3gEBk9Hq3rHpaLw==",
+      "path": "system.security.principal.windows/5.0.0-preview.7.20364.11",
+      "hashPath": "system.security.principal.windows.5.0.0-preview.7.20364.11.nupkg.sha512"
+    },
+    "System.Windows.Extensions/5.0.0-preview.7.20364.11": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-+ZWan5g0ToSnA5kJMrlLgcENEZ684slX5Gqpfjxuz1VoaX/r8XWo8oBFYEYT7di/A/4/V8MPrJwgFuq2ERHWbw==",
+      "path": "system.windows.extensions/5.0.0-preview.7.20364.11",
+      "hashPath": "system.windows.extensions.5.0.0-preview.7.20364.11.nupkg.sha512"
+    }
+  }
+}

@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29609.76
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Host", "Host", "{0D660EE1-7AE7-442B-B060-4D993FB84C8D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Server", "Libraries\Server\Server.csproj", "{55AE41A9-228C-47D1-829E-A2C7BE6BD7CE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{8C8D6413-3169-43AA-BC75-A93982968ECF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "Libraries\Common\Common.csproj", "{D060DCDE-EAED-499E-ABC4-18850D6594CE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClinicalPolicyAdminAPI_UnitTest", "ClinicalPolicyAPI_UnitTest\ClinicalPolicyAdminAPI_UnitTest.csproj", "{49229B7B-95AC-447C-931F-60A1B91B9372}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ClinicalPolicyAdminAPI_UnitTest", "ClinicalPolicyAdminAPI_UnitTest", "{9FFD4E38-60CF-445E-82CE-D39727A737F5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClinicalPolicyAdminAPI", "Hosts\ClinicalPolicyAdminAPI\ClinicalPolicyAdminAPI.csproj", "{D8314FEA-8260-403A-81DA-D28BBB39DD6D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{55AE41A9-228C-47D1-829E-A2C7BE6BD7CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55AE41A9-228C-47D1-829E-A2C7BE6BD7CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55AE41A9-228C-47D1-829E-A2C7BE6BD7CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55AE41A9-228C-47D1-829E-A2C7BE6BD7CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D060DCDE-EAED-499E-ABC4-18850D6594CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D060DCDE-EAED-499E-ABC4-18850D6594CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D060DCDE-EAED-499E-ABC4-18850D6594CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D060DCDE-EAED-499E-ABC4-18850D6594CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49229B7B-95AC-447C-931F-60A1B91B9372}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49229B7B-95AC-447C-931F-60A1B91B9372}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49229B7B-95AC-447C-931F-60A1B91B9372}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49229B7B-95AC-447C-931F-60A1B91B9372}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8314FEA-8260-403A-81DA-D28BBB39DD6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8314FEA-8260-403A-81DA-D28BBB39DD6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8314FEA-8260-403A-81DA-D28BBB39DD6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8314FEA-8260-403A-81DA-D28BBB39DD6D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{55AE41A9-228C-47D1-829E-A2C7BE6BD7CE} = {8C8D6413-3169-43AA-BC75-A93982968ECF}
+		{D060DCDE-EAED-499E-ABC4-18850D6594CE} = {8C8D6413-3169-43AA-BC75-A93982968ECF}
+		{49229B7B-95AC-447C-931F-60A1B91B9372} = {9FFD4E38-60CF-445E-82CE-D39727A737F5}
+		{D8314FEA-8260-403A-81DA-D28BBB39DD6D} = {0D660EE1-7AE7-442B-B060-4D993FB84C8D}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {109DCB7F-CF91-4136-90A5-E78AF9ADF608}
+	EndGlobalSection
+EndGlobal
