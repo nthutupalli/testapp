@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ClinicalPolicyAdminAPI.Logging;
-using Common;
-using Microsoft.AspNetCore.Http;
+﻿using ClinicalPolicyAPI.Logging;
 using Microsoft.AspNetCore.Mvc;
-using Server.VaultManager;
+using Microsoft.Extensions.Configuration;
 
 namespace ClinicalPolicyAdminAPI.Controllers
 {
@@ -15,12 +9,11 @@ namespace ClinicalPolicyAdminAPI.Controllers
     public class BaseController : ControllerBase
     {
 
-       
-        public static void log(string errormessage,string LogEventTypeError,string LogSeverityLow)
+        public static void log(string errormessage, string LogEventTypeError, string LogSeverityLow, IConfiguration config)
         {
-            ServiceLogging serviceLogging = new ServiceLogging();
+            ServiceLogging serviceLogging = new ServiceLogging(config);
             serviceLogging.EnterpriseLogging(errormessage, LogEventTypeError, LogSeverityLow);
-           
+
         }
     }
 }

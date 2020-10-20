@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClinicalPolicyAdminAPI.Logging
+namespace ClinicalPolicyAPI.Logging
 {
     class EnterpriseLogRequest
     {

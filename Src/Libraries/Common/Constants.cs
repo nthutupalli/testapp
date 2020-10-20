@@ -18,6 +18,18 @@ namespace Common
             public const string LogEventTypeError = "ERROR";
             public const string LogSeverityLow = "LOW";
         }
+        public class Message
+        {
+            /// <summary>
+            ///Enterprise Logging Error Message
+            /// </summary>
+            public static string Success = "Success";
+            public static string Failed = "failed";
+            public static string BadRequest = "BadRequest";
+            public static string IdsValues = "Id should contain a positive value.";
+
+
+        }
         /// PolicyType
         /// </summary>
         [DataContract]
@@ -182,5 +194,122 @@ namespace Common
             [EnumMember(Value = "4")]
             RulesManuallyArchived = 4
         }
+        /// <summary>
+        /// ActionType
+        /// </summary>
+        public enum ActionType
+        {
+            /// <summary>
+            /// None
+            /// </summary>
+            None,
+            /// <summary>
+            /// Insert
+            /// </summary>
+            I,
+            /// <summary>
+            /// Update
+            /// </summary>
+            U,
+            /// <summary>
+            /// Delete
+            /// </summary>
+            D
+        }
+
+        /// <summary>
+        /// Clinical Policy Master Data Type
+        /// </summary>
+        public enum ClinicalPolicyMasterDataType
+        {
+            /// <summary>
+            /// None
+            /// </summary>
+            None,
+            /// <summary>
+            /// LOB
+            /// </summary>
+            Lob,
+            /// <summary>
+            /// Policy Type
+            /// </summary>
+            PolicyType,
+            /// <summary>
+            /// Argus Customer
+            /// </summary>
+            ArgusCustomer,
+            /// <summary>
+            /// Argus Client
+            /// </summary>
+            ArgusClient,
+            /// <summary>
+            /// Policy Owner
+            /// </summary>
+            PolicyOwner,
+            /// <summary>
+            /// Therapeutic Category
+            /// </summary>
+            TherapeuticCategory,
+            /// <summary>
+            /// SubCategory
+            /// </summary>
+            SubCategory,
+            /// <summary>
+            /// RuleLookBackPeriod
+            /// </summary>
+            RuleLookBackPeriod,
+            /// <summary>
+            /// RejectCode
+            /// </summary>
+            RejectCode,
+            /// <summary>
+            /// Template
+            /// </summary>
+            Template,
+            /// <summary>
+            /// RuleConcept
+            /// </summary>
+            RuleConcept,
+            /// <summary>
+            /// PolicyTypeDefault
+            /// </summary>
+            PolicyTypeDefault,
+            /// <summary>
+            /// ClaimCodeType
+            /// </summary>
+            ClaimCodeType,
+            /// <summary>
+            /// Policy Revision Type
+            /// </summary>
+            RevisionType,
+            /// <summary>
+            /// Update Type
+            /// </summary>
+            UpdateType,
+            /// <summary>
+            /// CP Lob
+            /// </summary>
+            CPLob
+
+        }
+
+
+        public enum ScenarioType
+        {
+            /// <summary>
+            /// None
+            /// </summary>
+            None = 0,
+            /// <summary>
+            /// CoverageDetermination
+            /// </summary>
+            CoverageDetermination = 1,
+            /// <summary>
+            /// CoverageLimitation
+            /// </summary>
+            CoverageLimitation = 2,
+        }
+
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Common;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -9,17 +10,21 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using static ClinicalPolicyAdminAPI.Logging.EnterpriseLogRequest;
+using static ClinicalPolicyAPI.Logging.EnterpriseLogRequest;
 
-namespace ClinicalPolicyAdminAPI.Logging
+namespace ClinicalPolicyAPI.Logging
 {
     public class ServiceLogging
     {
-        //EL2.0 Method
+        private readonly IConfiguration _config;
+        public ServiceLogging(IConfiguration config)
+        {
+            _config = config;
+        }
         public void EnterpriseLogging(string ermessage, string logEventTypeCode, string severityCode)
         {
 
-            string elUrl = ConfigurationManager.AppSettings["EnterpriseLoggingUrl"].ToString();
+            string elUrl = _config.GetValue<string>("EnterpriseLoggingUrl");
             DateTime date = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.Now, "Eastern Standard Time");
 
             LogMetaData metaData = new LogMetaData
@@ -33,9 +38,9 @@ namespace ClinicalPolicyAdminAPI.Logging
             logEvent.LogMetaData = metaData;
             SourceApplicationInformation sourceInfo = new SourceApplicationInformation
             {
-                EAPMId = Convert.ToInt32(ConfigurationManager.AppSettings["EAPM"].ToString(), CultureInfo.InvariantCulture),
+                EAPMId = Convert.ToInt32(_config.GetValue<int>("EAPM"), CultureInfo.InvariantCulture),
                 HostMachineName = Environment.MachineName,
-                HostEnvironmentName = ConfigurationManager.AppSettings["ENVIRONMENT"].ToString(),
+                HostEnvironmentName = _config.GetValue<string>("Environment").ToString(),
                 CorrelationId = Convert.ToString(Guid.NewGuid(), CultureInfo.InvariantCulture)
             };
             logEvent.SourceApplicationInformation = new SourceApplicationInformation();

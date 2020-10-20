@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Configuration;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Net;
@@ -8,19 +9,27 @@ using VaultSharp.V1.AuthMethods.Token;
 
 namespace Server.VaultManager
 {
-    public sealed class VaultConfigurationManager
+    public class VaultConfigurationManager
     {
 
-       
-        static readonly object LockObject = new object();
-        private static readonly string VaultUriValue = ConfigurationManager.AppSettings["vaultUri"];
-        private static readonly string TokenValue = ConfigurationManager.AppSettings["token"];
-        private static readonly string secretPathConnection = ConfigurationManager.AppSettings["secretPathConnection"];
-        private static readonly string secretPathAppSettings = ConfigurationManager.AppSettings["secretPathAppSettings"];
-        private static readonly int RefreshIntervalHours = int.Parse(ConfigurationManager.AppSettings["refreshIntervalHours"]);
+        private readonly IConfiguration _config;
+        readonly object LockObject = new object();
+        private readonly string VaultUriValue = string.Empty;
+        private readonly string TokenValue = string.Empty;
+        private readonly string secretPathConnection = string.Empty;
+        private readonly string secretPathAppSettings = string.Empty;
+        private readonly int RefreshIntervalHours = 0;
+        public VaultConfigurationManager(IConfiguration config)
+        {
+            _config = config;
+            TokenValue = _config.GetValue<string>("token");
+            VaultUriValue = _config.GetValue<string>("vaultUri");
+            secretPathConnection = _config.GetValue<string>("secretPathConnection");
+            secretPathAppSettings = _config.GetValue<string>("secretPathAppSettings");
+            RefreshIntervalHours = _config.GetValue<int>("refreshIntervalHours");
+        }
 
-
-        public static DateTime RefreshCollectionDate { get; set; }
+        public DateTime RefreshCollectionDate { get; set; }
         /// <summary>
         /// There really should only be one instance of the manager running. 
         /// </summary>
@@ -29,17 +38,17 @@ namespace Server.VaultManager
         /// <summary>
         /// The Vault client implementation.
         /// </summary>
-        private static Dictionary<string, dynamic> connectionStrings = null;
+        private Dictionary<string, dynamic> connectionStrings = null;
 
 
-        public static VaultConfigurationManager InstanceConnection
+        public VaultConfigurationManager InstanceConnection
         {
             get
             {
                 lock (LockObject)
                 {
                     if (_instanceConnection == null)
-                        _instanceConnection = new VaultConfigurationManager();
+                        _instanceConnection = new VaultConfigurationManager(_config);
 
                     return _instanceConnection;
                 }
@@ -61,16 +70,16 @@ namespace Server.VaultManager
         /// <summary>
         /// The Vault client implementation.
         /// </summary>
-        private static Dictionary<string, dynamic> appsettings = null;
+        private Dictionary<string, dynamic> appsettings = null;
 
-        public static VaultConfigurationManager InstanceAppSettings
+        public VaultConfigurationManager InstanceAppSettings
         {
             get
             {
                 lock (LockObject)
                 {
                     if (_instanceAppSetting == null)
-                        _instanceAppSetting = new VaultConfigurationManager();
+                        _instanceAppSetting = new VaultConfigurationManager(_config);
 
                     return _instanceAppSetting;
                 }
@@ -87,7 +96,7 @@ namespace Server.VaultManager
             }
         }
 
-        private static Dictionary<string, object> InvokeVaultSecrets(string secretPath)
+        private Dictionary<string, object> InvokeVaultSecrets(string secretPath)
         {
             try
             {
