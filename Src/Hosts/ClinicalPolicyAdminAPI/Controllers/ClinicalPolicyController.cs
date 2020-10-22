@@ -49,7 +49,7 @@ namespace ClinicalPolicyAdminAPI.Controllers
         }
 
         /// <summary>
-        ///CheckIfPolicyExists
+        /// CheckIfPolicyExists
         /// </summary>
         /// <param name="lobId"></param>
         /// <returns></returns>
@@ -86,6 +86,8 @@ namespace ClinicalPolicyAdminAPI.Controllers
         /// <summary>
         /// Save Line Of Business Details
         /// </summary>
+        /// <param name="policyLobDtoCollection"></param>
+        /// <returns></returns>
         [Route("SaveLob")]
         [HttpPost]
         public IActionResult SaveLobDetails([FromBody]Collection<PolicyLobDto> policyLobDtoCollection)
@@ -122,8 +124,9 @@ namespace ClinicalPolicyAdminAPI.Controllers
         }
 
         /// <summary>
-        ///  Get Formulary Details
+        /// Get Formulary Details
         /// </summary>
+        /// <returns></returns>
         [Route("FormularyDetails")]
         [HttpGet]
         public IActionResult GetFormularyDetails()
@@ -151,6 +154,7 @@ namespace ClinicalPolicyAdminAPI.Controllers
         ///  Get Customers Data For LOB mapping details
         /// </summary>
         /// <param name="lobId"></param>
+        /// <returns></returns>
         [Route("Customers")]
         [HttpPost]
         public IActionResult GetCustomers([FromBody]Int16 lobId)
@@ -181,9 +185,10 @@ namespace ClinicalPolicyAdminAPI.Controllers
         }
 
         /// <summary>
-        ///  Get Clients Data For LOB mapping details
+        /// Get Clients Data For LOB mapping details
         /// </summary>
         /// <param name="lobId"></param>
+        /// <returns></returns>
         [Route("AvailableClients")]
         [HttpPost]
         public IActionResult GetAvailableClients([FromBody]Int16 lobId)
@@ -216,9 +221,10 @@ namespace ClinicalPolicyAdminAPI.Controllers
 
 
         /// <summary>
-        ///  Get Available Formulary Id Details
+        /// Get Available Formulary Id Details
         /// </summary>
-        /// <param name="CompositeObjectDto"></param>
+        /// <param name="composite"></param>
+        /// <returns></returns>
         [Route("AvailableFormularies")]
         [HttpPost]
         public IActionResult GetAvailableFormularies([FromBody]CompositeObject.SelectedFormularies composite)
@@ -243,9 +249,10 @@ namespace ClinicalPolicyAdminAPI.Controllers
         }
 
         /// <summary>
-        ///  Get Saved Formulary Id Details
+        /// Get Saved Formulary Id Details
         /// </summary>
-        /// <param name="CompositeObjectDto"></param>
+        /// <param name="composite"></param>
+        /// <returns></returns>
         [Route("SelectedFormularies")]
         [HttpPost]
         public IActionResult SelectedFormularies([FromBody]CompositeObject.SelectedFormularies composite)
@@ -269,9 +276,10 @@ namespace ClinicalPolicyAdminAPI.Controllers
         }
 
         /// <summary>
-        /// Save Lob Mapping Details
+        /// Save CustomerClientMapping Mapping Details
         /// </summary>
-        /// <param name="CompositeObjectDto"></param>
+        /// <param name="composite"></param>
+        /// <returns></returns>
         [Route("SaveCustomerClientMapping")]
         [HttpPost]
         public IActionResult SaveCustomerClientMapping([FromBody]CompositeObject.SaveCustomerClientMapping composite)
@@ -313,7 +321,8 @@ namespace ClinicalPolicyAdminAPI.Controllers
         /// <summary>
         /// Save Lob Formulary Mapping Details
         /// </summary>
-        /// <param name="lobId"></param>s
+        /// <param name="formularyMappingDto"></param>
+        /// <returns></returns>
         [Route("SaveFormularyMapping")]
         [HttpPost]
         public IActionResult SaveFormularyMapping([FromBody]Collection<SaveFormularyMappingDto> formularyMappingDto)
@@ -353,6 +362,8 @@ namespace ClinicalPolicyAdminAPI.Controllers
         /// <summary>
         /// Save Look Back Period
         /// </summary>
+        /// <param name="ruleLookBackPeriodCollection"></param>
+        /// <returns></returns>
         [Route("saveLookBack")]
         [HttpPost]
         public IActionResult saveLookBack([FromBody]Collection<RuleLookBackPeriodDto> ruleLookBackPeriodCollection)
@@ -429,6 +440,8 @@ namespace ClinicalPolicyAdminAPI.Controllers
         /// <summary>
         /// Save Policy Owner
         /// </summary>
+        /// <param name="policyOwnerDtoCollection"></param>
+        /// <returns></returns>
         [Route("SavePolicyOwner")]
         [HttpPost]
         public IActionResult SavePolicyOwner(Collection<PolicyOwnerDto> policyOwnerDtoCollection)
@@ -467,9 +480,10 @@ namespace ClinicalPolicyAdminAPI.Controllers
 
 
         /// <summary>
-        ///  Get Data For Policy Type Reject Code
+        /// Get Data For Policy Type Reject Code
         /// </summary>
         /// <param name="policyTypeId"></param>
+        /// <returns></returns>
         [Route("AvailableRejectCodes")]
         [HttpPost]
         public IActionResult AvailableRejectCodes([FromBody]Int16 policyTypeId)
@@ -504,6 +518,8 @@ namespace ClinicalPolicyAdminAPI.Controllers
         /// <summary>
         /// Save Reject Codes
         /// </summary>
+        /// <param name="rejectCodeDtoCollection"></param>
+        /// <returns></returns>
         [Route("SaveRejectCodes")]
         [HttpPost]
         public IActionResult SaveRejectCodes(Collection<PolicyRejectCodeDto> rejectCodeDtoCollection)
@@ -540,7 +556,8 @@ namespace ClinicalPolicyAdminAPI.Controllers
         /// <summary>
         /// SaveMappedRejectCode
         /// </summary>
-        /// <param name="CompositeObjectDto"></param>
+        /// <param name="composite"></param>
+        /// <returns></returns>
         [Route("SaveRejectCodeMapping")]
         [HttpPost]
         public IActionResult SaveRejectCodeMapping([FromBody]CompositeObject.SaveRejectCodeMapping composite)
@@ -615,6 +632,8 @@ namespace ClinicalPolicyAdminAPI.Controllers
         /// <summary>
         /// Save Therapeutic Category
         /// </summary>
+        /// <param name="therapeuticCategoryDtoCollection"></param>
+        /// <returns></returns>
         [Route("SaveTherapeuticCategory")]
         [HttpPost]
         public IActionResult SaveTherapeuticCategory([FromBody]Collection<TherapeuticCategoryDto> therapeuticCategoryDtoCollection)
@@ -690,6 +709,8 @@ namespace ClinicalPolicyAdminAPI.Controllers
         /// <summary>
         /// Save Sub Category
         /// </summary>
+        /// <param name="subCategoryDtoCollection"></param>
+        /// <returns></returns>
         [Route("SaveSubCategory")]
         [HttpPost]
         public IActionResult SaveSubCategory([FromBody]Collection<SubCategoryDto> subCategoryDtoCollection)
@@ -730,6 +751,7 @@ namespace ClinicalPolicyAdminAPI.Controllers
         /// SavePolicyTemplate
         /// </summary>
         /// <param name="policyTemplateDto"></param>
+        /// <returns></returns>
         [Route("SavePolicyTemplate")]
         [HttpPost]
         public IActionResult SavePolicyTemplate([FromBody]PolicyTemplateDto policyTemplateDto)
@@ -768,6 +790,8 @@ namespace ClinicalPolicyAdminAPI.Controllers
         /// <summary>
         /// Get batch upload file  details
         /// </summary>
+        /// <param name="composite"></param>
+        /// <returns></returns>
         [Route("BatchUploadFileStatus")]
         [HttpPost]
         public IActionResult NFMYBBatchUploadFileStatus([FromBody]CompositeObject.NFMYBBatchUploadFileStatus composite)
@@ -806,6 +830,8 @@ namespace ClinicalPolicyAdminAPI.Controllers
         /// <summary>
         /// Get batch archive file  details
         /// </summary>
+        /// <param name="composite"></param>
+        /// <returns></returns>
         [Route("BatchArchiveFileStatus")]
         [HttpPost]
         public IActionResult NFMYBBatchArchiveFileStatus([FromBody]CompositeObject.NFMYBBatchUploadFileStatus composite)
@@ -844,6 +870,8 @@ namespace ClinicalPolicyAdminAPI.Controllers
         /// <summary>
         /// Save batch upload file status details
         /// </summary>
+        /// <param name="BatchFileUploadDto"></param>
+        /// <returns></returns>
         [Route("SaveUploadFile")]
         [HttpPost]
         public IActionResult SaveBatchUploadFileStatus([FromBody]BatchUploadFileDetailsDto BatchFileUploadDto)
@@ -879,8 +907,10 @@ namespace ClinicalPolicyAdminAPI.Controllers
 
 
         /// <summary>
-        /// Save batch archive file status details
+        ///  Save batch archive file status details
         /// </summary>
+        /// <param name="BatchFileUploadDto"></param>
+        /// <returns></returns>
         [Route("SaveArchiveFile")]
         [HttpPost]
         public IActionResult SaveBatchArchiveFileStatus([FromBody]BatchUploadFileDetailsDto BatchFileUploadDto)
@@ -918,8 +948,10 @@ namespace ClinicalPolicyAdminAPI.Controllers
 
 
         /// <summary>
-        ///  batch upload fileStatus ApproveorReject
+        /// batch upload fileStatus ApproveorReject
         /// </summary>
+        /// <param name="composite"></param>
+        /// <returns></returns>
         [Route("BatchUploadAction")]
         [HttpPost]
         public IActionResult ApproveorRejectBatchUploadFile([FromBody]CompositeObject.ApproveorRejectBatchUploadFile composite)
@@ -960,6 +992,8 @@ namespace ClinicalPolicyAdminAPI.Controllers
         /// <summary>
         /// BtachArchiveUpdateFileStatusOnApproveOrReject
         /// </summary>
+        /// <param name="composite"></param>
+        /// <returns></returns>
         [Route("BatchArchiveAction")]
         [HttpPost]
         public IActionResult ApproveorRejectBatchArchiveFile([FromBody]CompositeObject.ApproveorRejectBatchArchiveFile composite)

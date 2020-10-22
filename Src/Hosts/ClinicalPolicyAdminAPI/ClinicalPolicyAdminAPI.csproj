@@ -15,11 +15,5 @@
     <ProjectReference Include="..\..\Libraries\Server\Server.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="Humana.ApplicationBlocks.UIProcess">
-      <HintPath>..\..\..\Lib\v2.1\Humana.ApplicationBlocks.UIProcess.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
 
 </Project>

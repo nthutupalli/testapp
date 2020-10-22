@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Data;
-using Server.VaultManager;
+﻿using Common;
 using Common.DataTransferObjects;
-using System.Data.SqlClient;
-using Common.Utility;
-using Common;
-using System.Linq;
-using System.Collections.ObjectModel;
 using Humana.ApplicationBlocks.Data;
 using Microsoft.Extensions.Configuration;
+using Server.VaultManager;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
 
 namespace Server.DataAccessObjects
 {
