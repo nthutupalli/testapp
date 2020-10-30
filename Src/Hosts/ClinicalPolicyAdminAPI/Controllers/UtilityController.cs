@@ -10,15 +10,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Server.DataAccessObjects;
 
-namespace ClinicalPolicyAPI.Controllers
+namespace ClinicalPolicyAdminAPI.Controllers
 {
-    [Route("api/Master")]
+    [Route("api/Utility")]
     [ApiController]
-    public class MasterController : BaseController
+    public class UtilityController : BaseController
     {
         private readonly IConfiguration _config;
 
-        public MasterController(IConfiguration config)
+        public UtilityController(IConfiguration config)
         {
             _config = config;
         }

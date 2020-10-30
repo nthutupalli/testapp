@@ -12,14 +12,14 @@ using System.Data;
 
 namespace ClinicalPolicyAdminAPI.Controllers
 {
-    [Route("api/ClinicalPolicy")]
+    [Route("api/Admin")]
     [ApiController]
-    public class ClinicalPolicyController : BaseController
+    public class AdminController : BaseController
     {
 
         private readonly IConfiguration _config;
 
-        public ClinicalPolicyController(IConfiguration config)
+        public AdminController(IConfiguration config)
         {
             _config = config;
         }

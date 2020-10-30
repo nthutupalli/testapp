@@ -1,6 +1,5 @@
 ﻿using Common;
 using Common.DataTransferObjects;
-using Humana.ApplicationBlocks.Data;
 using Microsoft.Extensions.Configuration;
 using Server.VaultManager;
 using System;
@@ -64,11 +63,27 @@ namespace Server.DataAccessObjects
 
             return formularyMappingDto;
         }
-        public  bool CheckIfPolicyExists(int lobId)
+        public bool CheckIfPolicyExists(int lobId)
         {
-            var parameter = new SqlParameter("@LobId", lobId);
-            return Convert.ToBoolean(SqlHelper.ExecuteScalar(ConnectionString, "iRx_CheckIfPolicyExistsforLOB", parameter));
+            //var parameter = new SqlParameter("@LobId", lobId);
+            //return Convert.ToBoolean(SqlHelper.ExecuteScalar(ConnectionString, "iRx_CheckIfPolicyExistsforLOB", parameter));
 
+            SqlConnection conn = null;
+            string sqlCommand = "iRx_CheckIfPolicyExistsforLOB";
+            using (conn = new SqlConnection(ConnectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(sqlCommand, conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                var param1 = new SqlParameter("@LobId", lobId)
+                {
+                    Direction = ParameterDirection.Input
+                };
+                cmd.Parameters.Add(param1);
+
+                return Convert.ToBoolean(cmd.ExecuteScalar());
+
+            }
         }
 
         public Collection<ArgusCustomerDto> GetCustomers(Int16 lobId)
@@ -255,20 +270,25 @@ namespace Server.DataAccessObjects
         public  List<FormularyDetailsDto> GetSavedFormularyIdDetails(int planYear, int? lobId)
         {
             var formularyDetailList = new List<FormularyDetailsDto>();
-            var policyResults = new DataSet();
-            var parameters = new[]
-                    {
-                        new SqlParameter("@PlanYear",planYear),
-                        new SqlParameter("@LobId",lobId),
-                    };
-            var formularyMappingDto = new FormularyMappingDto();
-            //CustomSqlHelper.FillDataSet(
-            //   ConnectionString, 120, "iRx_GetSavedLobFormularyDetail", policyResults, parameters);
-
-            using (
-                SqlDataReader searchResult = SqlHelper.ExecuteReader(
-                    ConnectionString, CommandType.StoredProcedure, "iRx_GetSavedLobFormularyDetail", parameters))
+            //var searchResultList = new List<FormularyDetailsDto>();
+            SqlConnection conn = null;
+            string sqlCommand = "iRx_GetSavedLobFormularyDetail";
+            using (conn = new SqlConnection(ConnectionString))
             {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(sqlCommand, conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                var param1 = new SqlParameter("@PlanYear", planYear)
+                {
+                    Direction = ParameterDirection.Input
+                };
+                cmd.Parameters.Add(param1);
+                var param2 = new SqlParameter("@LobId", lobId)
+                {
+                    Direction = ParameterDirection.Input
+                };
+                cmd.Parameters.Add(param2);
+                var searchResult = cmd.ExecuteReader();
                 if (searchResult.HasRows)
                 {
                     while (searchResult.Read())
@@ -281,9 +301,6 @@ namespace Server.DataAccessObjects
                     }
                 }
             }
-
-
-
             return formularyDetailList;
         }
 

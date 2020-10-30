@@ -15,10 +15,4 @@
     <ProjectReference Include="..\Common\Common.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="Humana.ApplicationBlocks.Data">
-      <HintPath>..\..\..\Lib\v2.1\Humana.ApplicationBlocks.Data.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
 </Project>
