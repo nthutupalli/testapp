@@ -1,6 +1,7 @@
 using Common;
 using Common.DataTransferObjects;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using NUnit.Framework;
@@ -18,7 +19,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
         {
         }
 
-        
+
         [Test]
         public void SuccessForCheckLobMapping()
         {
@@ -26,12 +27,12 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var logResponse = ServiceCallCheckLobMapping(lobId);
             if(logResponse.IsSuccessStatusCode)
             {
-               var final=logResponse.Content.ReadAsStringAsync().Result;
+                var final=logResponse.Content.ReadAsStringAsync().Result;
                 bool result=JsonConvert.DeserializeObject<bool>(final);
                 Assert.IsNotNull(logResponse);
                 Assert.AreEqual(result, true);
             }
-           
+
         }
         [Test]
         public void InvalidLobID_CheckLobMapping()
@@ -47,7 +48,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
 
                 Assert.IsNotNull(logResponse);
                 Assert.AreEqual(responseStatus.Message, "BadRequest");
-                 Assert.AreEqual(responseStatus.Code, StatusCodes.Status400BadRequest);
+                Assert.AreEqual(responseStatus.Code, StatusCodes.Status400BadRequest);
             }
 
         }
@@ -89,7 +90,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
         [Test]
         public void SuccessForCheckTherapeuticCategoryMapping()
         {
-           Int16 therapeuticCategoryId = 3;
+            Int16 therapeuticCategoryId = 3;
             var logResponse = ServiceCallCheckTherapeuticCategoryMapping(therapeuticCategoryId);
             if (logResponse.IsSuccessStatusCode)
             {
@@ -288,8 +289,8 @@ namespace ClinicalPolicyAdminAPIUnitTest
         [Test]
         public void SuccessForSaveCustomerClientMapping()
         {
-            CompositeObject.SaveCustomerClientMapping composite=new CompositeObject.SaveCustomerClientMapping();
-            Collection<ArgusCustomerDto>  CustomerData = new Collection<ArgusCustomerDto>();
+            CompositeObject.SaveCustomerClientMapping composite= new CompositeObject.SaveCustomerClientMapping();
+            Collection<ArgusCustomerDto> CustomerData= new Collection<ArgusCustomerDto>();
             ArgusCustomerDto customer1 = new ArgusCustomerDto();
             customer1.CustomerId = 1;
             customer1.CustomerCode = "0319";
@@ -335,7 +336,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
         public void CustomerCollectionNULL_SaveCustomerClientMapping()
         {
             CompositeObject.SaveCustomerClientMapping composite = new CompositeObject.SaveCustomerClientMapping();
-            
+
             Collection<ArgusClientDto> ClientData = new Collection<ArgusClientDto>();
             ArgusClientDto clientData1 = new ArgusClientDto();
             clientData1.ClientId = 4;
@@ -353,7 +354,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             clientData2.ActionType = Constants.ActionType.I;
             ClientData.Add(clientData2);
 
-            
+
             composite.ArgusClientDtoCollection = ClientData;
             composite.lobId = 5;
             var logResponse = ServiceCallSaveCustomerClientMapping(composite);
@@ -423,7 +424,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             Collection<ArgusClientDto> ClientData = new Collection<ArgusClientDto>();
             ArgusClientDto clientData1 = new ArgusClientDto();
             clientData1.ClientId = 4;
-           // clientData1.ClientCode = "00005";
+            // clientData1.ClientCode = "00005";
             clientData1.CustomerId = 1;
             clientData1.IsMapped = false;
             clientData1.ActionType = Constants.ActionType.D;
@@ -560,7 +561,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var logResponse = ServiceCallBatchUploadFileStatus(composite);
             if (logResponse.IsSuccessStatusCode)
             {
-                Assert.IsNotNull(logResponse); 
+                Assert.IsNotNull(logResponse);
             }
 
         }
@@ -619,7 +620,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
         //    filedata.UploadedBy = "SIT4034";
         //    filedata.UploadDate = "8/17/2020";
         //    var logResponse = ServiceCallSaveArchiveFile(filedata);
-           
+
         //    if (logResponse.IsSuccessStatusCode)
         //    {
         //        JObject json = JObject.Parse(logResponse.Content.ReadAsStringAsync().Result);
@@ -633,9 +634,9 @@ namespace ClinicalPolicyAdminAPIUnitTest
         //    }
 
         //}
-       
 
-             [Test]
+
+        [Test]
         public void MissingFileName_SaveArchiveFile()
         {
             BatchUploadFileDetailsDto filedata = new BatchUploadFileDetailsDto();
@@ -784,7 +785,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
         {
             CompositeObject.ApproveorRejectBatchArchiveFile composite = new CompositeObject.ApproveorRejectBatchArchiveFile();
             composite.fileId = 10; ;
-           
+
             composite.actionBy = "SIT4034";
             composite.action = "Approve";
             var logResponse = ServiceCallBatchArchiveAction(composite);
@@ -848,7 +849,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             Collection<RuleLookBackPeriodDto> parmeter = new Collection<RuleLookBackPeriodDto>();
             RuleLookBackPeriodDto lookback1 = new RuleLookBackPeriodDto();
             lookback1.LookBackId = 26;
-           
+
             lookback1.LookBackUnit = "Months";
             lookback1.ActionType = Constants.ActionType.I;
             lookback1.UpdatedBy = "SIT4034";
@@ -885,20 +886,22 @@ namespace ClinicalPolicyAdminAPIUnitTest
         {
             using (var httpClient = new HttpClient())
             {
-                string URL = "https://test-pharmacyws.humana.com/ClinicalPolicyAdminAPI/api/Admin/CheckLobMapping";
+                string URL = GetValueFromNUTest_Json("CheckLobMapping");
                 HttpContent content = new StringContent(JsonConvert.SerializeObject(contents), Encoding.UTF8, "application/json");
                 HttpClient client = new HttpClient();
                 HttpResponseMessage response = client.PostAsync(URL, content).Result;
                 return response;
             }
-            
+
         }
+
+
 
         private HttpResponseMessage ServiceCallCheckPolicyOwnerMappping(Int16 contents)
         {
             using (var httpClient = new HttpClient())
             {
-                string URL = "https://test-pharmacyws.humana.com/ClinicalPolicyAdminAPI/api/Admin/CheckPolicyOwnerMappping";
+                string URL = GetValueFromNUTest_Json("CheckPolicyOwnerMappping");
                 HttpContent content = new StringContent(JsonConvert.SerializeObject(contents), Encoding.UTF8, "application/json");
                 HttpClient client = new HttpClient();
                 HttpResponseMessage response = client.PostAsync(URL, content).Result;
@@ -911,7 +914,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
         {
             using (var httpClient = new HttpClient())
             {
-                string URL = "https://test-pharmacyws.humana.com/ClinicalPolicyAdminAPI/api/Admin/Customers";
+                string URL = GetValueFromNUTest_Json("Customers");
                 HttpContent content = new StringContent(JsonConvert.SerializeObject(contents), Encoding.UTF8, "application/json");
                 HttpClient client = new HttpClient();
                 HttpResponseMessage response = client.PostAsync(URL, content).Result;
@@ -924,7 +927,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
         {
             using (var httpClient = new HttpClient())
             {
-                string URL = "https://test-pharmacyws.humana.com/ClinicalPolicyAdminAPI/api/Admin/SaveLob";
+                string URL = GetValueFromNUTest_Json("SaveLob");
                 HttpContent content = new StringContent(JsonConvert.SerializeObject(contents), Encoding.UTF8, "application/json");
                 HttpClient client = new HttpClient();
                 HttpResponseMessage response = client.PostAsync(URL, content).Result;
@@ -937,7 +940,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
         {
             using (var httpClient = new HttpClient())
             {
-                string URL = "https://test-pharmacyws.humana.com/ClinicalPolicyAdminAPI/api/Admin/SaveCustomerClientMapping";
+                string URL = GetValueFromNUTest_Json("SaveCustomerClientMapping");
                 HttpContent content = new StringContent(JsonConvert.SerializeObject(contents), Encoding.UTF8, "application/json");
                 HttpClient client = new HttpClient();
                 HttpResponseMessage response = client.PostAsync(URL, content).Result;
@@ -951,7 +954,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
         {
             using (var httpClient = new HttpClient())
             {
-                string URL = "https://test-pharmacyws.humana.com/ClinicalPolicyAdminAPI/api/Admin/SaveRejectCodeMapping";
+                string URL = GetValueFromNUTest_Json("SaveRejectCodeMapping");
                 HttpContent content = new StringContent(JsonConvert.SerializeObject(contents), Encoding.UTF8, "application/json");
                 HttpClient client = new HttpClient();
                 HttpResponseMessage response = client.PostAsync(URL, content).Result;
@@ -964,7 +967,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
         {
             using (var httpClient = new HttpClient())
             {
-                string URL = "https://test-pharmacyws.humana.com/ClinicalPolicyAdminAPI/api/Admin/BatchUploadFileStatus";
+                string URL = GetValueFromNUTest_Json("BatchUploadFileStatus");
                 HttpContent content = new StringContent(JsonConvert.SerializeObject(contents), Encoding.UTF8, "application/json");
                 HttpClient client = new HttpClient();
                 HttpResponseMessage response = client.PostAsync(URL, content).Result;
@@ -977,7 +980,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
         {
             using (var httpClient = new HttpClient())
             {
-                string URL = "https://test-pharmacyws.humana.com/ClinicalPolicyAdminAPI/api/Admin/SaveArchiveFile";
+                string URL = GetValueFromNUTest_Json("SaveArchiveFile");
                 HttpContent content = new StringContent(JsonConvert.SerializeObject(contents), Encoding.UTF8, "application/json");
                 HttpClient client = new HttpClient();
                 HttpResponseMessage response = client.PostAsync(URL, content).Result;
@@ -990,7 +993,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
         {
             using (var httpClient = new HttpClient())
             {
-                string URL = "https://test-pharmacyws.humana.com/ClinicalPolicyAdminAPI/api/Admin/BatchUploadAction";
+                string URL = GetValueFromNUTest_Json("BatchUploadAction");
                 HttpContent content = new StringContent(JsonConvert.SerializeObject(contents), Encoding.UTF8, "application/json");
                 HttpClient client = new HttpClient();
                 HttpResponseMessage response = client.PostAsync(URL, content).Result;
@@ -1003,7 +1006,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
         {
             using (var httpClient = new HttpClient())
             {
-                string URL = "https://test-pharmacyws.humana.com/ClinicalPolicyAdminAPI/api/Admin/BatchArchiveAction";
+                string URL = GetValueFromNUTest_Json("BatchArchiveAction");
                 HttpContent content = new StringContent(JsonConvert.SerializeObject(contents), Encoding.UTF8, "application/json");
                 HttpClient client = new HttpClient();
                 HttpResponseMessage response = client.PostAsync(URL, content).Result;
@@ -1016,7 +1019,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
         {
             using (var httpClient = new HttpClient())
             {
-                string URL = "https://test-pharmacyws.humana.com/ClinicalPolicyAdminAPI/api/Admin/saveLookBack";
+                string URL = GetValueFromNUTest_Json("saveLookBack");
                 HttpContent content = new StringContent(JsonConvert.SerializeObject(contents), Encoding.UTF8, "application/json");
                 HttpClient client = new HttpClient();
                 HttpResponseMessage response = client.PostAsync(URL, content).Result;
@@ -1029,7 +1032,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
         {
             using (var httpClient = new HttpClient())
             {
-                string URL = "https://test-pharmacyws.humana.com/ClinicalPolicyAdminAPI/api/Admin/CheckTherapeuticCategoryMapping";
+                string URL = GetValueFromNUTest_Json("CheckTherapeuticCategoryMapping");
                 HttpContent content = new StringContent(JsonConvert.SerializeObject(contents), Encoding.UTF8, "application/json");
                 HttpClient client = new HttpClient();
                 HttpResponseMessage response = client.PostAsync(URL, content).Result;
@@ -1042,13 +1045,21 @@ namespace ClinicalPolicyAdminAPIUnitTest
         {
             using (var httpClient = new HttpClient())
             {
-                string URL = "https://test-pharmacyws.humana.com/ClinicalPolicyAdminAPI/api/Admin/CheckSubCategoryMapping";
+                string URL = GetValueFromNUTest_Json("CheckSubCategoryMapping");
                 HttpContent content = new StringContent(JsonConvert.SerializeObject(contents), Encoding.UTF8, "application/json");
                 HttpClient client = new HttpClient();
                 HttpResponseMessage response = client.PostAsync(URL, content).Result;
                 return response;
             }
 
+        }
+
+
+        private string GetValueFromNUTest_Json(string KeyName)
+        {
+            var configuration = new ConfigurationBuilder().AddJsonFile("NUnit_json.json").Build();
+            string KeyValue = configuration[KeyName];
+            return KeyValue;
         }
 
     }
