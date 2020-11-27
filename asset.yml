@@ -42,14 +42,14 @@ repoMetaData:
   repository: ClinicalPolicyAdminAPI
   iserverAssociatedRecords:
     - type: asset
-      id: 0000
+      id: 10839
       addedBy: CFitzgerald2@humana.com
     - type: component
       id: 0000
       addedBy: CFitzgerald2@humana.com
   serviceNowAssociatedRecords:
     - type: AppService
-      id: 0000
+      id: 0005459
       description: ClinicalPolicyAdminAPI is using DotNetCore.
       technology: DotNetCore
 
