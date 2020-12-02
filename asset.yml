@@ -49,7 +49,7 @@ repoMetaData:
       addedBy: CFitzgerald2@humana.com
   serviceNowAssociatedRecords:
     - type: AppService
-      id: 0005459
+      id: APPSVC034142
       description: ClinicalPolicyAdminAPI is using DotNetCore.
       technology: DotNetCore
 
