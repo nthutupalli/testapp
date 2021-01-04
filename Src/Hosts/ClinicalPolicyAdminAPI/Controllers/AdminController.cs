@@ -55,14 +55,14 @@ namespace ClinicalPolicyAdminAPI.Controllers
         /// <returns></returns>
         [Route("CheckLobMapping")]
         [HttpPost]
-        public IActionResult CheckLobMapping([FromBody]int lobId)
+        public IActionResult CheckLobMapping(CompositeObject.LobValue composite)
         {
             ResponseMessageDto objMessage = new ResponseMessageDto();
             try
             {
-                if (lobId > 0)
+                if (composite.lobId > 0)
                 {
-                    bool response = new ClinicalPolicyAdminDao(_config).CheckIfPolicyExists(lobId);
+                    bool response = new ClinicalPolicyAdminDao(_config).CheckIfPolicyExists(composite.lobId);
                     return Ok(response);
                 }
                 else
@@ -157,14 +157,14 @@ namespace ClinicalPolicyAdminAPI.Controllers
         /// <returns></returns>
         [Route("Customers")]
         [HttpPost]
-        public IActionResult GetCustomers([FromBody]Int16 lobId)
+        public IActionResult GetCustomers(CompositeObject.LobValue composite)
         {
             ResponseMessageDto objMessage = new ResponseMessageDto();
             try
             {
-                if (lobId > 0)
+                if (composite.lobId > 0)
                 {
-                    Collection<ArgusCustomerDto> response = new ClinicalPolicyAdminDao(_config).GetCustomers(lobId);
+                    Collection<ArgusCustomerDto> response = new ClinicalPolicyAdminDao(_config).GetCustomers(composite.lobId);
                     return Ok(response);
                 }
                 else
@@ -191,14 +191,14 @@ namespace ClinicalPolicyAdminAPI.Controllers
         /// <returns></returns>
         [Route("AvailableClients")]
         [HttpPost]
-        public IActionResult GetAvailableClients([FromBody]Int16 lobId)
+        public IActionResult GetAvailableClients(CompositeObject.LobValue composite)
         {
             ResponseMessageDto objMessage = new ResponseMessageDto();
             try
             {
-                if (lobId > 0)
+                if (composite.lobId > 0)
                 {
-                    Collection<ArgusClientDto> response = new ClinicalPolicyAdminDao(_config).GetAvailableClients(lobId);
+                    Collection<ArgusClientDto> response = new ClinicalPolicyAdminDao(_config).GetAvailableClients(composite.lobId);
                     return Ok(response);
                 }
                 else
@@ -407,14 +407,14 @@ namespace ClinicalPolicyAdminAPI.Controllers
         /// <returns></returns>
         [Route("CheckPolicyOwnerMappping")]
         [HttpPost]
-        public IActionResult ActivateDeactivatePolicyOwner([FromBody]Int16 policyOwnerId)
+        public IActionResult ActivateDeactivatePolicyOwner(CompositeObject.PoliyOwnerIdValue composite)
         {
             ResponseMessageDto objMessage = new ResponseMessageDto();
             try
             {
-                if (policyOwnerId > 0)
+                if (composite.PoliyOwnerId > 0)
                 {
-                    bool response = new ClinicalPolicyAdminDao(_config).CheckPolicyOwnerPolicyMapping(policyOwnerId);
+                    bool response = new ClinicalPolicyAdminDao(_config).CheckPolicyOwnerPolicyMapping(composite.PoliyOwnerId);
                     return Ok(response);
                 }
                 else
@@ -486,14 +486,14 @@ namespace ClinicalPolicyAdminAPI.Controllers
         /// <returns></returns>
         [Route("AvailableRejectCodes")]
         [HttpPost]
-        public IActionResult AvailableRejectCodes([FromBody]Int16 policyTypeId)
+        public IActionResult AvailableRejectCodes(CompositeObject.AvailableRejectCodes composite)
         {
             ResponseMessageDto objMessage = new ResponseMessageDto();
             try
             {
-                if (policyTypeId > 0)
+                if (composite.policyTypeId > 0)
                 {
-                    Collection<PolicyRejectCodeDto> response = new ClinicalPolicyAdminDao(_config).GetPolicyTypeRejectCodeMapping(policyTypeId);
+                    Collection<PolicyRejectCodeDto> response = new ClinicalPolicyAdminDao(_config).GetPolicyTypeRejectCodeMapping(composite.policyTypeId);
                     return Ok(response);
                 }
                 else
@@ -600,14 +600,14 @@ namespace ClinicalPolicyAdminAPI.Controllers
         /// <returns></returns>
         [Route("CheckTherapeuticCategoryMapping")]
         [HttpPost]
-        public IActionResult CheckTherapeuticCategoryMapping([FromBody]Int16 therapeuticCategoryId)
+        public IActionResult CheckTherapeuticCategoryMapping(CompositeObject.therapeuticCategoryIdIdValue composite)
         {
             ResponseMessageDto objMessage = new ResponseMessageDto();
             try
             {
-                if (therapeuticCategoryId > 0)
+                if (composite.therapeuticCategoryId > 0)
                 {
-                    bool response = new ClinicalPolicyAdminDao(_config).CheckTherapeuticCategoryPolicyMapping(therapeuticCategoryId);
+                    bool response = new ClinicalPolicyAdminDao(_config).CheckTherapeuticCategoryPolicyMapping(composite.therapeuticCategoryId);
                     return Ok(response);
                 }
                 else
@@ -677,14 +677,14 @@ namespace ClinicalPolicyAdminAPI.Controllers
         /// <returns></returns>
         [Route("CheckSubCategoryMapping")]
         [HttpPost]
-        public IActionResult CheckSubCategoryMapping([FromBody]Int16 subCategoryId)
+        public IActionResult CheckSubCategoryMapping(CompositeObject.subCategoryIdValue composite)
         {
             ResponseMessageDto objMessage = new ResponseMessageDto();
             try
             {
-                if (subCategoryId > 0)
+                if (composite.subCategoryId > 0)
                 {
-                    bool response = new ClinicalPolicyAdminDao(_config).CheckSubCategoryPolicyMapping(subCategoryId);
+                    bool response = new ClinicalPolicyAdminDao(_config).CheckSubCategoryPolicyMapping(composite.subCategoryId);
                     return Ok(response);
                 }
                 else
