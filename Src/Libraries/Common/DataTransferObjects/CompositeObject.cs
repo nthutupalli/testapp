@@ -21,7 +21,7 @@ namespace Common.DataTransferObjects
         public class SelectedFormularies
         {
             public int planYear { get; set; }
-            public Int32 lobId { get; set; }
+            public int? lobId { get; set; }
 
         }
         public class NFMYBBatchUploadFileStatus
