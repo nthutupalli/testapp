@@ -539,7 +539,8 @@ namespace Server.DataAccessObjects
                         CdCompendium = Convert.ToString(dataRow["CDCompendium"]),
                         InternalOnlyDisclaimer = Convert.ToString(dataRow["InternalOnlyDisclaimer"]),
                         ExperimentalDisclaimer = Convert.ToString(dataRow["ExperimentalDisclaimer"]),
-                        PrescriberInstructions = Convert.ToString(dataRow["PrescriberInstructions"])
+                        PrescriberInstructions = Convert.ToString(dataRow["PrescriberInstructions"]),
+                        ProviderClaimCodes= Convert.ToString(dataRow["ProviderClaimCodes"])
                     };
 
                     policyTemplateCollection.Add(policyTemplateDto);
