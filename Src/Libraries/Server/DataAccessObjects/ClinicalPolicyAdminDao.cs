@@ -590,7 +590,8 @@ namespace Server.DataAccessObjects
                          new SqlParameter("@InternalOnlyDisclaimer",policyTemplateDto.InternalOnlyDisclaimer),
                          new SqlParameter("@ExperimentalDisclaimer",policyTemplateDto.ExperimentalDisclaimer),
                          new SqlParameter("@PrescriberInstructions",policyTemplateDto.PrescriberInstructions),
-                         new SqlParameter("@UpdatedBy",policyTemplateDto.UpdatedBy)
+                         new SqlParameter("@UpdatedBy",policyTemplateDto.UpdatedBy),
+                         new SqlParameter("@ProviderClaimCodes",policyTemplateDto.ProviderClaimCodes)
                     };
 
             CustomSqlHelper.ExecuteNonQuery(ConnectionString, "iRx_SavePolicyTemplate", parameters);

@@ -21,7 +21,7 @@ namespace Common.DataTransferObjects
         public class SelectedFormularies
         {
             public int planYear { get; set; }
-            public Int32 lobId { get; set; }
+            public int? lobId { get; set; }
 
         }
         public class NFMYBBatchUploadFileStatus
@@ -41,6 +41,26 @@ namespace Common.DataTransferObjects
             public string status { get; set; }
             public string actionBy { get; set; }
             public string action { get; set; }
+        }
+        public class LobValue
+        {
+            public Int16 lobId { get; set; }
+        }
+        public class PoliyOwnerIdValue
+        {
+            public Int16 PoliyOwnerId { get; set; }
+        }
+        public class therapeuticCategoryIdIdValue
+        {
+            public Int16 therapeuticCategoryId { get; set; }
+        }
+        public class subCategoryIdValue
+        {
+            public Int16 subCategoryId { get; set; }
+        }
+        public class AvailableRejectCodes
+        {
+            public Int16 policyTypeId { get; set; }
         }
     }
 }

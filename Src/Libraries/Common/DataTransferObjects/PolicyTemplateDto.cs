@@ -56,6 +56,8 @@ namespace Common.DataTransferObjects
         /// </summary>
         public string PrescriberInstructions { get; set; }
 
+       
+
         /// <summary>
         /// UpdatedBy
         /// </summary>
@@ -68,5 +70,10 @@ namespace Common.DataTransferObjects
         /// Description
         /// </summary>
         public string Description { get; set; }
+
+        /// <summary>
+        /// ProviderClaimsCode
+        /// </summary>
+        public string ProviderClaimCodes { get; set; }
     }
 }
