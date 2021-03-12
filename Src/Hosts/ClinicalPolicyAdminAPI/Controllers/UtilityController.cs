@@ -380,22 +380,22 @@ namespace ClinicalPolicyAdminAPI.Controllers
         /// Get ClaimCodeType Data For Policy
         /// </summary>
         /// <returns></returns>
-        [Route("ClaimCodeTypeList")]
-        [HttpGet]
-        public IActionResult ClaimCodeTypeList()
-        {
+        //[Route("ClaimCodeTypeList")]
+        //[HttpGet]
+        //public IActionResult ClaimCodeTypeList()
+        //{
 
-            try
-            {
-                var Result = new MasterDataDao(_config).ClaimCodeType();
-                return Ok(Result);
-            }
-            catch (Exception ex)
-            {
+        //    try
+        //    {
+        //        var Result = new MasterDataDao(_config).ClaimCodeType();
+        //        return Ok(Result);
+        //    }
+        //    catch (Exception ex)
+        //    {
 
-                BaseController.log(ex.Message, Constants.ErrorMessage.LogEventTypeError, Constants.ErrorMessage.LogSeverityLow, _config);
-                return NotFound(StatusCodes.Status500InternalServerError);
-            }
-        }
+        //        BaseController.log(ex.Message, Constants.ErrorMessage.LogEventTypeError, Constants.ErrorMessage.LogSeverityLow, _config);
+        //        return NotFound(StatusCodes.Status500InternalServerError);
+        //    }
+        //}
     }
 }

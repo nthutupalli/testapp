@@ -46,10 +46,10 @@ namespace Server.DataAccessObjects
                 masterDataDictionary.Add("Template", CreatePolicyTemplateCollection(masterData.Tables[7]));
                 masterDataDictionary.Add("RuleConcept", CreateRuleConceptCollection(masterData.Tables[8]));
                 masterDataDictionary.Add("PolicyTypeDefault", CreatePolicyDefaultCollection(masterData.Tables[9]));
-                masterDataDictionary.Add("ClaimCodeType", CreateClaimCodeTypeCollection(masterData.Tables[10]));
-                masterDataDictionary.Add("RevisionType", CreateRevisionTypeCollection(masterData.Tables[11]));
-                masterDataDictionary.Add("UpdateType", CreateUpdateTypeCollection(masterData.Tables[12]));
-                masterDataDictionary.Add("CPLob", CreateCPLobDetailsDto(masterData.Tables[13]));
+                //masterDataDictionary.Add("ClaimCodeType", CreateClaimCodeTypeCollection(masterData.Tables[10]));
+                masterDataDictionary.Add("RevisionType", CreateRevisionTypeCollection(masterData.Tables[10]));
+                masterDataDictionary.Add("UpdateType", CreateUpdateTypeCollection(masterData.Tables[11]));
+                masterDataDictionary.Add("CPLob", CreateCPLobDetailsDto(masterData.Tables[12]));
             }
 
             return masterDataDictionary;
@@ -233,22 +233,22 @@ namespace Server.DataAccessObjects
         }
 
 
-        public Dictionary<string, object> ClaimCodeType()
-        {
-            var masterDataDictionary =
-                new Dictionary<string, object>();
-            var masterData = new DataSet();
+        //public Dictionary<string, object> ClaimCodeType()
+        //{
+        //    var masterDataDictionary =
+        //        new Dictionary<string, object>();
+        //    var masterData = new DataSet();
 
-            CustomSqlHelper.FillDataSet(ConnectionString, 120, "iRx_GetPolicyMasterDetails", masterData, new SqlParameter[0]);
+        //    CustomSqlHelper.FillDataSet(ConnectionString, 120, "iRx_GetPolicyMasterDetails", masterData, new SqlParameter[0]);
 
-            if (masterData.Tables.Count > 0)
-            {
-                masterDataDictionary.Add("ClaimCodeType", CreateClaimCodeTypeCollection(masterData.Tables[10]));
+        //    if (masterData.Tables.Count > 0)
+        //    {
+        //        masterDataDictionary.Add("ClaimCodeType", CreateClaimCodeTypeCollection(masterData.Tables[10]));
                
-            }
+        //    }
 
-            return masterDataDictionary;
-        }
+        //    return masterDataDictionary;
+        //}
 
         public Dictionary<string, object> RevisionType()
         {
@@ -639,25 +639,25 @@ namespace Server.DataAccessObjects
         /// </summary>
         /// <param name="dataTable"></param>
         /// <returns></returns>
-        private List<PolicyClaimCodeDto> CreateClaimCodeTypeCollection(DataTable dataTable)
-        {
-            var claimCodeTypeCollection = new List<PolicyClaimCodeDto>();
-            if (dataTable != null && dataTable.Rows.Count > 0)
-            {
-                foreach (DataRow dataRow in dataTable.Rows)
-                {
-                    var claimCodeDto = new PolicyClaimCodeDto
-                    {
-                        ClaimCodeId = Convert.ToInt32(dataRow["CodeTypeId"]),
-                        ClaimCodeType = Convert.ToString(dataRow["CodeType"]),
-                    };
+        //private List<PolicyClaimCodeDto> CreateClaimCodeTypeCollection(DataTable dataTable)
+        //{
+        //    var claimCodeTypeCollection = new List<PolicyClaimCodeDto>();
+        //    if (dataTable != null && dataTable.Rows.Count > 0)
+        //    {
+        //        foreach (DataRow dataRow in dataTable.Rows)
+        //        {
+        //            var claimCodeDto = new PolicyClaimCodeDto
+        //            {
+        //                ClaimCodeId = Convert.ToInt32(dataRow["CodeTypeId"]),
+        //                ClaimCodeType = Convert.ToString(dataRow["CodeType"]),
+        //            };
 
-                    claimCodeTypeCollection.Add(claimCodeDto);
-                }
-            }
+        //            claimCodeTypeCollection.Add(claimCodeDto);
+        //        }
+        //    }
 
-            return claimCodeTypeCollection;
-        }
+        //    return claimCodeTypeCollection;
+        //}
 
         private List<RevisionTypeDto> CreateRevisionTypeCollection(DataTable dataTable)
         {
