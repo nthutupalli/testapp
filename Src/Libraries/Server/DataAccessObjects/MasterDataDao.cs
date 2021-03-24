@@ -261,7 +261,7 @@ namespace Server.DataAccessObjects
             if (masterData.Tables.Count > 0)
             {
                
-                masterDataDictionary.Add("RevisionType", CreateRevisionTypeCollection(masterData.Tables[11]));
+                masterDataDictionary.Add("RevisionType", CreateRevisionTypeCollection(masterData.Tables[10]));
                 
             }
 
@@ -279,7 +279,7 @@ namespace Server.DataAccessObjects
             if (masterData.Tables.Count > 0)
             {
                
-                masterDataDictionary.Add("UpdateType", CreateUpdateTypeCollection(masterData.Tables[12]));
+                masterDataDictionary.Add("UpdateType", CreateUpdateTypeCollection(masterData.Tables[11]));
                
             }
 
@@ -297,7 +297,7 @@ namespace Server.DataAccessObjects
             if (masterData.Tables.Count > 0)
             {
               
-                masterDataDictionary.Add("CPLob", CreateCPLobDetailsDto(masterData.Tables[13]));
+                masterDataDictionary.Add("CPLob", CreateCPLobDetailsDto(masterData.Tables[12]));
             }
 
             return masterDataDictionary;
