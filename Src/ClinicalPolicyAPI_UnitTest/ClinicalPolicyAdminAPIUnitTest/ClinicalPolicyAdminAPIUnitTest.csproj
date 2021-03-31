@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Hosts\ClinicalPolicyAdminAPI\ClinicalPolicyAdminAPI.csproj" />
     <ProjectReference Include="..\..\Libraries\Common\Common.csproj" />
   </ItemGroup>
 
