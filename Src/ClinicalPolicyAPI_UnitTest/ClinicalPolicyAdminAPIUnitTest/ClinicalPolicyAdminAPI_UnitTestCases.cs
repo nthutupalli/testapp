@@ -1,6 +1,8 @@
+using ClinicalPolicyAdminAPI.Controllers;
 using Common;
 using Common.DataTransferObjects;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -14,75 +16,69 @@ namespace ClinicalPolicyAdminAPIUnitTest
 {
     public class ClinicalPolicyAdminAPI_UnitTestCases
     {
+        private AdminController Controller;
         [SetUp]
         public void Setup()
         {
+            IConfiguration Configuration;
+           var configurationBuilder = new ConfigurationBuilder() .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true).AddEnvironmentVariables();
+            Configuration = configurationBuilder.Build();
+            Controller = new AdminController(Configuration);
+
         }
 
 
         [Test]
         public void SuccessForCheckLobMapping()
         {
-            int lobId = 3;
-            var logResponse = ServiceCallCheckLobMapping(lobId);
-            if(logResponse.IsSuccessStatusCode)
-            {
-                var final=logResponse.Content.ReadAsStringAsync().Result;
-                bool result=JsonConvert.DeserializeObject<bool>(final);
-                Assert.IsNotNull(logResponse);
-                Assert.AreEqual(result, true);
-            }
+            CompositeObject.LobValue comp = new CompositeObject.LobValue();
+            comp.lobId = 3;
+            var logResponse = Controller.CheckLobMapping(comp) as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "200");
 
         }
         [Test]
         public void InvalidLobID_CheckLobMapping()
         {
-            int lobId = -3;
-            var logResponse = ServiceCallCheckLobMapping(lobId);
-            if (!logResponse.IsSuccessStatusCode)
-            {
-                JObject json = JObject.Parse(logResponse.Content.ReadAsStringAsync().Result);
-                ResponseMessageDto responseStatus = new ResponseMessageDto();
-                responseStatus.Code = (int)json["code"];
-                responseStatus.Message = (string)json["message"];
-
-                Assert.IsNotNull(logResponse);
-                Assert.AreEqual(responseStatus.Message, "BadRequest");
-                Assert.AreEqual(responseStatus.Code, StatusCodes.Status400BadRequest);
-            }
+            CompositeObject.LobValue comp = new CompositeObject.LobValue();
+            comp.lobId = -3;
+            var logResponse = Controller.CheckLobMapping(comp) as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "404");
 
         }
 
         [Test]
         public void SuccessForCheckPolicyOwnerMappping()
         {
-            Int16 policyOwnerId =1;
-            var logResponse = ServiceCallCheckPolicyOwnerMappping(policyOwnerId);
-            if (logResponse.IsSuccessStatusCode)
-            {
-                var final = logResponse.Content.ReadAsStringAsync().Result;
-                bool result = JsonConvert.DeserializeObject<bool>(final);
-                Assert.IsNotNull(logResponse);
-                Assert.AreEqual(result, true);
-            }
+            CompositeObject.PoliyOwnerIdValue comp = new CompositeObject.PoliyOwnerIdValue();
+            comp.PoliyOwnerId = 3;
+            var logResponse = Controller.ActivateDeactivatePolicyOwner(comp) as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "200");
 
         }
         [Test]
         public void InvalidPolicyOwnerID_CheckPolicyOwnerMappping()
         {
-            Int16 policyOwnerId = 0;
-            var logResponse = ServiceCallCheckPolicyOwnerMappping(policyOwnerId);
-            if (!logResponse.IsSuccessStatusCode)
-            {
-                JObject json = JObject.Parse(logResponse.Content.ReadAsStringAsync().Result);
-                ResponseMessageDto responseStatus = new ResponseMessageDto();
-                responseStatus.Code = (int)json["code"];
-                responseStatus.Message = (string)json["message"];
-
-                Assert.IsNotNull(logResponse);
-                Assert.AreEqual(responseStatus.Message, "BadRequest");
-                Assert.AreEqual(responseStatus.Code, StatusCodes.Status400BadRequest);
-            }
+            CompositeObject.PoliyOwnerIdValue comp = new CompositeObject.PoliyOwnerIdValue();
+            comp.PoliyOwnerId = 0;
+            var logResponse = Controller.ActivateDeactivatePolicyOwner(comp) as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "404");
 
         }
 
@@ -90,67 +86,55 @@ namespace ClinicalPolicyAdminAPIUnitTest
         [Test]
         public void SuccessForCheckTherapeuticCategoryMapping()
         {
-            Int16 therapeuticCategoryId = 3;
-            var logResponse = ServiceCallCheckTherapeuticCategoryMapping(therapeuticCategoryId);
-            if (logResponse.IsSuccessStatusCode)
-            {
-                var final = logResponse.Content.ReadAsStringAsync().Result;
-                bool result = JsonConvert.DeserializeObject<bool>(final);
-                Assert.IsNotNull(logResponse);
-                Assert.AreEqual(result, true);
-            }
+            CompositeObject.therapeuticCategoryIdIdValue comp = new CompositeObject.therapeuticCategoryIdIdValue();
+            comp.therapeuticCategoryId = 3;
+            var logResponse = Controller.CheckTherapeuticCategoryMapping(comp) as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "200");
 
         }
         [Test]
         public void InvalidtherapeuticCategoryID_CheckTherapeuticCategoryMapping()
         {
-            Int16 therapeuticCategoryId = -3;
-            var logResponse = ServiceCallCheckTherapeuticCategoryMapping(therapeuticCategoryId);
-            if (!logResponse.IsSuccessStatusCode)
-            {
-                JObject json = JObject.Parse(logResponse.Content.ReadAsStringAsync().Result);
-                ResponseMessageDto responseStatus = new ResponseMessageDto();
-                responseStatus.Code = (int)json["code"];
-                responseStatus.Message = (string)json["message"];
-
-                Assert.IsNotNull(logResponse);
-                Assert.AreEqual(responseStatus.Message, "BadRequest");
-                Assert.AreEqual(responseStatus.Code, StatusCodes.Status400BadRequest);
-            }
+            CompositeObject.therapeuticCategoryIdIdValue comp = new CompositeObject.therapeuticCategoryIdIdValue();
+            comp.therapeuticCategoryId = -3;
+            var logResponse = Controller.CheckTherapeuticCategoryMapping(comp) as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "404");
 
         }
 
         [Test]
         public void SuccessForCheckSubCategoryMapping()
         {
-            Int16 subCategoryId = 3;
-            var logResponse = ServiceCallCheckSubCategoryMapping(subCategoryId);
-            if (logResponse.IsSuccessStatusCode)
-            {
-                var final = logResponse.Content.ReadAsStringAsync().Result;
-                bool result = JsonConvert.DeserializeObject<bool>(final);
-                Assert.IsNotNull(logResponse);
-                Assert.AreEqual(result, true);
-            }
+            CompositeObject.subCategoryIdValue comp = new CompositeObject.subCategoryIdValue();
+            comp.subCategoryId = 3;
+            var logResponse = Controller.CheckSubCategoryMapping(comp) as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "200");
 
         }
 
         [Test]
         public void InvalidsubCategoryID_CheckSubCategoryMapping()
         {
-            Int16 subCategoryId = -3;
-            var logResponse = ServiceCallCheckSubCategoryMapping(subCategoryId);
-            if (!logResponse.IsSuccessStatusCode)
-            {
-                JObject json = JObject.Parse(logResponse.Content.ReadAsStringAsync().Result);
-                ResponseMessageDto responseStatus = new ResponseMessageDto();
-                responseStatus.Code = (int)json["code"];
-                responseStatus.Message = (string)json["message"];
-
-                Assert.IsNotNull(logResponse);
-                Assert.AreEqual(responseStatus.Message, "BadRequest");
-                Assert.AreEqual(responseStatus.Code, StatusCodes.Status400BadRequest);
-            }
+            CompositeObject.subCategoryIdValue comp = new CompositeObject.subCategoryIdValue();
+            comp.subCategoryId = -3;
+            var logResponse = Controller.CheckSubCategoryMapping(comp) as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "404");
 
         }
         //[Test]
@@ -191,19 +175,14 @@ namespace ClinicalPolicyAdminAPIUnitTest
         [Test]
         public void InvalidLobID_Customers()
         {
-            Int16 lobId = -4;
-            var logResponse = ServiceCallCustomers(lobId);
-            if (!logResponse.IsSuccessStatusCode)
-            {
-                JObject json = JObject.Parse(logResponse.Content.ReadAsStringAsync().Result);
-                ResponseMessageDto responseStatus = new ResponseMessageDto();
-                responseStatus.Code = (int)json["code"];
-                responseStatus.Message = (string)json["message"];
-
-                Assert.IsNotNull(logResponse);
-                Assert.AreEqual(responseStatus.Message, "BadRequest");
-                Assert.AreEqual(responseStatus.Code, StatusCodes.Status400BadRequest);
-            }
+            CompositeObject.LobValue comp = new CompositeObject.LobValue();
+            comp.lobId = -4;
+            var logResponse = Controller.GetCustomers(comp) as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "404");
         }
 
 
@@ -232,19 +211,12 @@ namespace ClinicalPolicyAdminAPIUnitTest
             lob2.IsActive = false;
             lob2.Status = null;
             parmeter.Add(lob2);
-            var logResponse = ServiceCallSaveLobDetails(parmeter);
-            if (logResponse.IsSuccessStatusCode)
-            {
-                JObject json = JObject.Parse(logResponse.Content.ReadAsStringAsync().Result);
-                ResponseMessageDto responseStatus = new ResponseMessageDto();
-                responseStatus.Code = (int)json["code"];
-                responseStatus.Message = (string)json["message"];
-
-                Assert.IsNotNull(logResponse);
-                Assert.AreEqual(responseStatus.Message, Constants.Message.Success);
-                Assert.AreEqual(responseStatus.Code, StatusCodes.Status200OK);
-            }
-
+            var logResponse = Controller.SaveLobDetails(parmeter) as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "200");
         }
 
         [Test]
