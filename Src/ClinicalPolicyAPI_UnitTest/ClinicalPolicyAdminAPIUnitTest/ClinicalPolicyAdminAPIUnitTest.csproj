@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="coverlet.msbuild" Version="2.8.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="coverlet.collector" Version="1.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.9" />
     <PackageReference Include="nunit" Version="3.12.0" />
@@ -17,12 +22,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Hosts\ClinicalPolicyAdminAPI\ClinicalPolicyAdminAPI.csproj" />
     <ProjectReference Include="..\..\Libraries\Common\Common.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="NUnit_json.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 <!--comment-->
 </Project>
