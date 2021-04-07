@@ -728,19 +728,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "404");
-            var logResponse = ServiceCallsaveLookBack(parmeter);
-            if (!logResponse.IsSuccessStatusCode)
-            {
-                JObject json = JObject.Parse(logResponse.Content.ReadAsStringAsync().Result);
-                ResponseMessageDto responseStatus = new ResponseMessageDto();
-                responseStatus.Code = (int)json["code"];
-                responseStatus.Message = (string)json["message"];
-
-                Assert.IsNotNull(logResponse);
-                Assert.AreEqual(responseStatus.Message, "Procedure or function 'iRx_SaveRuleLookBackPeriodDetails' expects parameter '@LookBackValue', which was not supplied.");
-                Assert.AreEqual(responseStatus.Code, StatusCodes.Status500InternalServerError);
-            }
+            Assert.AreEqual(response, "404");          
 
         }
 
@@ -1003,104 +991,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var response = jsonObj["StatusCode"].ToString();
             Assert.AreEqual(response, "200");
         }
-
-
-        private HttpResponseMessage ServiceCallCheckLobMapping(int contents)
-        {
-            using (var httpClient = new HttpClient())
-            {
-                string URL = GetValueFromNUTest_Json("CheckLobMapping");
-                HttpContent content = new StringContent(JsonConvert.SerializeObject(contents), Encoding.UTF8, "application/json");
-                HttpClient client = new HttpClient();
-                HttpResponseMessage response = client.PostAsync(URL, content).Result;
-                return response;
-            }
-
-        }
-        private HttpResponseMessage ServiceCallCheckPolicyOwnerMappping(Int16 contents)
-        {
-            using (var httpClient = new HttpClient())
-            {
-                string URL = GetValueFromNUTest_Json("CheckPolicyOwnerMappping");
-                HttpContent content = new StringContent(JsonConvert.SerializeObject(contents), Encoding.UTF8, "application/json");
-                HttpClient client = new HttpClient();
-                HttpResponseMessage response = client.PostAsync(URL, content).Result;
-                return response;
-            }
-
-        }
-        private HttpResponseMessage ServiceCallCustomers(Int16 contents)
-        {
-            using (var httpClient = new HttpClient())
-            {
-                string URL = GetValueFromNUTest_Json("Customers");
-                HttpContent content = new StringContent(JsonConvert.SerializeObject(contents), Encoding.UTF8, "application/json");
-                HttpClient client = new HttpClient();
-                HttpResponseMessage response = client.PostAsync(URL, content).Result;
-                return response;
-            }
-
-        }
-        private HttpResponseMessage ServiceCallSaveLobDetails(Collection<PolicyLobDto> contents)
-        {
-            using (var httpClient = new HttpClient())
-            {
-                string URL = GetValueFromNUTest_Json("SaveLob");
-                HttpContent content = new StringContent(JsonConvert.SerializeObject(contents), Encoding.UTF8, "application/json");
-                HttpClient client = new HttpClient();
-                HttpResponseMessage response = client.PostAsync(URL, content).Result;
-                return response;
-            }
-
-        }
-        private HttpResponseMessage ServiceCallSaveCustomerClientMapping(CompositeObject.SaveCustomerClientMapping contents)
-        {
-            using (var httpClient = new HttpClient())
-            {
-                string URL = GetValueFromNUTest_Json("SaveCustomerClientMapping");
-                HttpContent content = new StringContent(JsonConvert.SerializeObject(contents), Encoding.UTF8, "application/json");
-                HttpClient client = new HttpClient();
-                HttpResponseMessage response = client.PostAsync(URL, content).Result;
-                return response;
-            }
-
-        }
-        private HttpResponseMessage ServiceCallSaveRejectCodeMapping(CompositeObject.SaveRejectCodeMapping contents)
-        {
-            using (var httpClient = new HttpClient())
-            {
-                string URL = GetValueFromNUTest_Json("SaveRejectCodeMapping");
-                HttpContent content = new StringContent(JsonConvert.SerializeObject(contents), Encoding.UTF8, "application/json");
-                HttpClient client = new HttpClient();
-                HttpResponseMessage response = client.PostAsync(URL, content).Result;
-                return response;
-            }
-
-        }
-        private HttpResponseMessage ServiceCallBatchUploadFileStatus(CompositeObject.NFMYBBatchUploadFileStatus contents)
-        {
-            using (var httpClient = new HttpClient())
-            {
-                string URL = GetValueFromNUTest_Json("BatchUploadFileStatus");
-                HttpContent content = new StringContent(JsonConvert.SerializeObject(contents), Encoding.UTF8, "application/json");
-                HttpClient client = new HttpClient();
-                HttpResponseMessage response = client.PostAsync(URL, content).Result;
-                return response;
-            }
-
-        }
-        private HttpResponseMessage ServiceCallSaveArchiveFile(BatchUploadFileDetailsDto contents)
-        {
-            using (var httpClient = new HttpClient())
-            {
-                string URL = GetValueFromNUTest_Json("SaveArchiveFile");
-                HttpContent content = new StringContent(JsonConvert.SerializeObject(contents), Encoding.UTF8, "application/json");
-                HttpClient client = new HttpClient();
-                HttpResponseMessage response = client.PostAsync(URL, content).Result;
-                return response;
-            }
-
-        }
+        
 
         [Test]
         public void SuccessForBatchArchiveFileStatus()
@@ -1110,17 +1001,6 @@ namespace ClinicalPolicyAdminAPIUnitTest
             composite.policyTypeId = 7;
             var logResponse = Controller.NFMYBBatchArchiveFileStatus(composite) as IActionResult;
             Assert.IsNotNull(logResponse);
-        private HttpResponseMessage ServiceCallBatchUploadAction(CompositeObject.ApproveorRejectBatchUploadFile contents)
-        {
-            using (var httpClient = new HttpClient())
-            {
-                string URL = GetValueFromNUTest_Json("BatchUploadAction");
-                HttpContent content = new StringContent(JsonConvert.SerializeObject(contents), Encoding.UTF8, "application/json");
-                HttpClient client = new HttpClient();
-                HttpResponseMessage response = client.PostAsync(URL, content).Result;
-                return response;
-            }
-
         }
 
         [Test]
@@ -1135,19 +1015,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
             Assert.AreEqual(response, "404");
-        private HttpResponseMessage ServiceCallBatchArchiveAction(CompositeObject.ApproveorRejectBatchArchiveFile contents)
-        {
-            using (var httpClient = new HttpClient())
-            {
-                string URL = GetValueFromNUTest_Json("BatchArchiveAction");
-                HttpContent content = new StringContent(JsonConvert.SerializeObject(contents), Encoding.UTF8, "application/json");
-                HttpClient client = new HttpClient();
-                HttpResponseMessage response = client.PostAsync(URL, content).Result;
-                return response;
-            }
-
         }
-
         [Test]
         public void MissingFileName_SaveUploadFile()
         {
@@ -1166,19 +1034,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
             Assert.AreEqual(response, "404");
-        private HttpResponseMessage ServiceCallsaveLookBack(Collection<RuleLookBackPeriodDto> contents)
-        {
-            using (var httpClient = new HttpClient())
-            {
-                string URL = GetValueFromNUTest_Json("saveLookBack");
-                HttpContent content = new StringContent(JsonConvert.SerializeObject(contents), Encoding.UTF8, "application/json");
-                HttpClient client = new HttpClient();
-                HttpResponseMessage response = client.PostAsync(URL, content).Result;
-                return response;
-            }
-
         }
-
         [Test]
         public void SuccessForSaveUploadFile()
         {
@@ -1198,48 +1054,20 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
             Assert.AreEqual(response, "200");
-        private HttpResponseMessage ServiceCallCheckTherapeuticCategoryMapping(Int16 contents)
-        {
-            using (var httpClient = new HttpClient())
-            {
-                string URL = GetValueFromNUTest_Json("CheckTherapeuticCategoryMapping");
-                HttpContent content = new StringContent(JsonConvert.SerializeObject(contents), Encoding.UTF8, "application/json");
-                HttpClient client = new HttpClient();
-                HttpResponseMessage response = client.PostAsync(URL, content).Result;
-                return response;
-            }
-
         }
 
         [Test]
         public void TemplateNULL_SaveTemplateFile()
         {
             PolicyTemplateDto filedata = new PolicyTemplateDto();
-            
+
             var logResponse = Controller.SavePolicyTemplate(filedata) as IActionResult;
             Assert.IsNotNull(logResponse);
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
             Assert.AreEqual(response, "404");
-
-        private HttpResponseMessage ServiceCallCheckSubCategoryMapping(Int16 contents)
-        {
-            using (var httpClient = new HttpClient())
-            {
-                string URL = GetValueFromNUTest_Json("CheckSubCategoryMapping");
-                HttpContent content = new StringContent(JsonConvert.SerializeObject(contents), Encoding.UTF8, "application/json");
-                HttpClient client = new HttpClient();
-                HttpResponseMessage response = client.PostAsync(URL, content).Result;
-                return response;
-            }
-
         }
-        private string GetValueFromNUTest_Json(string KeyName)
-        {
-            var configuration = new ConfigurationBuilder().AddJsonFile("NUnit_json.json").Build();
-            string KeyValue = configuration[KeyName];
-            return KeyValue;
-        }
+        
     }
 }
