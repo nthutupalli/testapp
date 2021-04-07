@@ -17,13 +17,15 @@ namespace ClinicalPolicyAdminAPIUnitTest
     public class ClinicalPolicyAdminAPI_UnitTestCases
     {
         private AdminController Controller;
+        private UtilityController UTController;
         [SetUp]
         public void Setup()
         {
             IConfiguration Configuration;
-           var configurationBuilder = new ConfigurationBuilder() .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true).AddEnvironmentVariables();
+            var configurationBuilder = new ConfigurationBuilder() .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true).AddEnvironmentVariables();
             Configuration = configurationBuilder.Build();
             Controller = new AdminController(Configuration);
+            UTController = new UtilityController(Configuration);
 
         }
 
@@ -854,6 +856,267 @@ namespace ClinicalPolicyAdminAPIUnitTest
 
         }
 
+        /// <summary>
+        /// NUnit Test for GetAvailableClients
+        /// </summary>
+        /// <param name="contents"></param>
+        /// <returns></returns>
+
+        [Test]
+        public void SuccessForGetAvailableClients()
+        {
+            CompositeObject.LobValue comp = new CompositeObject.LobValue();
+            comp.lobId = 4;
+            var logResponse = Controller.GetAvailableClients(comp) as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "200");
+        }
+
+        /// <summary>
+        /// NUnit Test for GetAvailableFormularies
+        /// </summary>
+        /// <param name="contents"></param>
+        /// <returns></returns>
+        [Test]
+        public void SuccessForGetAvailableFormularies()
+        {
+            CompositeObject.SelectedFormularies comp = new CompositeObject.SelectedFormularies();
+            comp.planYear = 2021;
+            comp.lobId = 4;
+
+            var logResponse = Controller.GetAvailableFormularies(comp) as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "200");
+        }
+
+        /// <summary>
+        /// NUnit Test for SelectedFormularies
+        /// </summary>
+        /// <param name="contents"></param>
+        /// <returns></returns>
+        [Test]
+        public void SuccessForSelectedFormularies()
+        {
+            CompositeObject.SelectedFormularies comp = new CompositeObject.SelectedFormularies();
+            comp.planYear = 2021;
+            comp.lobId = 4;
+
+            var logResponse = Controller.SelectedFormularies(comp) as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "200");
+        }
+
+        /// <summary>
+        /// NUnit Test for SaveFormularyMapping
+        /// </summary>
+        /// <param name="contents"></param>
+        /// <returns></returns>
+        [Test]
+        public void SuccessForSaveFormularyMapping()
+        {
+            Collection<SaveFormularyMappingDto> formularyMappingDto = new Collection<SaveFormularyMappingDto>();
+            SaveFormularyMappingDto mappingDto = new SaveFormularyMappingDto();
+            mappingDto.Lob = 5;
+            mappingDto.PlanYear = 2020;
+            mappingDto.FormularyId = "2016AHCA";
+            mappingDto.FormularyName = "FL AHCA";
+            mappingDto.UserId = "SIT4034";
+            
+            SaveFormularyMappingDto mappingDto1 = new SaveFormularyMappingDto();
+            mappingDto1.Lob = 5;
+            mappingDto1.PlanYear = 2020;
+            mappingDto1.FormularyId = "2020CO5P";
+            mappingDto1.FormularyName = "Rx5 Plus Colorado";
+            mappingDto1.UserId = "SIT4034";
+
+            formularyMappingDto.Add(mappingDto);
+            formularyMappingDto.Add(mappingDto1);
+
+            var logResponse = Controller.SaveFormularyMapping(formularyMappingDto) as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "200");
+        }
+
+        /// <summary>
+        /// NUnit Test for SavePolicyOwner
+        /// </summary>
+        /// <param name="contents"></param>
+        /// <returns></returns>
+        [Test]
+        public void SuccessForSavePolicyOwner()
+        {
+            Collection<PolicyOwnerDto> policyOwnerDtoCollection = new Collection<PolicyOwnerDto>();
+            PolicyOwnerDto ownerDto = new PolicyOwnerDto();
+            ownerDto.PolicyOwnerId = 56;
+            ownerDto.OwnerName = "Intownercheck";
+            ownerDto.OwnerEmail = "Int@humana.com";
+            ownerDto.ActionType = Constants.ActionType.I;
+            ownerDto.UpdatedBy = "SIT4034";
+            ownerDto.IsActive = true;
+            ownerDto.Status = "Active";
+
+            PolicyOwnerDto ownerDto1 = new PolicyOwnerDto();
+            ownerDto1.PolicyOwnerId = 46;
+            ownerDto1.OwnerName = "test";
+            ownerDto1.OwnerEmail = "Test@humana.com";
+            ownerDto1.ActionType = Constants.ActionType.U;
+            ownerDto1.UpdatedBy = "SHU678";
+            ownerDto1.IsActive = false;
+            ownerDto1.Status = "In active";
+
+            policyOwnerDtoCollection.Add(ownerDto);
+            policyOwnerDtoCollection.Add(ownerDto1);
+
+            var logResponse = Controller.SavePolicyOwner(policyOwnerDtoCollection) as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "200");
+        }
+
+        /// <summary>
+        /// NUnit Test for RuleLookBackPeriodList
+        /// </summary>
+        /// <param name="contents"></param>
+        /// <returns></returns>
+        [Test]
+        public void SuccessForRuleLookBackPeriodList()
+        {
+            var logResponse = UTController.RuleLookBackPeriodList() as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "200");
+        }
+
+        /// <summary>
+        /// NUnit Test for PolicyOwnerList
+        /// </summary>
+        /// <param name="contents"></param>
+        /// <returns></returns>
+        [Test]
+        public void SuccessForPolicyOwnerList()
+        {
+            var logResponse = UTController.PolicyOwnerList() as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "200");
+        }
+
+        /// <summary>
+        /// NUnit Test for PolicyTypeList
+        /// </summary>
+        /// <param name="contents"></param>
+        /// <returns></returns>
+        [Test]
+        public void SuccessForPolicyTypeList()
+        {
+            var logResponse = UTController.PolicyTypeList() as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "200");
+        }
+
+        /// <summary>
+        /// NUnit Test for AvailableRejectCodes
+        /// </summary>
+        /// <param name="contents"></param>
+        /// <returns></returns>
+        [Test]
+        public void SuccessForAvailableRejectCodes()
+        {
+
+            CompositeObject.AvailableRejectCodes composite = new CompositeObject.AvailableRejectCodes();
+            composite.policyTypeId = 3;
+
+            var logResponse = Controller.AvailableRejectCodes(composite) as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "200");
+        }
+
+        /// <summary>
+        /// NUnit Test for SaveRejectCodes
+        /// </summary>
+        /// <param name="contents"></param>
+        /// <returns></returns>
+        [Test]
+        public void SuccessForSaveRejectCodes()
+        {
+            Collection<PolicyRejectCodeDto> rejectCodeDtoCollection = new Collection<PolicyRejectCodeDto>();
+            PolicyRejectCodeDto policyReject = new PolicyRejectCodeDto();
+            policyReject.RejectCodeId = 23;
+            policyReject.RejectCode = "78";
+            policyReject.RejectCodeDesc = "Guidance1";
+            policyReject.ActionType = Constants.ActionType.I;
+            policyReject.IsMapped = true;
+            policyReject.UpdatedBy = "SIT4034";
+
+            PolicyRejectCodeDto policyReject1 = new PolicyRejectCodeDto();
+            policyReject1.RejectCodeId = 22;
+            policyReject1.RejectCode = "75";
+            policyReject1.RejectCodeDesc = "Prior Authorization";
+            policyReject1.ActionType = Constants.ActionType.U;
+            policyReject1.IsMapped = false;
+            policyReject1.UpdatedBy = "SIT4034";
+
+            PolicyRejectCodeDto policyReject2 = new PolicyRejectCodeDto();
+            policyReject2.RejectCodeId = 17;
+            policyReject2.RejectCode = "76";
+            policyReject2.RejectCodeDesc = "Prior Author";
+            policyReject2.ActionType = Constants.ActionType.D;
+            policyReject2.IsMapped = true;
+            policyReject2.UpdatedBy = "SIT4034";
+
+            rejectCodeDtoCollection.Add(policyReject);
+            rejectCodeDtoCollection.Add(policyReject1);
+            rejectCodeDtoCollection.Add(policyReject2);
+
+            var logResponse = Controller.SaveRejectCodes(rejectCodeDtoCollection) as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "200");
+        }
+
+        /// <summary>
+        /// NUnit Test for RejectCodeList
+        /// </summary>
+        /// <param name="contents"></param>
+        /// <returns></returns>
+        [Test]
+        public void SuccessForRejectCodeList()
+        {
+            var logResponse = UTController.RejectCodeList() as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "200");
+        }
+
+
         private HttpResponseMessage ServiceCallCheckLobMapping(int contents)
         {
             using (var httpClient = new HttpClient())
@@ -866,9 +1129,6 @@ namespace ClinicalPolicyAdminAPIUnitTest
             }
 
         }
-
-
-
         private HttpResponseMessage ServiceCallCheckPolicyOwnerMappping(Int16 contents)
         {
             using (var httpClient = new HttpClient())
@@ -881,7 +1141,6 @@ namespace ClinicalPolicyAdminAPIUnitTest
             }
 
         }
-
         private HttpResponseMessage ServiceCallCustomers(Int16 contents)
         {
             using (var httpClient = new HttpClient())
@@ -894,7 +1153,6 @@ namespace ClinicalPolicyAdminAPIUnitTest
             }
 
         }
-
         private HttpResponseMessage ServiceCallSaveLobDetails(Collection<PolicyLobDto> contents)
         {
             using (var httpClient = new HttpClient())
@@ -907,7 +1165,6 @@ namespace ClinicalPolicyAdminAPIUnitTest
             }
 
         }
-
         private HttpResponseMessage ServiceCallSaveCustomerClientMapping(CompositeObject.SaveCustomerClientMapping contents)
         {
             using (var httpClient = new HttpClient())
@@ -920,8 +1177,6 @@ namespace ClinicalPolicyAdminAPIUnitTest
             }
 
         }
-
-
         private HttpResponseMessage ServiceCallSaveRejectCodeMapping(CompositeObject.SaveRejectCodeMapping contents)
         {
             using (var httpClient = new HttpClient())
@@ -934,7 +1189,6 @@ namespace ClinicalPolicyAdminAPIUnitTest
             }
 
         }
-
         private HttpResponseMessage ServiceCallBatchUploadFileStatus(CompositeObject.NFMYBBatchUploadFileStatus contents)
         {
             using (var httpClient = new HttpClient())
@@ -947,7 +1201,6 @@ namespace ClinicalPolicyAdminAPIUnitTest
             }
 
         }
-
         private HttpResponseMessage ServiceCallSaveArchiveFile(BatchUploadFileDetailsDto contents)
         {
             using (var httpClient = new HttpClient())
@@ -960,7 +1213,6 @@ namespace ClinicalPolicyAdminAPIUnitTest
             }
 
         }
-
         private HttpResponseMessage ServiceCallBatchUploadAction(CompositeObject.ApproveorRejectBatchUploadFile contents)
         {
             using (var httpClient = new HttpClient())
@@ -973,7 +1225,6 @@ namespace ClinicalPolicyAdminAPIUnitTest
             }
 
         }
-
         private HttpResponseMessage ServiceCallBatchArchiveAction(CompositeObject.ApproveorRejectBatchArchiveFile contents)
         {
             using (var httpClient = new HttpClient())
@@ -986,7 +1237,6 @@ namespace ClinicalPolicyAdminAPIUnitTest
             }
 
         }
-
         private HttpResponseMessage ServiceCallsaveLookBack(Collection<RuleLookBackPeriodDto> contents)
         {
             using (var httpClient = new HttpClient())
@@ -999,7 +1249,6 @@ namespace ClinicalPolicyAdminAPIUnitTest
             }
 
         }
-
         private HttpResponseMessage ServiceCallCheckTherapeuticCategoryMapping(Int16 contents)
         {
             using (var httpClient = new HttpClient())
@@ -1012,7 +1261,6 @@ namespace ClinicalPolicyAdminAPIUnitTest
             }
 
         }
-
         private HttpResponseMessage ServiceCallCheckSubCategoryMapping(Int16 contents)
         {
             using (var httpClient = new HttpClient())
@@ -1025,14 +1273,11 @@ namespace ClinicalPolicyAdminAPIUnitTest
             }
 
         }
-
-
         private string GetValueFromNUTest_Json(string KeyName)
         {
             var configuration = new ConfigurationBuilder().AddJsonFile("NUnit_json.json").Build();
             string KeyValue = configuration[KeyName];
             return KeyValue;
         }
-
     }
 }
