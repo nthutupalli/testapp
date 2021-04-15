@@ -1068,6 +1068,124 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var response = jsonObj["StatusCode"].ToString();
             Assert.AreEqual(response, "404");
         }
-        
+
+        /// <summary>
+        /// NUnit Test for LobList
+        /// </summary>
+        /// <param name="contents"></param>
+        /// <returns></returns>
+        [Test]
+        public void SuccessForLobList()
+        {
+            var logResponse = UTController.LobList() as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "200");
+        }
+
+        /// <summary>
+        /// NUnit Test for TherapeuticCategoryList
+        /// </summary>
+        /// <param name="contents"></param>
+        /// <returns></returns>
+        [Test]
+        public void SuccessForTherapCatList()
+        {
+            var logResponse = UTController.TherapeuticCategoryList() as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "200");
+        }
+
+        /// <summary>
+        /// NUnit Test for masterList
+        /// </summary>
+        /// <param name="contents"></param>
+        /// <returns></returns>
+        [Test]
+        public void SuccessFormasterList()
+        {
+            var logResponse = UTController.PolicyMasterDataList() as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "200");
+        }
+
+        /// <summary>
+        /// NUnit Test for subCategoryList
+        /// </summary>
+        /// <param name="contents"></param>
+        /// <returns></returns>
+        [Test]
+        public void SuccessForsubCategoryList()
+        {
+            var logResponse = UTController.SubCategoryList() as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "200");
+        }
+
+        /// <summary>
+        /// NUnit Test for TemplateList
+        /// </summary>
+        /// <param name="contents"></param>
+        /// <returns></returns>
+        [Test]
+        public void SuccessFortemplateList()
+        {
+            var logResponse = UTController.TemplateList() as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "200");
+        }
+
+        [Test]
+        public void SuccessForsubCategory()
+        {
+            Collection<SubCategoryDto> parmeter = new Collection<SubCategoryDto>();
+            SubCategoryDto lookback1 = new SubCategoryDto();
+            lookback1.SubCategoryId = 96;
+            lookback1.SubCategoryName = "TEST";
+            lookback1.UpdatedBy = "SIT4034";
+            lookback1.ActionType = Constants.ActionType.None;
+            
+            var logResponse = Controller.SaveSubCategory(parmeter) as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "200");
+
+        }
+
+        [Test]
+        public void SuccessFortheraputicCategory()
+        {
+            Collection<TherapeuticCategoryDto> parmeter = new Collection<TherapeuticCategoryDto>();
+            TherapeuticCategoryDto lookback1 = new TherapeuticCategoryDto();
+            lookback1.TherapeuticCategoryId = 96;
+            lookback1.TherapeuticCategoryName = "TEST";
+            lookback1.UpdatedBy = "SIT4034";
+            lookback1.ActionType = Constants.ActionType.None;
+
+            var logResponse = Controller.SaveTherapeuticCategory(parmeter) as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "200");
+
+        }
+
     }
 }
