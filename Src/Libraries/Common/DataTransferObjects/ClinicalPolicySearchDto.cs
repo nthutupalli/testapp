@@ -80,8 +80,8 @@ namespace Common.DataTransferObjects
         public string RevisionTypeId { get; set; }
         public bool IsReviewed { get; set; }
         public string Edit { get; set; }
-        public string ClaimCodeType { get; set; }
-        public string ClaimCodeValue { get; set; }
+        //public string ClaimCodeType { get; set; }
+        //public string ClaimCodeValue { get; set; }
         public string UpdateHistory { get; set; }
         public DateTime? ArchivalApprovalDate { get; set; }
         public string ChronicleId { get; set; }

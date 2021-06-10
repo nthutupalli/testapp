@@ -277,7 +277,7 @@ namespace Common
             /// <summary>
             /// ClaimCodeType
             /// </summary>
-            ClaimCodeType,
+           // ClaimCodeType,
             /// <summary>
             /// Policy Revision Type
             /// </summary>
