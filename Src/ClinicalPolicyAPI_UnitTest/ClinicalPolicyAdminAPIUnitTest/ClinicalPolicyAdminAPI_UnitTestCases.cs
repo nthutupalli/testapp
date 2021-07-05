@@ -480,191 +480,191 @@ namespace ClinicalPolicyAdminAPIUnitTest
             Assert.AreEqual(response, "404");
         }
 
-        [Test]
-        public void SuccessForBatchUploadFileStatus()
-        {
-            CompositeObject.NFMYBBatchUploadFileStatus composite = new CompositeObject.NFMYBBatchUploadFileStatus();
-            composite.fileStatus = "2";
-            composite.policyTypeId = 7;
-            var logResponse = Controller.NFMYBBatchUploadFileStatus(composite) as IActionResult;
-            Assert.IsNotNull(logResponse);
+        //[Test]
+        //public void SuccessForBatchUploadFileStatus()
+        //{
+        //    CompositeObject.NFMYBBatchUploadFileStatus composite = new CompositeObject.NFMYBBatchUploadFileStatus();
+        //    composite.fileStatus = "2";
+        //    composite.policyTypeId = 7;
+        //    var logResponse = Controller.NFMYBBatchUploadFileStatus(composite) as IActionResult;
+        //    Assert.IsNotNull(logResponse);
 
-        }
+        //}
 
-        [Test]
-        public void MissingFileStatus_BatchUploadFileStatus()
-        {
-            CompositeObject.NFMYBBatchUploadFileStatus composite = new CompositeObject.NFMYBBatchUploadFileStatus();
-            //composite.fileStatus = "2";
-            composite.policyTypeId = 7;
-            var logResponse = Controller.NFMYBBatchUploadFileStatus(composite) as IActionResult;
-            Assert.IsNotNull(logResponse);
-            var actualJson = JsonConvert.SerializeObject(logResponse);
-            var jsonObj = JObject.Parse(actualJson);
-            var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "404");
+        //[Test]
+        //public void MissingFileStatus_BatchUploadFileStatus()
+        //{
+        //    CompositeObject.NFMYBBatchUploadFileStatus composite = new CompositeObject.NFMYBBatchUploadFileStatus();
+        //    //composite.fileStatus = "2";
+        //    composite.policyTypeId = 7;
+        //    var logResponse = Controller.NFMYBBatchUploadFileStatus(composite) as IActionResult;
+        //    Assert.IsNotNull(logResponse);
+        //    var actualJson = JsonConvert.SerializeObject(logResponse);
+        //    var jsonObj = JObject.Parse(actualJson);
+        //    var response = jsonObj["StatusCode"].ToString();
+        //    Assert.AreEqual(response, "404");
 
-        }
+        //}
 
-        [Test]
-        public void InvalidPolicyTypeID_BatchUploadFileStatus()
-        {
-            CompositeObject.NFMYBBatchUploadFileStatus composite = new CompositeObject.NFMYBBatchUploadFileStatus();
-            composite.fileStatus = "-1";
-            composite.policyTypeId = -7;
-            var logResponse = Controller.NFMYBBatchUploadFileStatus(composite) as IActionResult;
-            Assert.IsNotNull(logResponse);
-            var actualJson = JsonConvert.SerializeObject(logResponse);
-            var jsonObj = JObject.Parse(actualJson);
-            var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "404");
+        //[Test]
+        //public void InvalidPolicyTypeID_BatchUploadFileStatus()
+        //{
+        //    CompositeObject.NFMYBBatchUploadFileStatus composite = new CompositeObject.NFMYBBatchUploadFileStatus();
+        //    composite.fileStatus = "-1";
+        //    composite.policyTypeId = -7;
+        //    var logResponse = Controller.NFMYBBatchUploadFileStatus(composite) as IActionResult;
+        //    Assert.IsNotNull(logResponse);
+        //    var actualJson = JsonConvert.SerializeObject(logResponse);
+        //    var jsonObj = JObject.Parse(actualJson);
+        //    var response = jsonObj["StatusCode"].ToString();
+        //    Assert.AreEqual(response, "404");
 
-        }
+        //}
 
-        [Test]
-        public void SuccessForSaveArchiveFile()
-        {
-            BatchUploadFileDetailsDto filedata = new BatchUploadFileDetailsDto();
-            filedata.FileName = "NF_Policy_Archive_Template.Test2_20190919224926643_20190920082731513.xlsx";
-            filedata.FTPPathName = "/root_vdm_1/fs114/web_pharmacy/CentralizedFormulary/iRx/TEST/Data/In/BatchArchivePolicies";
-            filedata.ErrorDescription = "";
-            filedata.PolicyTypeId = 4;
-            filedata.FileStatus = "ReadyToValidate";
-            filedata.Action = "None";
-            filedata.Active = true;
-            filedata.UploadedBy = "SIT4034";
-            filedata.UploadDate = "8/17/2020";
-            var logResponse = Controller.SaveBatchArchiveFileStatus(filedata) as IActionResult;
-            Assert.IsNotNull(logResponse);
-            var actualJson = JsonConvert.SerializeObject(logResponse);
-            var jsonObj = JObject.Parse(actualJson);
-            var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "200");
+        //[Test]
+        //public void SuccessForSaveArchiveFile()
+        //{
+        //    BatchUploadFileDetailsDto filedata = new BatchUploadFileDetailsDto();
+        //    filedata.FileName = "NF_Policy_Archive_Template.Test2_20190919224926643_20190920082731513.xlsx";
+        //    filedata.FTPPathName = "/root_vdm_1/fs114/web_pharmacy/CentralizedFormulary/iRx/TEST/Data/In/BatchArchivePolicies";
+        //    filedata.ErrorDescription = "";
+        //    filedata.PolicyTypeId = 4;
+        //    filedata.FileStatus = "ReadyToValidate";
+        //    filedata.Action = "None";
+        //    filedata.Active = true;
+        //    filedata.UploadedBy = "SIT4034";
+        //    filedata.UploadDate = "8/17/2020";
+        //    var logResponse = Controller.SaveBatchArchiveFileStatus(filedata) as IActionResult;
+        //    Assert.IsNotNull(logResponse);
+        //    var actualJson = JsonConvert.SerializeObject(logResponse);
+        //    var jsonObj = JObject.Parse(actualJson);
+        //    var response = jsonObj["StatusCode"].ToString();
+        //    Assert.AreEqual(response, "200");
 
-        }
+        //}
 
 
-        [Test]
-        public void MissingFileName_SaveArchiveFile()
-        {
-            BatchUploadFileDetailsDto filedata = new BatchUploadFileDetailsDto();
-            filedata.FTPPathName = "/root_vdm_1/fs114/web_pharmacy/CentralizedFormulary/iRx/TEST/Data/In/BatchArchivePolicies";
-            filedata.ErrorDescription = "";
-            filedata.PolicyTypeId = 4;
-            filedata.FileStatus = "ReadyToValidate";
-            filedata.Action = "None";
-            filedata.Active = true;
-            filedata.UploadedBy = "SIT4034";
-            filedata.UploadDate = "8/17/2020";
-            var logResponse = Controller.SaveBatchArchiveFileStatus(filedata) as IActionResult;
-            Assert.IsNotNull(logResponse);
-            var actualJson = JsonConvert.SerializeObject(logResponse);
-            var jsonObj = JObject.Parse(actualJson);
-            var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "404");
+        //[Test]
+        //public void MissingFileName_SaveArchiveFile()
+        //{
+        //    BatchUploadFileDetailsDto filedata = new BatchUploadFileDetailsDto();
+        //    filedata.FTPPathName = "/root_vdm_1/fs114/web_pharmacy/CentralizedFormulary/iRx/TEST/Data/In/BatchArchivePolicies";
+        //    filedata.ErrorDescription = "";
+        //    filedata.PolicyTypeId = 4;
+        //    filedata.FileStatus = "ReadyToValidate";
+        //    filedata.Action = "None";
+        //    filedata.Active = true;
+        //    filedata.UploadedBy = "SIT4034";
+        //    filedata.UploadDate = "8/17/2020";
+        //    var logResponse = Controller.SaveBatchArchiveFileStatus(filedata) as IActionResult;
+        //    Assert.IsNotNull(logResponse);
+        //    var actualJson = JsonConvert.SerializeObject(logResponse);
+        //    var jsonObj = JObject.Parse(actualJson);
+        //    var response = jsonObj["StatusCode"].ToString();
+        //    Assert.AreEqual(response, "404");
 
-        }
+        //}
 
-        [Test]
-        public void SuccessForBatchUploadAction()
-        {
-            CompositeObject.ApproveorRejectBatchUploadFile composite = new CompositeObject.ApproveorRejectBatchUploadFile();
-            composite.fileId = 3;
-            composite.status = "Rejected";
-            composite.actionBy = "SIT4034";
-            var logResponse = Controller.ApproveorRejectBatchUploadFile(composite) as IActionResult;
-            Assert.IsNotNull(logResponse);
-            var actualJson = JsonConvert.SerializeObject(logResponse);
-            var jsonObj = JObject.Parse(actualJson);
-            var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "200");
+        //[Test]
+        //public void SuccessForBatchUploadAction()
+        //{
+        //    CompositeObject.ApproveorRejectBatchUploadFile composite = new CompositeObject.ApproveorRejectBatchUploadFile();
+        //    composite.fileId = 3;
+        //    composite.status = "Rejected";
+        //    composite.actionBy = "SIT4034";
+        //    var logResponse = Controller.ApproveorRejectBatchUploadFile(composite) as IActionResult;
+        //    Assert.IsNotNull(logResponse);
+        //    var actualJson = JsonConvert.SerializeObject(logResponse);
+        //    var jsonObj = JObject.Parse(actualJson);
+        //    var response = jsonObj["StatusCode"].ToString();
+        //    Assert.AreEqual(response, "200");
 
-        }
+        //}
 
-        [Test]
-        public void InvalidFileID_BatchUploadAction()
-        {
-            CompositeObject.ApproveorRejectBatchUploadFile composite = new CompositeObject.ApproveorRejectBatchUploadFile();
-            composite.fileId = -3;
-            composite.status = "Rejected";
-            composite.actionBy = "SIT4034";
-            var logResponse = Controller.ApproveorRejectBatchUploadFile(composite) as IActionResult;
-            Assert.IsNotNull(logResponse);
-            var actualJson = JsonConvert.SerializeObject(logResponse);
-            var jsonObj = JObject.Parse(actualJson);
-            var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "404");
+        //[Test]
+        //public void InvalidFileID_BatchUploadAction()
+        //{
+        //    CompositeObject.ApproveorRejectBatchUploadFile composite = new CompositeObject.ApproveorRejectBatchUploadFile();
+        //    composite.fileId = -3;
+        //    composite.status = "Rejected";
+        //    composite.actionBy = "SIT4034";
+        //    var logResponse = Controller.ApproveorRejectBatchUploadFile(composite) as IActionResult;
+        //    Assert.IsNotNull(logResponse);
+        //    var actualJson = JsonConvert.SerializeObject(logResponse);
+        //    var jsonObj = JObject.Parse(actualJson);
+        //    var response = jsonObj["StatusCode"].ToString();
+        //    Assert.AreEqual(response, "404");
 
-        }
+        //}
 
-        [Test]
-        public void MissingFileStatus_BatchUploadAction()
-        {
-            CompositeObject.ApproveorRejectBatchUploadFile composite = new CompositeObject.ApproveorRejectBatchUploadFile();
-            composite.fileId = 3;
-            composite.actionBy = "SIT4034";
+        //[Test]
+        //public void MissingFileStatus_BatchUploadAction()
+        //{
+        //    CompositeObject.ApproveorRejectBatchUploadFile composite = new CompositeObject.ApproveorRejectBatchUploadFile();
+        //    composite.fileId = 3;
+        //    composite.actionBy = "SIT4034";
             
 
-            var logResponse = Controller.ApproveorRejectBatchUploadFile(composite) as IActionResult;
-            Assert.IsNotNull(logResponse);
-            var actualJson = JsonConvert.SerializeObject(logResponse);
-            var jsonObj = JObject.Parse(actualJson);
-            var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "404");
+        //    var logResponse = Controller.ApproveorRejectBatchUploadFile(composite) as IActionResult;
+        //    Assert.IsNotNull(logResponse);
+        //    var actualJson = JsonConvert.SerializeObject(logResponse);
+        //    var jsonObj = JObject.Parse(actualJson);
+        //    var response = jsonObj["StatusCode"].ToString();
+        //    Assert.AreEqual(response, "404");
 
-        }
+        //}
 
-        [Test]
-        public void SuccessForBatchArchiveAction()
-        {
-            CompositeObject.ApproveorRejectBatchArchiveFile composite = new CompositeObject.ApproveorRejectBatchArchiveFile();
-            composite.fileId = 9;
-            composite.status = "ReadyToArchive";
-            composite.actionBy = "SIT4034";
-            composite.action= "Approve";
-            var logResponse = Controller.ApproveorRejectBatchArchiveFile(composite) as IActionResult;
-            Assert.IsNotNull(logResponse);
-            var actualJson = JsonConvert.SerializeObject(logResponse);
-            var jsonObj = JObject.Parse(actualJson);
-            var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "200");
+        //[Test]
+        //public void SuccessForBatchArchiveAction()
+        //{
+        //    CompositeObject.ApproveorRejectBatchArchiveFile composite = new CompositeObject.ApproveorRejectBatchArchiveFile();
+        //    composite.fileId = 9;
+        //    composite.status = "ReadyToArchive";
+        //    composite.actionBy = "SIT4034";
+        //    composite.action= "Approve";
+        //    var logResponse = Controller.ApproveorRejectBatchArchiveFile(composite) as IActionResult;
+        //    Assert.IsNotNull(logResponse);
+        //    var actualJson = JsonConvert.SerializeObject(logResponse);
+        //    var jsonObj = JObject.Parse(actualJson);
+        //    var response = jsonObj["StatusCode"].ToString();
+        //    Assert.AreEqual(response, "200");
 
-        }
+        //}
 
-        [Test]
-        public void InvalidFileID_BatchArchiveAction()
-        {
-            CompositeObject.ApproveorRejectBatchArchiveFile composite = new CompositeObject.ApproveorRejectBatchArchiveFile();
-            composite.fileId = -33;
-            composite.status = "ReadyToArchive";
-            composite.actionBy = "SIT4034";
-            composite.action = "Approve";
-            var logResponse = Controller.ApproveorRejectBatchArchiveFile(composite) as IActionResult;
-            Assert.IsNotNull(logResponse);
-            var actualJson = JsonConvert.SerializeObject(logResponse);
-            var jsonObj = JObject.Parse(actualJson);
-            var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "404");
+        //[Test]
+        //public void InvalidFileID_BatchArchiveAction()
+        //{
+        //    CompositeObject.ApproveorRejectBatchArchiveFile composite = new CompositeObject.ApproveorRejectBatchArchiveFile();
+        //    composite.fileId = -33;
+        //    composite.status = "ReadyToArchive";
+        //    composite.actionBy = "SIT4034";
+        //    composite.action = "Approve";
+        //    var logResponse = Controller.ApproveorRejectBatchArchiveFile(composite) as IActionResult;
+        //    Assert.IsNotNull(logResponse);
+        //    var actualJson = JsonConvert.SerializeObject(logResponse);
+        //    var jsonObj = JObject.Parse(actualJson);
+        //    var response = jsonObj["StatusCode"].ToString();
+        //    Assert.AreEqual(response, "404");
 
-        }
+        //}
 
 
-        [Test]
-        public void MissingFileStatus_BatchArchiveAction()
-        {
-            CompositeObject.ApproveorRejectBatchArchiveFile composite = new CompositeObject.ApproveorRejectBatchArchiveFile();
-            composite.fileId = 10; ;
+        //[Test]
+        //public void MissingFileStatus_BatchArchiveAction()
+        //{
+        //    CompositeObject.ApproveorRejectBatchArchiveFile composite = new CompositeObject.ApproveorRejectBatchArchiveFile();
+        //    composite.fileId = 10; ;
 
-            composite.actionBy = "SIT4034";
-            composite.action = "Approve";
-            var logResponse = Controller.ApproveorRejectBatchArchiveFile(composite) as IActionResult;
-            Assert.IsNotNull(logResponse);
-            var actualJson = JsonConvert.SerializeObject(logResponse);
-            var jsonObj = JObject.Parse(actualJson);
-            var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "404");
+        //    composite.actionBy = "SIT4034";
+        //    composite.action = "Approve";
+        //    var logResponse = Controller.ApproveorRejectBatchArchiveFile(composite) as IActionResult;
+        //    Assert.IsNotNull(logResponse);
+        //    var actualJson = JsonConvert.SerializeObject(logResponse);
+        //    var jsonObj = JObject.Parse(actualJson);
+        //    var response = jsonObj["StatusCode"].ToString();
+        //    Assert.AreEqual(response, "404");
 
-        }
+        //}
 
         [Test]
         public void SuccessForsaveLookBack()
@@ -993,68 +993,68 @@ namespace ClinicalPolicyAdminAPIUnitTest
         }
         
 
-        [Test]
-        public void SuccessForBatchArchiveFileStatus()
-        {
-            CompositeObject.NFMYBBatchUploadFileStatus composite = new CompositeObject.NFMYBBatchUploadFileStatus();
-            composite.fileStatus = "2";
-            composite.policyTypeId = 7;
-            var logResponse = Controller.NFMYBBatchArchiveFileStatus(composite) as IActionResult;
-            Assert.IsNotNull(logResponse);
-        }
+        //[Test]
+        //public void SuccessForBatchArchiveFileStatus()
+        //{
+        //    CompositeObject.NFMYBBatchUploadFileStatus composite = new CompositeObject.NFMYBBatchUploadFileStatus();
+        //    composite.fileStatus = "2";
+        //    composite.policyTypeId = 7;
+        //    var logResponse = Controller.NFMYBBatchArchiveFileStatus(composite) as IActionResult;
+        //    Assert.IsNotNull(logResponse);
+        //}
 
-        [Test]
-        public void MissingFileStatus_BatchArchiveFileStatus()
-        {
-            CompositeObject.NFMYBBatchUploadFileStatus composite = new CompositeObject.NFMYBBatchUploadFileStatus();
-            //composite.fileStatus = "2";
-            composite.policyTypeId = 7;
-            var logResponse = Controller.NFMYBBatchArchiveFileStatus(composite) as IActionResult;
-            Assert.IsNotNull(logResponse);
-            var actualJson = JsonConvert.SerializeObject(logResponse);
-            var jsonObj = JObject.Parse(actualJson);
-            var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "404");
-        }
-        [Test]
-        public void MissingFileName_SaveUploadFile()
-        {
-            BatchUploadFileDetailsDto filedata = new BatchUploadFileDetailsDto();
-            filedata.FTPPathName = "/root_vdm_1/fs114/web_pharmacy/CentralizedFormulary/iRx/TEST/Data/In/NFBatchUpload";
-            filedata.ErrorDescription = "";
-            filedata.PolicyTypeId = 4;
-            filedata.FileStatus = "ReadyToValidate";
-            filedata.Action = "None";
-            filedata.Active = true;
-            filedata.UploadedBy = "SIT4034";
-            filedata.UploadDate = "8/17/2020";
-            var logResponse = Controller.SaveBatchUploadFileStatus(filedata) as IActionResult;
-            Assert.IsNotNull(logResponse);
-            var actualJson = JsonConvert.SerializeObject(logResponse);
-            var jsonObj = JObject.Parse(actualJson);
-            var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "404");
-        }
-        [Test]
-        public void SuccessForSaveUploadFile()
-        {
-            BatchUploadFileDetailsDto filedata = new BatchUploadFileDetailsDto();
-            filedata.FileName = "NF_Policy_Archive_Template.Test2_20190919224926643_20190920082731513.xlsx";
-            filedata.FTPPathName = "/root_vdm_1/fs114/web_pharmacy/CentralizedFormulary/iRx/TEST/Data/In/NFBatchUpload";
-            filedata.ErrorDescription = "";
-            filedata.PolicyTypeId = 4;
-            filedata.FileStatus = "ReadyToValidate";
-            filedata.Action = "None";
-            filedata.Active = true;
-            filedata.UploadedBy = "SIT4034";
-            filedata.UploadDate = "8/17/2020";
-            var logResponse = Controller.SaveBatchUploadFileStatus(filedata) as IActionResult;
-            Assert.IsNotNull(logResponse);
-            var actualJson = JsonConvert.SerializeObject(logResponse);
-            var jsonObj = JObject.Parse(actualJson);
-            var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "200");
-        }
+        //[Test]
+        //public void MissingFileStatus_BatchArchiveFileStatus()
+        //{
+        //    CompositeObject.NFMYBBatchUploadFileStatus composite = new CompositeObject.NFMYBBatchUploadFileStatus();
+        //    //composite.fileStatus = "2";
+        //    composite.policyTypeId = 7;
+        //    var logResponse = Controller.NFMYBBatchArchiveFileStatus(composite) as IActionResult;
+        //    Assert.IsNotNull(logResponse);
+        //    var actualJson = JsonConvert.SerializeObject(logResponse);
+        //    var jsonObj = JObject.Parse(actualJson);
+        //    var response = jsonObj["StatusCode"].ToString();
+        //    Assert.AreEqual(response, "404");
+        //}
+        //[Test]
+        //public void MissingFileName_SaveUploadFile()
+        //{
+        //    BatchUploadFileDetailsDto filedata = new BatchUploadFileDetailsDto();
+        //    filedata.FTPPathName = "/root_vdm_1/fs114/web_pharmacy/CentralizedFormulary/iRx/TEST/Data/In/NFBatchUpload";
+        //    filedata.ErrorDescription = "";
+        //    filedata.PolicyTypeId = 4;
+        //    filedata.FileStatus = "ReadyToValidate";
+        //    filedata.Action = "None";
+        //    filedata.Active = true;
+        //    filedata.UploadedBy = "SIT4034";
+        //    filedata.UploadDate = "8/17/2020";
+        //    var logResponse = Controller.SaveBatchUploadFileStatus(filedata) as IActionResult;
+        //    Assert.IsNotNull(logResponse);
+        //    var actualJson = JsonConvert.SerializeObject(logResponse);
+        //    var jsonObj = JObject.Parse(actualJson);
+        //    var response = jsonObj["StatusCode"].ToString();
+        //    Assert.AreEqual(response, "404");
+        //}
+        //[Test]
+        //public void SuccessForSaveUploadFile()
+        //{
+        //    BatchUploadFileDetailsDto filedata = new BatchUploadFileDetailsDto();
+        //    filedata.FileName = "NF_Policy_Archive_Template.Test2_20190919224926643_20190920082731513.xlsx";
+        //    filedata.FTPPathName = "/root_vdm_1/fs114/web_pharmacy/CentralizedFormulary/iRx/TEST/Data/In/NFBatchUpload";
+        //    filedata.ErrorDescription = "";
+        //    filedata.PolicyTypeId = 4;
+        //    filedata.FileStatus = "ReadyToValidate";
+        //    filedata.Action = "None";
+        //    filedata.Active = true;
+        //    filedata.UploadedBy = "SIT4034";
+        //    filedata.UploadDate = "8/17/2020";
+        //    var logResponse = Controller.SaveBatchUploadFileStatus(filedata) as IActionResult;
+        //    Assert.IsNotNull(logResponse);
+        //    var actualJson = JsonConvert.SerializeObject(logResponse);
+        //    var jsonObj = JObject.Parse(actualJson);
+        //    var response = jsonObj["StatusCode"].ToString();
+        //    Assert.AreEqual(response, "200");
+        //}
 
         [Test]
         public void TemplateNULL_SaveTemplateFile()

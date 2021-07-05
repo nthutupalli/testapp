@@ -792,39 +792,39 @@ namespace ClinicalPolicyAdminAPI.Controllers
         /// </summary>
         /// <param name="composite"></param>
         /// <returns></returns>
-        [Route("BatchUploadFileStatus")]
-        [HttpPost]
-        public IActionResult NFMYBBatchUploadFileStatus([FromBody]CompositeObject.NFMYBBatchUploadFileStatus composite)
-        {
-            ResponseMessageDto objMessage = new ResponseMessageDto();
-            try
-            {
-                if (composite != null && composite.policyTypeId > 0)
-                {
-                    DataTable fileDetails = new ClinicalPolicyAdminDao(_config).GetBatchUploadFileDetails(composite.fileStatus, composite.policyTypeId);
-                    string JSONresult = JsonConvert.SerializeObject(fileDetails);
-                    return Ok(JSONresult);
+        //[Route("BatchUploadFileStatus")]
+        //[HttpPost]
+        //public IActionResult NFMYBBatchUploadFileStatus([FromBody]CompositeObject.NFMYBBatchUploadFileStatus composite)
+        //{
+        //    ResponseMessageDto objMessage = new ResponseMessageDto();
+        //    try
+        //    {
+        //        if (composite != null && composite.policyTypeId > 0)
+        //        {
+        //            DataTable fileDetails = new ClinicalPolicyAdminDao(_config).GetBatchUploadFileDetails(composite.fileStatus, composite.policyTypeId);
+        //            string JSONresult = JsonConvert.SerializeObject(fileDetails);
+        //            return Ok(JSONresult);
 
-                }
-                else
-                {
-                    objMessage.Code = StatusCodes.Status400BadRequest;
-                    objMessage.Message = Constants.Message.BadRequest;
-                    return NotFound(objMessage);
-                }
+        //        }
+        //        else
+        //        {
+        //            objMessage.Code = StatusCodes.Status400BadRequest;
+        //            objMessage.Message = Constants.Message.BadRequest;
+        //            return NotFound(objMessage);
+        //        }
 
 
-            }
-            catch (Exception ex)
-            {
+        //    }
+        //    catch (Exception ex)
+        //    {
 
-                BaseController.log(ex.Message, Constants.ErrorMessage.LogEventTypeError, Constants.ErrorMessage.LogSeverityLow, _config);
-                objMessage.Code = StatusCodes.Status500InternalServerError;
-                objMessage.Message = ex.Message;
-                return NotFound(objMessage);
-            }
+        //        BaseController.log(ex.Message, Constants.ErrorMessage.LogEventTypeError, Constants.ErrorMessage.LogSeverityLow, _config);
+        //        objMessage.Code = StatusCodes.Status500InternalServerError;
+        //        objMessage.Message = ex.Message;
+        //        return NotFound(objMessage);
+        //    }
 
-        }
+        //}
 
 
         /// <summary>
@@ -832,39 +832,39 @@ namespace ClinicalPolicyAdminAPI.Controllers
         /// </summary>
         /// <param name="composite"></param>
         /// <returns></returns>
-        [Route("BatchArchiveFileStatus")]
-        [HttpPost]
-        public IActionResult NFMYBBatchArchiveFileStatus([FromBody]CompositeObject.NFMYBBatchUploadFileStatus composite)
-        {
-            ResponseMessageDto objMessage = new ResponseMessageDto();
-            try
-            {
-                if (composite != null && composite.policyTypeId > 0)
-                {
-                    DataTable fileDetails = new ClinicalPolicyAdminDao(_config).GetBatchArchiveFileStatus(composite.fileStatus, composite.policyTypeId);
-                    string JSONresult = JsonConvert.SerializeObject(fileDetails);
-                    return Ok(JSONresult);
-                }
-                else
-                {
-                    objMessage.Code = StatusCodes.Status400BadRequest;
-                    objMessage.Message = Constants.Message.BadRequest;
-                    return NotFound(objMessage);
+        //[Route("BatchArchiveFileStatus")]
+        //[HttpPost]
+        //public IActionResult NFMYBBatchArchiveFileStatus([FromBody]CompositeObject.NFMYBBatchUploadFileStatus composite)
+        //{
+        //    ResponseMessageDto objMessage = new ResponseMessageDto();
+        //    try
+        //    {
+        //        if (composite != null && composite.policyTypeId > 0)
+        //        {
+        //            DataTable fileDetails = new ClinicalPolicyAdminDao(_config).GetBatchArchiveFileStatus(composite.fileStatus, composite.policyTypeId);
+        //            string JSONresult = JsonConvert.SerializeObject(fileDetails);
+        //            return Ok(JSONresult);
+        //        }
+        //        else
+        //        {
+        //            objMessage.Code = StatusCodes.Status400BadRequest;
+        //            objMessage.Message = Constants.Message.BadRequest;
+        //            return NotFound(objMessage);
 
-                }
+        //        }
 
 
-            }
-            catch (Exception ex)
-            {
+        //    }
+        //    catch (Exception ex)
+        //    {
 
-                BaseController.log(ex.Message, Constants.ErrorMessage.LogEventTypeError, Constants.ErrorMessage.LogSeverityLow, _config);
-                objMessage.Code = StatusCodes.Status500InternalServerError;
-                objMessage.Message = ex.Message;
-                return NotFound(objMessage);
-            }
+        //        BaseController.log(ex.Message, Constants.ErrorMessage.LogEventTypeError, Constants.ErrorMessage.LogSeverityLow, _config);
+        //        objMessage.Code = StatusCodes.Status500InternalServerError;
+        //        objMessage.Message = ex.Message;
+        //        return NotFound(objMessage);
+        //    }
 
-        }
+        //}
 
 
         /// <summary>
@@ -872,38 +872,38 @@ namespace ClinicalPolicyAdminAPI.Controllers
         /// </summary>
         /// <param name="BatchFileUploadDto"></param>
         /// <returns></returns>
-        [Route("SaveUploadFile")]
-        [HttpPost]
-        public IActionResult SaveBatchUploadFileStatus([FromBody]BatchUploadFileDetailsDto BatchFileUploadDto)
-        {
-            ResponseMessageDto objMessage = new ResponseMessageDto();
-            try
-            {
-                if (BatchFileUploadDto != null)
-                {
-                    new ClinicalPolicyAdminDao(_config).SaveBatchUploadFileStatusDetails(BatchFileUploadDto);
-                    objMessage.Code = StatusCodes.Status200OK;
-                    objMessage.Message = Constants.Message.Success;
-                    return Ok(objMessage);
+        //[Route("SaveUploadFile")]
+        //[HttpPost]
+        //public IActionResult SaveBatchUploadFileStatus([FromBody]BatchUploadFileDetailsDto BatchFileUploadDto)
+        //{
+        //    ResponseMessageDto objMessage = new ResponseMessageDto();
+        //    try
+        //    {
+        //        if (BatchFileUploadDto != null)
+        //        {
+        //            new ClinicalPolicyAdminDao(_config).SaveBatchUploadFileStatusDetails(BatchFileUploadDto);
+        //            objMessage.Code = StatusCodes.Status200OK;
+        //            objMessage.Message = Constants.Message.Success;
+        //            return Ok(objMessage);
 
-                }
-                else
-                {
-                    objMessage.Code = StatusCodes.Status400BadRequest;
-                    objMessage.Message = Constants.Message.BadRequest;
-                    return NotFound(objMessage);
-                }
-            }
-            catch (Exception ex)
-            {
+        //        }
+        //        else
+        //        {
+        //            objMessage.Code = StatusCodes.Status400BadRequest;
+        //            objMessage.Message = Constants.Message.BadRequest;
+        //            return NotFound(objMessage);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
 
-                BaseController.log(ex.Message, Constants.ErrorMessage.LogEventTypeError, Constants.ErrorMessage.LogSeverityLow, _config);
-                objMessage.Code = StatusCodes.Status500InternalServerError;
-                objMessage.Message = ex.Message;
-                return NotFound(objMessage);
-            }
+        //        BaseController.log(ex.Message, Constants.ErrorMessage.LogEventTypeError, Constants.ErrorMessage.LogSeverityLow, _config);
+        //        objMessage.Code = StatusCodes.Status500InternalServerError;
+        //        objMessage.Message = ex.Message;
+        //        return NotFound(objMessage);
+        //    }
 
-        }
+        //}
 
 
         /// <summary>
@@ -911,40 +911,40 @@ namespace ClinicalPolicyAdminAPI.Controllers
         /// </summary>
         /// <param name="BatchFileUploadDto"></param>
         /// <returns></returns>
-        [Route("SaveArchiveFile")]
-        [HttpPost]
-        public IActionResult SaveBatchArchiveFileStatus([FromBody]BatchUploadFileDetailsDto BatchFileUploadDto)
-        {
-            ResponseMessageDto objMessage = new ResponseMessageDto();
-            try
-            {
-                if (BatchFileUploadDto != null)
-                {
-                    new ClinicalPolicyAdminDao(_config).SaveBatchArchiveFileStatusDetails(BatchFileUploadDto);
-                    objMessage.Code = StatusCodes.Status200OK;
-                    objMessage.Message = Constants.Message.Success;
-                    return Ok(objMessage);
+        //[Route("SaveArchiveFile")]
+        //[HttpPost]
+        //public IActionResult SaveBatchArchiveFileStatus([FromBody]BatchUploadFileDetailsDto BatchFileUploadDto)
+        //{
+        //    ResponseMessageDto objMessage = new ResponseMessageDto();
+        //    try
+        //    {
+        //        if (BatchFileUploadDto != null)
+        //        {
+        //            new ClinicalPolicyAdminDao(_config).SaveBatchArchiveFileStatusDetails(BatchFileUploadDto);
+        //            objMessage.Code = StatusCodes.Status200OK;
+        //            objMessage.Message = Constants.Message.Success;
+        //            return Ok(objMessage);
 
-                }
-                else
-                {
-                    objMessage.Code = StatusCodes.Status400BadRequest;
-                    objMessage.Message = Constants.Message.BadRequest;
-                    return NotFound(objMessage);
-                }
+        //        }
+        //        else
+        //        {
+        //            objMessage.Code = StatusCodes.Status400BadRequest;
+        //            objMessage.Message = Constants.Message.BadRequest;
+        //            return NotFound(objMessage);
+        //        }
 
-            }
-            catch (Exception ex)
-            {
+        //    }
+        //    catch (Exception ex)
+        //    {
 
-                BaseController.log(ex.Message, Constants.ErrorMessage.LogEventTypeError, Constants.ErrorMessage.LogSeverityLow, _config);
-                objMessage.Code = StatusCodes.Status500InternalServerError;
-                objMessage.Message = ex.Message;
-                return NotFound(objMessage);
+        //        BaseController.log(ex.Message, Constants.ErrorMessage.LogEventTypeError, Constants.ErrorMessage.LogSeverityLow, _config);
+        //        objMessage.Code = StatusCodes.Status500InternalServerError;
+        //        objMessage.Message = ex.Message;
+        //        return NotFound(objMessage);
 
-            }
+        //    }
 
-        }
+        //}
 
 
         /// <summary>
@@ -952,41 +952,41 @@ namespace ClinicalPolicyAdminAPI.Controllers
         /// </summary>
         /// <param name="composite"></param>
         /// <returns></returns>
-        [Route("BatchUploadAction")]
-        [HttpPost]
-        public IActionResult ApproveorRejectBatchUploadFile([FromBody]CompositeObject.ApproveorRejectBatchUploadFile composite)
-        {
-            ResponseMessageDto objMessage = new ResponseMessageDto();
+        //[Route("BatchUploadAction")]
+        //[HttpPost]
+        //public IActionResult ApproveorRejectBatchUploadFile([FromBody]CompositeObject.ApproveorRejectBatchUploadFile composite)
+        //{
+        //    ResponseMessageDto objMessage = new ResponseMessageDto();
 
-            try
-            {
-                if (composite != null && composite.fileId > 0)
-                {
-                    new ClinicalPolicyAdminDao(_config).UpdateFileStatusOnApproveOrReject(composite.fileId, composite.status, composite.actionBy);
-                    objMessage.Code = StatusCodes.Status200OK;
-                    objMessage.Message = Constants.Message.Success;
-                    return Ok(objMessage);
+        //    try
+        //    {
+        //        if (composite != null && composite.fileId > 0)
+        //        {
+        //            new ClinicalPolicyAdminDao(_config).UpdateFileStatusOnApproveOrReject(composite.fileId, composite.status, composite.actionBy);
+        //            objMessage.Code = StatusCodes.Status200OK;
+        //            objMessage.Message = Constants.Message.Success;
+        //            return Ok(objMessage);
 
-                }
-                else
-                {
-                    objMessage.Code = StatusCodes.Status400BadRequest;
-                    objMessage.Message = Constants.Message.BadRequest;
-                    return NotFound(objMessage);
-                }
+        //        }
+        //        else
+        //        {
+        //            objMessage.Code = StatusCodes.Status400BadRequest;
+        //            objMessage.Message = Constants.Message.BadRequest;
+        //            return NotFound(objMessage);
+        //        }
 
-            }
-            catch (Exception ex)
-            {
+        //    }
+        //    catch (Exception ex)
+        //    {
 
-                BaseController.log(ex.Message, Constants.ErrorMessage.LogEventTypeError, Constants.ErrorMessage.LogSeverityLow, _config);
-                objMessage.Code = StatusCodes.Status500InternalServerError;
-                objMessage.Message = ex.Message;
-                return NotFound(objMessage);
+        //        BaseController.log(ex.Message, Constants.ErrorMessage.LogEventTypeError, Constants.ErrorMessage.LogSeverityLow, _config);
+        //        objMessage.Code = StatusCodes.Status500InternalServerError;
+        //        objMessage.Message = ex.Message;
+        //        return NotFound(objMessage);
 
-            }
+        //    }
 
-        }
+        //}
 
 
         /// <summary>
@@ -994,42 +994,42 @@ namespace ClinicalPolicyAdminAPI.Controllers
         /// </summary>
         /// <param name="composite"></param>
         /// <returns></returns>
-        [Route("BatchArchiveAction")]
-        [HttpPost]
-        public IActionResult ApproveorRejectBatchArchiveFile([FromBody]CompositeObject.ApproveorRejectBatchArchiveFile composite)
-        {
-            ResponseMessageDto objMessage = new ResponseMessageDto();
+        //[Route("BatchArchiveAction")]
+        //[HttpPost]
+        //public IActionResult ApproveorRejectBatchArchiveFile([FromBody]CompositeObject.ApproveorRejectBatchArchiveFile composite)
+        //{
+        //    ResponseMessageDto objMessage = new ResponseMessageDto();
 
 
-            try
-            {
-                if (composite != null && composite.fileId > 0)
-                {
-                    new ClinicalPolicyAdminDao(_config).BtachArchiveUpdateFileStatusOnApproveOrReject(composite.fileId, composite.status, composite.actionBy, composite.action);
-                    objMessage.Code = StatusCodes.Status200OK;
-                    objMessage.Message = Constants.Message.Success;
-                    return Ok(objMessage);
+        //    try
+        //    {
+        //        if (composite != null && composite.fileId > 0)
+        //        {
+        //            new ClinicalPolicyAdminDao(_config).BtachArchiveUpdateFileStatusOnApproveOrReject(composite.fileId, composite.status, composite.actionBy, composite.action);
+        //            objMessage.Code = StatusCodes.Status200OK;
+        //            objMessage.Message = Constants.Message.Success;
+        //            return Ok(objMessage);
 
-                }
-                else
-                {
-                    objMessage.Code = StatusCodes.Status400BadRequest;
-                    objMessage.Message = Constants.Message.BadRequest;
-                    return NotFound(objMessage);
-                }
+        //        }
+        //        else
+        //        {
+        //            objMessage.Code = StatusCodes.Status400BadRequest;
+        //            objMessage.Message = Constants.Message.BadRequest;
+        //            return NotFound(objMessage);
+        //        }
 
 
-            }
-            catch (Exception ex)
-            {
+        //    }
+        //    catch (Exception ex)
+        //    {
 
-                BaseController.log(ex.Message, Constants.ErrorMessage.LogEventTypeError, Constants.ErrorMessage.LogSeverityLow, _config);
-                objMessage.Code = StatusCodes.Status500InternalServerError;
-                objMessage.Message = ex.Message;
-                return NotFound(objMessage);
-            }
+        //        BaseController.log(ex.Message, Constants.ErrorMessage.LogEventTypeError, Constants.ErrorMessage.LogSeverityLow, _config);
+        //        objMessage.Code = StatusCodes.Status500InternalServerError;
+        //        objMessage.Message = ex.Message;
+        //        return NotFound(objMessage);
+        //    }
 
-        }
+        //}
 
 
 
