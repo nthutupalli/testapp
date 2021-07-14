@@ -5,10 +5,12 @@ using System.Text;
 namespace Common.DataTransferObjects
 {
     using System;
+    using System.Diagnostics.CodeAnalysis;
 
     /// <summary>
     /// Policy Template Dto
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public class PolicyTemplateDto
     {
         /// <summary>

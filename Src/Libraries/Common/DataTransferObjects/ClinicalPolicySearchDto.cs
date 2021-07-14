@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 using System.Text;
 
 namespace Common.DataTransferObjects
 {
- 
+    [ExcludeFromCodeCoverage]
     public class ClinicalPolicySearchDto
     {
         private List<PublishStatusDto> publishStatusDto;

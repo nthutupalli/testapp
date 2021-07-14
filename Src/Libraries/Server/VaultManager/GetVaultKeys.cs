@@ -1,10 +1,12 @@
 ﻿using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
 namespace Server.VaultManager
 {
+    [ExcludeFromCodeCoverage]
     public class GetVaultKeys
     {
 

@@ -222,6 +222,29 @@ namespace ClinicalPolicyAdminAPIUnitTest
         }
 
         [Test]
+        public void FailureForSaveLobDetails()
+        {
+            Collection<PolicyLobDto> parmeter = null;
+            var logResponse = Controller.SaveLobDetails(parmeter) as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "404");
+        }
+
+        [Test]
+        public void SuccessForFormularyDetails()
+        {
+            var logResponse = Controller.GetFormularyDetails() as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "200");
+        }
+
+        [Test]
         public void MissingLobName_SaveLobDetails()
         {
             Collection<PolicyLobDto> parmeter = new Collection<PolicyLobDto>();
@@ -480,191 +503,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             Assert.AreEqual(response, "404");
         }
 
-        //[Test]
-        //public void SuccessForBatchUploadFileStatus()
-        //{
-        //    CompositeObject.NFMYBBatchUploadFileStatus composite = new CompositeObject.NFMYBBatchUploadFileStatus();
-        //    composite.fileStatus = "2";
-        //    composite.policyTypeId = 7;
-        //    var logResponse = Controller.NFMYBBatchUploadFileStatus(composite) as IActionResult;
-        //    Assert.IsNotNull(logResponse);
-
-        //}
-
-        //[Test]
-        //public void MissingFileStatus_BatchUploadFileStatus()
-        //{
-        //    CompositeObject.NFMYBBatchUploadFileStatus composite = new CompositeObject.NFMYBBatchUploadFileStatus();
-        //    //composite.fileStatus = "2";
-        //    composite.policyTypeId = 7;
-        //    var logResponse = Controller.NFMYBBatchUploadFileStatus(composite) as IActionResult;
-        //    Assert.IsNotNull(logResponse);
-        //    var actualJson = JsonConvert.SerializeObject(logResponse);
-        //    var jsonObj = JObject.Parse(actualJson);
-        //    var response = jsonObj["StatusCode"].ToString();
-        //    Assert.AreEqual(response, "404");
-
-        //}
-
-        //[Test]
-        //public void InvalidPolicyTypeID_BatchUploadFileStatus()
-        //{
-        //    CompositeObject.NFMYBBatchUploadFileStatus composite = new CompositeObject.NFMYBBatchUploadFileStatus();
-        //    composite.fileStatus = "-1";
-        //    composite.policyTypeId = -7;
-        //    var logResponse = Controller.NFMYBBatchUploadFileStatus(composite) as IActionResult;
-        //    Assert.IsNotNull(logResponse);
-        //    var actualJson = JsonConvert.SerializeObject(logResponse);
-        //    var jsonObj = JObject.Parse(actualJson);
-        //    var response = jsonObj["StatusCode"].ToString();
-        //    Assert.AreEqual(response, "404");
-
-        //}
-
-        //[Test]
-        //public void SuccessForSaveArchiveFile()
-        //{
-        //    BatchUploadFileDetailsDto filedata = new BatchUploadFileDetailsDto();
-        //    filedata.FileName = "NF_Policy_Archive_Template.Test2_20190919224926643_20190920082731513.xlsx";
-        //    filedata.FTPPathName = "/root_vdm_1/fs114/web_pharmacy/CentralizedFormulary/iRx/TEST/Data/In/BatchArchivePolicies";
-        //    filedata.ErrorDescription = "";
-        //    filedata.PolicyTypeId = 4;
-        //    filedata.FileStatus = "ReadyToValidate";
-        //    filedata.Action = "None";
-        //    filedata.Active = true;
-        //    filedata.UploadedBy = "SIT4034";
-        //    filedata.UploadDate = "8/17/2020";
-        //    var logResponse = Controller.SaveBatchArchiveFileStatus(filedata) as IActionResult;
-        //    Assert.IsNotNull(logResponse);
-        //    var actualJson = JsonConvert.SerializeObject(logResponse);
-        //    var jsonObj = JObject.Parse(actualJson);
-        //    var response = jsonObj["StatusCode"].ToString();
-        //    Assert.AreEqual(response, "200");
-
-        //}
-
-
-        //[Test]
-        //public void MissingFileName_SaveArchiveFile()
-        //{
-        //    BatchUploadFileDetailsDto filedata = new BatchUploadFileDetailsDto();
-        //    filedata.FTPPathName = "/root_vdm_1/fs114/web_pharmacy/CentralizedFormulary/iRx/TEST/Data/In/BatchArchivePolicies";
-        //    filedata.ErrorDescription = "";
-        //    filedata.PolicyTypeId = 4;
-        //    filedata.FileStatus = "ReadyToValidate";
-        //    filedata.Action = "None";
-        //    filedata.Active = true;
-        //    filedata.UploadedBy = "SIT4034";
-        //    filedata.UploadDate = "8/17/2020";
-        //    var logResponse = Controller.SaveBatchArchiveFileStatus(filedata) as IActionResult;
-        //    Assert.IsNotNull(logResponse);
-        //    var actualJson = JsonConvert.SerializeObject(logResponse);
-        //    var jsonObj = JObject.Parse(actualJson);
-        //    var response = jsonObj["StatusCode"].ToString();
-        //    Assert.AreEqual(response, "404");
-
-        //}
-
-        //[Test]
-        //public void SuccessForBatchUploadAction()
-        //{
-        //    CompositeObject.ApproveorRejectBatchUploadFile composite = new CompositeObject.ApproveorRejectBatchUploadFile();
-        //    composite.fileId = 3;
-        //    composite.status = "Rejected";
-        //    composite.actionBy = "SIT4034";
-        //    var logResponse = Controller.ApproveorRejectBatchUploadFile(composite) as IActionResult;
-        //    Assert.IsNotNull(logResponse);
-        //    var actualJson = JsonConvert.SerializeObject(logResponse);
-        //    var jsonObj = JObject.Parse(actualJson);
-        //    var response = jsonObj["StatusCode"].ToString();
-        //    Assert.AreEqual(response, "200");
-
-        //}
-
-        //[Test]
-        //public void InvalidFileID_BatchUploadAction()
-        //{
-        //    CompositeObject.ApproveorRejectBatchUploadFile composite = new CompositeObject.ApproveorRejectBatchUploadFile();
-        //    composite.fileId = -3;
-        //    composite.status = "Rejected";
-        //    composite.actionBy = "SIT4034";
-        //    var logResponse = Controller.ApproveorRejectBatchUploadFile(composite) as IActionResult;
-        //    Assert.IsNotNull(logResponse);
-        //    var actualJson = JsonConvert.SerializeObject(logResponse);
-        //    var jsonObj = JObject.Parse(actualJson);
-        //    var response = jsonObj["StatusCode"].ToString();
-        //    Assert.AreEqual(response, "404");
-
-        //}
-
-        //[Test]
-        //public void MissingFileStatus_BatchUploadAction()
-        //{
-        //    CompositeObject.ApproveorRejectBatchUploadFile composite = new CompositeObject.ApproveorRejectBatchUploadFile();
-        //    composite.fileId = 3;
-        //    composite.actionBy = "SIT4034";
-            
-
-        //    var logResponse = Controller.ApproveorRejectBatchUploadFile(composite) as IActionResult;
-        //    Assert.IsNotNull(logResponse);
-        //    var actualJson = JsonConvert.SerializeObject(logResponse);
-        //    var jsonObj = JObject.Parse(actualJson);
-        //    var response = jsonObj["StatusCode"].ToString();
-        //    Assert.AreEqual(response, "404");
-
-        //}
-
-        //[Test]
-        //public void SuccessForBatchArchiveAction()
-        //{
-        //    CompositeObject.ApproveorRejectBatchArchiveFile composite = new CompositeObject.ApproveorRejectBatchArchiveFile();
-        //    composite.fileId = 9;
-        //    composite.status = "ReadyToArchive";
-        //    composite.actionBy = "SIT4034";
-        //    composite.action= "Approve";
-        //    var logResponse = Controller.ApproveorRejectBatchArchiveFile(composite) as IActionResult;
-        //    Assert.IsNotNull(logResponse);
-        //    var actualJson = JsonConvert.SerializeObject(logResponse);
-        //    var jsonObj = JObject.Parse(actualJson);
-        //    var response = jsonObj["StatusCode"].ToString();
-        //    Assert.AreEqual(response, "200");
-
-        //}
-
-        //[Test]
-        //public void InvalidFileID_BatchArchiveAction()
-        //{
-        //    CompositeObject.ApproveorRejectBatchArchiveFile composite = new CompositeObject.ApproveorRejectBatchArchiveFile();
-        //    composite.fileId = -33;
-        //    composite.status = "ReadyToArchive";
-        //    composite.actionBy = "SIT4034";
-        //    composite.action = "Approve";
-        //    var logResponse = Controller.ApproveorRejectBatchArchiveFile(composite) as IActionResult;
-        //    Assert.IsNotNull(logResponse);
-        //    var actualJson = JsonConvert.SerializeObject(logResponse);
-        //    var jsonObj = JObject.Parse(actualJson);
-        //    var response = jsonObj["StatusCode"].ToString();
-        //    Assert.AreEqual(response, "404");
-
-        //}
-
-
-        //[Test]
-        //public void MissingFileStatus_BatchArchiveAction()
-        //{
-        //    CompositeObject.ApproveorRejectBatchArchiveFile composite = new CompositeObject.ApproveorRejectBatchArchiveFile();
-        //    composite.fileId = 10; ;
-
-        //    composite.actionBy = "SIT4034";
-        //    composite.action = "Approve";
-        //    var logResponse = Controller.ApproveorRejectBatchArchiveFile(composite) as IActionResult;
-        //    Assert.IsNotNull(logResponse);
-        //    var actualJson = JsonConvert.SerializeObject(logResponse);
-        //    var jsonObj = JObject.Parse(actualJson);
-        //    var response = jsonObj["StatusCode"].ToString();
-        //    Assert.AreEqual(response, "404");
-
-        //}
+      
 
         [Test]
         public void SuccessForsaveLookBack()
@@ -696,6 +535,20 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
             Assert.AreEqual(response, "200");
+
+        }
+
+        [Test]
+        public void FailureForsaveLookBack()
+        {
+            Collection<RuleLookBackPeriodDto> parmeter = null;
+
+            var logResponse = Controller.saveLookBack(parmeter) as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "404");
 
         }
 
@@ -751,6 +604,8 @@ namespace ClinicalPolicyAdminAPIUnitTest
             Assert.AreEqual(response, "200");
         }
 
+       
+
         /// <summary>
         /// NUnit Test for GetAvailableFormularies
         /// </summary>
@@ -771,6 +626,8 @@ namespace ClinicalPolicyAdminAPIUnitTest
             Assert.AreEqual(response, "200");
         }
 
+       
+
         /// <summary>
         /// NUnit Test for SelectedFormularies
         /// </summary>
@@ -790,6 +647,8 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var response = jsonObj["StatusCode"].ToString();
             Assert.AreEqual(response, "200");
         }
+
+   
 
         /// <summary>
         /// NUnit Test for SaveFormularyMapping
@@ -823,6 +682,24 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
             Assert.AreEqual(response, "200");
+        }
+
+        /// <summary>
+        /// NUnit Test for SaveFormularyMapping
+        /// </summary>
+        /// <param name="contents"></param>
+        /// <returns></returns>
+        [Test]
+        public void FailureForSaveFormularyMapping()
+        {
+            Collection<SaveFormularyMappingDto> formularyMappingDto = null;
+
+            var logResponse = Controller.SaveFormularyMapping(formularyMappingDto) as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "404");
         }
 
         /// <summary>
@@ -863,6 +740,51 @@ namespace ClinicalPolicyAdminAPIUnitTest
             Assert.AreEqual(response, "200");
         }
 
+        /// <summary>
+        /// NUnit Test for SavePolicyOwner
+        /// </summary>
+        /// <param name="contents"></param>
+        /// <returns></returns>
+        [Test]
+        public void FailueForSavePolicyOwner()
+        {
+            Collection<PolicyOwnerDto> policyOwnerDtoCollection = null;
+
+            var logResponse = Controller.SavePolicyOwner(policyOwnerDtoCollection) as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "404");
+        }
+
+        /// <summary>
+        /// NUnit Test for SavePolicyOwner
+        /// </summary>
+        /// <param name="contents"></param>
+        /// <returns></returns>
+        [Test]
+        public void MissingValueForSavePolicyOwner()
+        {
+            Collection<PolicyOwnerDto> policyOwnerDtoCollection = new Collection<PolicyOwnerDto>();
+            PolicyOwnerDto ownerDto = new PolicyOwnerDto();
+            ownerDto.PolicyOwnerId = 56;
+            //ownerDto.OwnerName = "Intownercheck";
+           // ownerDto.OwnerEmail = "Int@humana.com";
+            ownerDto.ActionType = Constants.ActionType.I;
+            ownerDto.UpdatedBy = "SIT4034";
+            ownerDto.IsActive = true;
+            ownerDto.Status = "Active";
+
+            policyOwnerDtoCollection.Add(ownerDto);
+
+            var logResponse = Controller.SavePolicyOwner(policyOwnerDtoCollection) as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "404");
+        }
         /// <summary>
         /// NUnit Test for RuleLookBackPeriodList
         /// </summary>
@@ -932,6 +854,26 @@ namespace ClinicalPolicyAdminAPIUnitTest
         }
 
         /// <summary>
+        /// NUnit Test for AvailableRejectCodes
+        /// </summary>
+        /// <param name="contents"></param>
+        /// <returns></returns>
+        [Test]
+        public void FailureForAvailableRejectCodes()
+        {
+
+            CompositeObject.AvailableRejectCodes composite = new CompositeObject.AvailableRejectCodes();
+            composite.policyTypeId = -3;
+
+            var logResponse = Controller.AvailableRejectCodes(composite) as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "404");
+        }
+
+        /// <summary>
         /// NUnit Test for SaveRejectCodes
         /// </summary>
         /// <param name="contents"></param>
@@ -976,6 +918,22 @@ namespace ClinicalPolicyAdminAPIUnitTest
             Assert.AreEqual(response, "200");
         }
 
+        /// <summary>
+        /// NUnit Test for SaveRejectCodes
+        /// </summary>
+        /// <param name="contents"></param>
+        /// <returns></returns>
+        [Test]
+        public void FailueForSaveRejectCodes()
+        {
+            Collection<PolicyRejectCodeDto> rejectCodeDtoCollection = null;
+            var logResponse = Controller.SaveRejectCodes(rejectCodeDtoCollection) as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "404");
+        }
         /// <summary>
         /// NUnit Test for RejectCodeList
         /// </summary>
@@ -1116,6 +1074,134 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var response = jsonObj["StatusCode"].ToString();
             Assert.AreEqual(response, "200");
         }
+        /// <summary>
+        /// NUnit Test for lookuplist
+        /// </summary>
+        /// <param name="contents"></param>
+        /// <returns></returns>
+        [Test]
+        public void SuccessForlookuplist()
+        {
+            LookupDataDto lookup = new LookupDataDto();
+            lookup.functionCode = "lob";
+            var logResponse = UTController.PolicyLookUpDataList(lookup) as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "200");
+        }
+
+        /// <summary>
+        /// NUnit Test for lookuplist
+        /// </summary>
+        /// <param name="contents"></param>
+        /// <returns></returns>
+        [Test]
+        public void FailureForlookuplist()
+        {
+            LookupDataDto lookup = new LookupDataDto();
+            lookup.functionCode = string.Empty;
+            var logResponse = UTController.PolicyLookUpDataList(lookup) as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "404");
+        }
+
+        /// <summary>
+        /// NUnit Test for RuleconceptList
+        /// </summary>
+        /// <param name="contents"></param>
+        /// <returns></returns>
+        [Test]
+        public void SuccessForRuleconceptList()
+        {
+            var logResponse = UTController.RuleConceptList() as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "200");
+        }
+
+        /// <summary>
+        /// NUnit Test for PolicyTypeDefault
+        /// </summary>
+        /// <param name="contents"></param>
+        /// <returns></returns>
+        [Test]
+        public void SuccessForPolicyTypeDefault()
+        {
+            var logResponse = UTController.PolicyTypeDefault() as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "200");
+        }
+
+        /// <summary>
+        /// NUnit Test for RevisionTypeList
+        /// </summary>
+        /// <param name="contents"></param>
+        /// <returns></returns>
+        [Test]
+        public void SuccessForRevisionTypeList()
+        {
+            var logResponse = UTController.RevisionTypeList() as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "200");
+        }
+
+        /// <summary>
+        /// NUnit Test for UpdateTypeList
+        /// </summary>
+        /// <param name="contents"></param>
+        /// <returns></returns>
+        [Test]
+        public void SuccessForUpdateTypeList()
+        {
+            var logResponse = UTController.UpdateTypeList() as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "200");
+        }
+
+        /// <summary>
+        /// NUnit Test for CPLobList
+        /// </summary>
+        /// <param name="contents"></param>
+        /// <returns></returns>
+        [Test]
+        public void SuccessForCPLobList()
+        {
+            var logResponse = UTController.CPLobList() as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "200");
+        }
+
+        /// <summary>
+        /// NUnit Test for GetLookUpFunctions
+        /// </summary>
+        /// <param name="contents"></param>
+        /// <returns></returns>
+        [Test]
+        public void SuccessForGetLookUpFunctions()
+        {
+            string key = string.Empty;
+            var logResponse = Controller.GetLookUpFunctions(key) as IActionResult;
+            Assert.IsNull(logResponse);
+        }
 
         /// <summary>
         /// NUnit Test for subCategoryList
@@ -1186,6 +1272,21 @@ namespace ClinicalPolicyAdminAPIUnitTest
             Assert.AreEqual(response, "200");
 
         }
+
+        [Test]
+        public void FailureFortheraputicCategory()
+        {
+            Collection<TherapeuticCategoryDto> parmeter = null;
+            var logResponse = Controller.SaveTherapeuticCategory(parmeter) as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "404");
+
+        }
+
+
 
     }
 }

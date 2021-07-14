@@ -28,16 +28,7 @@ namespace ClinicalPolicyAdminAPI.Controllers
         [HttpGet]
         public string HeartBeat()
         {
-            try
-            {
                 return "Ok";
-            }
-            catch (Exception ex)
-            {
-
-                return ex.Message;
-            }
-
         }
 
         [Route("GetLookUpFunctions")]

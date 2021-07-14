@@ -1,10 +1,12 @@
 ﻿namespace Common.DataTransferObjects
 {
     using System;
+    using System.Diagnostics.CodeAnalysis;
 
     /// <summary>
     /// RuleLookBackPeriodDto
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public class RuleLookBackPeriodDto
     {
         /// <summary>

@@ -8,6 +8,7 @@ namespace Common.DataTransferObjects
 {
 
     using System;
+    using System.Diagnostics.CodeAnalysis;
     using System.Runtime.Serialization;
 
     /// <summary>
@@ -15,6 +16,7 @@ namespace Common.DataTransferObjects
     /// </summary>
     [Serializable]
     [DataContract(Namespace = "")]
+    [ExcludeFromCodeCoverage]
     public class PolicyLobDto
     {
         /// <summary>
