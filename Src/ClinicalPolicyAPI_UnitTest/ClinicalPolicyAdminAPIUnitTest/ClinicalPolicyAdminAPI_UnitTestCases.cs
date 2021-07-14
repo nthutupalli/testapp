@@ -29,6 +29,12 @@ namespace ClinicalPolicyAdminAPIUnitTest
 
         }
 
+        [Test]
+        public void SuccessForHeartBeat()
+        {
+            var logResponse = Controller.HeartBeat();
+            Assert.AreEqual(logResponse, "Ok");
+        }
 
         [Test]
         public void SuccessForCheckLobMapping()
@@ -452,6 +458,25 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
             Assert.AreEqual(response, "200");
+
+        }
+
+        [Test]
+        public void MissingvalueForSaveRejectCodeMapping()
+        {
+            CompositeObject.SaveRejectCodeMapping composite = new CompositeObject.SaveRejectCodeMapping();
+            Collection<PolicyRejectCodeDto> rejectcodedata = new Collection<PolicyRejectCodeDto>();
+            PolicyRejectCodeDto rejectcode1 = new PolicyRejectCodeDto();
+            
+
+            PolicyRejectCodeDto rejectcode2 = new PolicyRejectCodeDto();
+           
+            var logResponse = Controller.SaveRejectCodeMapping(composite) as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "404");
 
         }
 
@@ -1255,6 +1280,34 @@ namespace ClinicalPolicyAdminAPIUnitTest
         }
 
         [Test]
+        public void FaliureForsubCategory()
+        {
+            Collection<SubCategoryDto> parmeter = null;
+
+            var logResponse = Controller.SaveSubCategory(parmeter) as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "404");
+
+        }
+
+        [Test]
+        public void FaliureForSavePolicyTemplate()
+        {
+            PolicyTemplateDto PolicyTemplateDto= null;
+
+            var logResponse = Controller.SavePolicyTemplate(PolicyTemplateDto) as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "404");
+
+        }
+
+        [Test]
         public void SuccessFortheraputicCategory()
         {
             Collection<TherapeuticCategoryDto> parmeter = new Collection<TherapeuticCategoryDto>();
@@ -1272,6 +1325,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             Assert.AreEqual(response, "200");
 
         }
+
 
         [Test]
         public void FailureFortheraputicCategory()
