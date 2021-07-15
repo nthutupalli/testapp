@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
 namespace Common.DataTransferObjects
@@ -8,7 +7,6 @@ namespace Common.DataTransferObjects
     /// <summary>
     /// PolicyRejectCodeDto
     /// </summary>
-    [ExcludeFromCodeCoverage]
     public class PolicyRejectCodeDto
     {
         /// <summary>

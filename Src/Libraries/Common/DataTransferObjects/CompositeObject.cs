@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics.CodeAnalysis;
-using System.Text;
 
 namespace Common.DataTransferObjects
 {
-    [ExcludeFromCodeCoverage]
     public class CompositeObject
     {
         public class SaveCustomerClientMapping
@@ -26,24 +22,7 @@ namespace Common.DataTransferObjects
             public int? lobId { get; set; }
 
         }
-        public class NFMYBBatchUploadFileStatus
-        {
-            public string fileStatus { get; set; }
-            public int policyTypeId { get; set; }
-        }
-        public class ApproveorRejectBatchUploadFile
-        {
-            public int fileId { get; set; }
-            public string status { get; set; }
-            public string actionBy { get; set; }
-        }
-        public class ApproveorRejectBatchArchiveFile
-        {
-            public int fileId { get; set; }
-            public string status { get; set; }
-            public string actionBy { get; set; }
-            public string action { get; set; }
-        }
+       
         public class LobValue
         {
             public Int16 lobId { get; set; }

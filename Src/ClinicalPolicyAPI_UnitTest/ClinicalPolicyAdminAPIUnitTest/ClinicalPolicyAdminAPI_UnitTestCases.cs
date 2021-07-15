@@ -1072,68 +1072,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
         }
         
 
-        //[Test]
-        //public void SuccessForBatchArchiveFileStatus()
-        //{
-        //    CompositeObject.NFMYBBatchUploadFileStatus composite = new CompositeObject.NFMYBBatchUploadFileStatus();
-        //    composite.fileStatus = "2";
-        //    composite.policyTypeId = 7;
-        //    var logResponse = Controller.NFMYBBatchArchiveFileStatus(composite) as IActionResult;
-        //    Assert.IsNotNull(logResponse);
-        //}
-
-        //[Test]
-        //public void MissingFileStatus_BatchArchiveFileStatus()
-        //{
-        //    CompositeObject.NFMYBBatchUploadFileStatus composite = new CompositeObject.NFMYBBatchUploadFileStatus();
-        //    //composite.fileStatus = "2";
-        //    composite.policyTypeId = 7;
-        //    var logResponse = Controller.NFMYBBatchArchiveFileStatus(composite) as IActionResult;
-        //    Assert.IsNotNull(logResponse);
-        //    var actualJson = JsonConvert.SerializeObject(logResponse);
-        //    var jsonObj = JObject.Parse(actualJson);
-        //    var response = jsonObj["StatusCode"].ToString();
-        //    Assert.AreEqual(response, "404");
-        //}
-        //[Test]
-        //public void MissingFileName_SaveUploadFile()
-        //{
-        //    BatchUploadFileDetailsDto filedata = new BatchUploadFileDetailsDto();
-        //    filedata.FTPPathName = "/root_vdm_1/fs114/web_pharmacy/CentralizedFormulary/iRx/TEST/Data/In/NFBatchUpload";
-        //    filedata.ErrorDescription = "";
-        //    filedata.PolicyTypeId = 4;
-        //    filedata.FileStatus = "ReadyToValidate";
-        //    filedata.Action = "None";
-        //    filedata.Active = true;
-        //    filedata.UploadedBy = "SIT4034";
-        //    filedata.UploadDate = "8/17/2020";
-        //    var logResponse = Controller.SaveBatchUploadFileStatus(filedata) as IActionResult;
-        //    Assert.IsNotNull(logResponse);
-        //    var actualJson = JsonConvert.SerializeObject(logResponse);
-        //    var jsonObj = JObject.Parse(actualJson);
-        //    var response = jsonObj["StatusCode"].ToString();
-        //    Assert.AreEqual(response, "404");
-        //}
-        //[Test]
-        //public void SuccessForSaveUploadFile()
-        //{
-        //    BatchUploadFileDetailsDto filedata = new BatchUploadFileDetailsDto();
-        //    filedata.FileName = "NF_Policy_Archive_Template.Test2_20190919224926643_20190920082731513.xlsx";
-        //    filedata.FTPPathName = "/root_vdm_1/fs114/web_pharmacy/CentralizedFormulary/iRx/TEST/Data/In/NFBatchUpload";
-        //    filedata.ErrorDescription = "";
-        //    filedata.PolicyTypeId = 4;
-        //    filedata.FileStatus = "ReadyToValidate";
-        //    filedata.Action = "None";
-        //    filedata.Active = true;
-        //    filedata.UploadedBy = "SIT4034";
-        //    filedata.UploadDate = "8/17/2020";
-        //    var logResponse = Controller.SaveBatchUploadFileStatus(filedata) as IActionResult;
-        //    Assert.IsNotNull(logResponse);
-        //    var actualJson = JsonConvert.SerializeObject(logResponse);
-        //    var jsonObj = JObject.Parse(actualJson);
-        //    var response = jsonObj["StatusCode"].ToString();
-        //    Assert.AreEqual(response, "200");
-        //}
+        
 
         [Test]
         public void TemplateNULL_SaveTemplateFile()

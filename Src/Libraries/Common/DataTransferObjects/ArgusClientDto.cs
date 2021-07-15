@@ -5,12 +5,10 @@ using System.Text;
 namespace Common.DataTransferObjects
 {
     using System;
-    using System.Diagnostics.CodeAnalysis;
 
     /// <summary>
     /// ArgusClientDto
     /// </summary>
-    [ExcludeFromCodeCoverage]
     public class ArgusClientDto
     {
         /// <summary>

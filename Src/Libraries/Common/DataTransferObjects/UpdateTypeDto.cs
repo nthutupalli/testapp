@@ -1,7 +1,6 @@
 ﻿namespace Common.DataTransferObjects
 {
     using System;
-    using System.Diagnostics.CodeAnalysis;
     using System.Runtime.Serialization;
 
     /// <summary>
@@ -9,7 +8,6 @@
     /// </summary>
     [Serializable]
     [DataContract(Namespace = "")]
-    [ExcludeFromCodeCoverage]
     public class UpdateTypeDto
     {
         /// <summary>

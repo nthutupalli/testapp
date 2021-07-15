@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
 namespace Common.DataTransferObjects
 {
-    [ExcludeFromCodeCoverage]
     public class SaveFormularyMappingDto
     {
         public Int16 Lob { get; set; }
