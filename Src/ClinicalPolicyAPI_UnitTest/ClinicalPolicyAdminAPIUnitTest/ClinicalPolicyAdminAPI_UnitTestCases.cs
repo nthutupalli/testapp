@@ -292,7 +292,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             customer1.CustomerId = 1;
             customer1.CustomerCode = "0319";
             customer1.IsMapped = false;
-            customer1.ActionType = Constants.ActionType.None;
+            customer1.ActionType = Constants.ActionType.I;
             CustomerData.Add(customer1);
             Collection<ArgusClientDto> ClientData = new Collection<ArgusClientDto>();
             ArgusClientDto clientData1 = new ArgusClientDto();
@@ -300,7 +300,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             clientData1.ClientCode = "00005";
             clientData1.CustomerId = 1;
             clientData1.IsMapped = false;
-            clientData1.ActionType = Constants.ActionType.None;
+            clientData1.ActionType = Constants.ActionType.I;
             ClientData.Add(clientData1);
 
             ArgusClientDto clientData2 = new ArgusClientDto();
@@ -308,12 +308,12 @@ namespace ClinicalPolicyAdminAPIUnitTest
             clientData2.ClientCode = "00004";
             clientData2.CustomerId = 2;
             clientData2.IsMapped = true;
-            clientData2.ActionType = Constants.ActionType.None;
+            clientData2.ActionType = Constants.ActionType.I;
             ClientData.Add(clientData2);
 
             composite.ArgusCustomerDtoCollection = CustomerData;
             composite.ArgusClientDtoCollection = ClientData;
-            composite.lobId = 5;
+            composite.lobId = 3;
             var logResponse = Controller.SaveCustomerClientMapping(composite) as IActionResult;
             Assert.IsNotNull(logResponse);
             var actualJson = JsonConvert.SerializeObject(logResponse);
@@ -437,7 +437,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             rejectcode1.RejectCodeId = 7;
             rejectcode1.RejectCode= "99";
             rejectcode1.RejectCodeDesc = "test";
-            rejectcode1.ActionType = Constants.ActionType.None;
+            rejectcode1.ActionType = Constants.ActionType.I;
             rejectcode1.IsMapped = true;
             rejectcode1.UpdatedBy = "SIT4034";
             rejectcodedata.Add(rejectcode1);
@@ -446,7 +446,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             rejectcode2.RejectCodeId = 6;
             rejectcode2.RejectCode = "88";
             rejectcode2.RejectCodeDesc = "Step Therapy ";
-            rejectcode2.ActionType = Constants.ActionType.None;
+            rejectcode2.ActionType = Constants.ActionType.I;
             rejectcode2.IsMapped = true;
             rejectcode2.UpdatedBy = "SIT4034";
             rejectcodedata.Add(rejectcode2);
@@ -629,7 +629,26 @@ namespace ClinicalPolicyAdminAPIUnitTest
             Assert.AreEqual(response, "200");
         }
 
-       
+        /// <summary>
+        /// NUnit Test for GetAvailableClients
+        /// </summary>
+        /// <param name="contents"></param>
+        /// <returns></returns>
+
+        [Test]
+        public void FailureForGetAvailableClients()
+        {
+            CompositeObject.LobValue comp = new CompositeObject.LobValue();
+            comp.lobId = -4;
+            var logResponse = Controller.GetAvailableClients(comp) as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "404");
+        }
+
+
 
         /// <summary>
         /// NUnit Test for GetAvailableFormularies
@@ -651,7 +670,25 @@ namespace ClinicalPolicyAdminAPIUnitTest
             Assert.AreEqual(response, "200");
         }
 
-       
+        /// <summary>
+        /// NUnit Test for GetAvailableFormularies
+        /// </summary>
+        /// <param name="contents"></param>
+        /// <returns></returns>
+        [Test]
+        public void FailureForGetAvailableFormularies()
+        {
+            CompositeObject.SelectedFormularies comp = null;
+
+            var logResponse = Controller.GetAvailableFormularies(comp) as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "404");
+        }
+
+
 
         /// <summary>
         /// NUnit Test for SelectedFormularies
@@ -663,7 +700,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
         {
             CompositeObject.SelectedFormularies comp = new CompositeObject.SelectedFormularies();
             comp.planYear = 2021;
-            comp.lobId = 4;
+            comp.lobId = 3;
 
             var logResponse = Controller.SelectedFormularies(comp) as IActionResult;
             Assert.IsNotNull(logResponse);
@@ -673,7 +710,25 @@ namespace ClinicalPolicyAdminAPIUnitTest
             Assert.AreEqual(response, "200");
         }
 
-   
+        /// <summary>
+        /// NUnit Test for SelectedFormularies
+        /// </summary>
+        /// <param name="contents"></param>
+        /// <returns></returns>
+        [Test]
+        public void FailureForSelectedFormularies()
+        {
+            CompositeObject.SelectedFormularies comp = null;
+
+            var logResponse = Controller.SelectedFormularies(comp) as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "404");
+        }
+
+
 
         /// <summary>
         /// NUnit Test for SaveFormularyMapping
@@ -727,6 +782,31 @@ namespace ClinicalPolicyAdminAPIUnitTest
             Assert.AreEqual(response, "404");
         }
 
+
+        /// <summary>
+        /// NUnit Test for SaveFormularyMapping
+        /// </summary>
+        /// <param name="contents"></param>
+        /// <returns></returns>
+        [Test]
+        public void MissingValueForSaveFormularyMapping()
+        {
+            Collection<SaveFormularyMappingDto> formularyMappingDto = new Collection<SaveFormularyMappingDto>();
+            SaveFormularyMappingDto mappingDto = null;
+           // mappingDto.PlanYear = 2020;
+            //mappingDto.FormularyId = "2016AHCA";
+            //mappingDto.FormularyName = "FL AHCA";
+            //mappingDto.UserId = "SIT4034";
+
+            formularyMappingDto.Add(mappingDto);
+
+            var logResponse = Controller.SaveFormularyMapping(formularyMappingDto) as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "404");
+        }
         /// <summary>
         /// NUnit Test for SavePolicyOwner
         /// </summary>
@@ -941,6 +1021,22 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
             Assert.AreEqual(response, "200");
+        }
+
+        [Test]
+        public void MissingValueForSaveRejectCodes()
+        {
+            Collection<PolicyRejectCodeDto> rejectCodeDtoCollection = new Collection<PolicyRejectCodeDto>();
+            PolicyRejectCodeDto policyReject = null;
+
+            rejectCodeDtoCollection.Add(policyReject);
+
+            var logResponse = Controller.SaveRejectCodes(rejectCodeDtoCollection) as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "404");
         }
 
         /// <summary>
@@ -1268,14 +1364,29 @@ namespace ClinicalPolicyAdminAPIUnitTest
             lookback1.SubCategoryId = 96;
             lookback1.SubCategoryName = "TEST";
             lookback1.UpdatedBy = "SIT4034";
-            lookback1.ActionType = Constants.ActionType.None;
-            
+            lookback1.ActionType = Constants.ActionType.I;
+            parmeter.Add(lookback1);
             var logResponse = Controller.SaveSubCategory(parmeter) as IActionResult;
             Assert.IsNotNull(logResponse);
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
             Assert.AreEqual(response, "200");
+
+        }
+
+        [Test]
+        public void MissingValueForsubCategory()
+        {
+            Collection<SubCategoryDto> parmeter = new Collection<SubCategoryDto>();
+            SubCategoryDto lookback1 = null;
+            parmeter.Add(lookback1);
+            var logResponse = Controller.SaveSubCategory(parmeter) as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "404");
 
         }
 
@@ -1315,14 +1426,29 @@ namespace ClinicalPolicyAdminAPIUnitTest
             lookback1.TherapeuticCategoryId = 96;
             lookback1.TherapeuticCategoryName = "TEST";
             lookback1.UpdatedBy = "SIT4034";
-            lookback1.ActionType = Constants.ActionType.None;
-
+            lookback1.ActionType = Constants.ActionType.I;
+            parmeter.Add(lookback1);
             var logResponse = Controller.SaveTherapeuticCategory(parmeter) as IActionResult;
             Assert.IsNotNull(logResponse);
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
             Assert.AreEqual(response, "200");
+
+        }
+
+        [Test]
+        public void MissingValueFortheraputicCategory()
+        {
+            Collection<TherapeuticCategoryDto> parmeter = new Collection<TherapeuticCategoryDto>();
+            TherapeuticCategoryDto lookback1 = null;
+            parmeter.Add(lookback1);
+            var logResponse = Controller.SaveTherapeuticCategory(parmeter) as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "404");
 
         }
 
