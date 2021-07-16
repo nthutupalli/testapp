@@ -9,6 +9,7 @@ using Common.Utility;
 using Common;
 using System.Linq;
 using Microsoft.Extensions.Configuration;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Server.DataAccessObjects
 {
@@ -579,34 +580,7 @@ namespace Server.DataAccessObjects
             return ruleConceptCollection;
         }
 
-        /// <summary>
-        /// Revamp Rule Concept
-        /// </summary>
-        /// <param name="dataTable"></param>
-        /// <returns></returns>
-        private List<RuleConceptDto> CreateRevampRuleConceptCollection(DataTable dataTable)
-        {
-            var ruleConceptCollection = new List<RuleConceptDto>();
-            if (dataTable != null && dataTable.Rows.Count > 0)
-            {
-                foreach (DataRow dataRow in dataTable.Rows)
-                {
-                    var ruleConceptDto = new RuleConceptDto
-                    {
-                        ConceptId = Convert.ToInt16(dataRow["ConceptId"]),
-                        ConceptName = Convert.ToString(dataRow["ConceptName"]),
-                        ConceptType = Convert.ToString(dataRow["ConceptType"]),
-                        DateType = Convert.ToString(dataRow["DateType"]),
-                        AnchorDate = Convert.ToString(dataRow["AnchorDate"])
-                    };
-
-                    ruleConceptCollection.Add(ruleConceptDto);
-                }
-            }
-            //ruleConceptCollection.RemoveAt(ruleConceptCollection.Count - 1);
-            //ruleConceptCollection.RemoveAt(ruleConceptCollection.Count - 1);
-            return ruleConceptCollection;
-        }
+   
 
         /// <summary>
         /// Policy Type Default
@@ -633,31 +607,6 @@ namespace Server.DataAccessObjects
 
             return policyDefaultCollection;
         }
-
-        /// <summary>
-        /// Create Claim Code Type Collection
-        /// </summary>
-        /// <param name="dataTable"></param>
-        /// <returns></returns>
-        //private List<PolicyClaimCodeDto> CreateClaimCodeTypeCollection(DataTable dataTable)
-        //{
-        //    var claimCodeTypeCollection = new List<PolicyClaimCodeDto>();
-        //    if (dataTable != null && dataTable.Rows.Count > 0)
-        //    {
-        //        foreach (DataRow dataRow in dataTable.Rows)
-        //        {
-        //            var claimCodeDto = new PolicyClaimCodeDto
-        //            {
-        //                ClaimCodeId = Convert.ToInt32(dataRow["CodeTypeId"]),
-        //                ClaimCodeType = Convert.ToString(dataRow["CodeType"]),
-        //            };
-
-        //            claimCodeTypeCollection.Add(claimCodeDto);
-        //        }
-        //    }
-
-        //    return claimCodeTypeCollection;
-        //}
 
         private List<RevisionTypeDto> CreateRevisionTypeCollection(DataTable dataTable)
         {

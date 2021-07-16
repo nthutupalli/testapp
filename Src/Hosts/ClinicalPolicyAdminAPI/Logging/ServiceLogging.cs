@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Configuration;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
 using System.Net.Http;
@@ -14,6 +15,7 @@ using static ClinicalPolicyAPI.Logging.EnterpriseLogRequest;
 
 namespace ClinicalPolicyAPI.Logging
 {
+    [ExcludeFromCodeCoverage]
     public class ServiceLogging
     {
         private readonly IConfiguration _config;

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Diagnostics.CodeAnalysis;
 using System.Net;
 using VaultSharp;
 using VaultSharp.V1.AuthMethods;
@@ -9,6 +10,7 @@ using VaultSharp.V1.AuthMethods.Token;
 
 namespace Server.VaultManager
 {
+    [ExcludeFromCodeCoverage]
     public class VaultConfigurationManager
     {
 

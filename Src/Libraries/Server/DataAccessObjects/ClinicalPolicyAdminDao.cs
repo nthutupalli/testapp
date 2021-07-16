@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
 namespace Server.DataAccessObjects
@@ -344,7 +345,7 @@ namespace Server.DataAccessObjects
                 CustomSqlHelper.ExecuteNonQuery(ConnectionString, "iRx_SaveRuleLookBackPeriodDetails", parameters);
             }
         }
-
+        
         private static Collection<PolicyLobDto> CreatePolicyLobDto(DataTable dataTable)
         {
             var policyLobCollection = new Collection<PolicyLobDto>();
@@ -469,7 +470,7 @@ namespace Server.DataAccessObjects
             }
         }
 
-
+        
         public  void SaveMappedRejectCodeDetails(Collection<PolicyRejectCodeDto> policyRejectCodeCollection, Int16 policyTypeId)
         {
             if (policyRejectCodeCollection == null)
@@ -597,123 +598,7 @@ namespace Server.DataAccessObjects
             CustomSqlHelper.ExecuteNonQuery(ConnectionString, "iRx_SavePolicyTemplate", parameters);
         }
 
-        //public  DataTable GetBatchUploadFileDetails(string fileStatus, int policyTypeId)
-        //{
-        //    var searchResults = new DataSet();
-        //    DataTable dtdbFileDetails = new DataTable();
-        //    var parameters = new[]
-        //            {
-        //                new SqlParameter("@FileStatus",fileStatus),
-        //                new SqlParameter("@PolicyTypeId",policyTypeId),
-        //            };
-        //    CustomSqlHelper.FillDataSet(
-        //       ConnectionString, 120, "iRx_GetBatchUploadFileDetails", searchResults, parameters);
-        //    dtdbFileDetails = searchResults.Tables[0];
-        //    return dtdbFileDetails;
-        //}
-
-        //public  DataTable GetBatchArchiveFileStatus(string fileStatus, int policyTypeId)
-        //{
-        //    var searchResults = new DataSet();
-        //    DataTable dtdbFileDetails = new DataTable();
-        //    var parameters = new[]
-        //    {
-        //        new SqlParameter("@FileStatus",fileStatus),
-        //        new SqlParameter("@PolicyTypeId",policyTypeId),
-        //    };
-        //    CustomSqlHelper.FillDataSet(
-        //        ConnectionString, 120, "iRx_GetBatchArchiveFileStatus", searchResults, parameters);
-        //    dtdbFileDetails = searchResults.Tables[0];
-        //    return dtdbFileDetails;
-        //}
-
-        //public  void SaveBatchUploadFileStatusDetails(BatchUploadFileDetailsDto BatchFileUploadDto)
-        //{
-        //    if (BatchFileUploadDto == null)
-        //        throw new ArgumentNullException("BatchFileUploadDto");
-
-
-        //    var parameters = new[]
-        //            {
-        //                new SqlParameter(
-        //                                        "@FileName",BatchFileUploadDto.FileName),
-        //                                         new SqlParameter(
-        //                                        "@FTPPathName",BatchFileUploadDto.FTPPathName),
-        //                                         new SqlParameter(
-        //                                        "@PolicyTypeId",BatchFileUploadDto.PolicyTypeId),
-        //                                         new SqlParameter(
-        //                                        "@FileStatus",BatchFileUploadDto.FileStatus),
-        //                                         new SqlParameter(
-        //                                        "@Action",BatchFileUploadDto.Action),
-        //                                         new SqlParameter(
-        //                                        "@ErrorDescription",BatchFileUploadDto.ErrorDescription),
-        //                                          new SqlParameter(
-        //                                        "@Active",BatchFileUploadDto.Active),
-        //                                          new SqlParameter(
-        //                                        "@UploadedBy",BatchFileUploadDto.UploadedBy)
-
-        //            };
-
-        //    CustomSqlHelper.ExecuteNonQuery(ConnectionString, "iRx_InsertBatchUploadFileDetails", parameters);
-
-        //}
-
-        //public  void SaveBatchArchiveFileStatusDetails(BatchUploadFileDetailsDto BatchFileUploadDto)
-        //{
-        //    if (BatchFileUploadDto == null)
-        //        throw new ArgumentNullException("BatchFileUploadDto");
-
-
-        //    var parameters = new[]
-        //    {
-        //        new SqlParameter(
-        //            "@FileName",BatchFileUploadDto.FileName),
-        //        new SqlParameter(
-        //            "@FTPPathName",BatchFileUploadDto.FTPPathName),
-        //        new SqlParameter(
-        //            "@PolicyTypeId",BatchFileUploadDto.PolicyTypeId),
-        //        new SqlParameter(
-        //            "@FileStatus",BatchFileUploadDto.FileStatus),
-        //        new SqlParameter(
-        //            "@Action",BatchFileUploadDto.Action),
-        //        new SqlParameter(
-        //            "@ErrorDescription",BatchFileUploadDto.ErrorDescription),
-        //        new SqlParameter(
-        //            "@Active",BatchFileUploadDto.Active),
-        //        new SqlParameter(
-        //            "@UploadedBy",BatchFileUploadDto.UploadedBy)
-
-        //    };
-
-        //    CustomSqlHelper.ExecuteNonQuery(ConnectionString, "iRx_InsertBatchArchiveFileDetails", parameters);
-
-        //}
-
-
-        //public  void UpdateFileStatusOnApproveOrReject(int fileId, string status, string actionBy)
-        //{
-        //    var parameter = new[]
-        //                    {
-        //                        new SqlParameter("@FileId", fileId),
-        //                        new SqlParameter("@FileStatus", status) ,
-        //                        new SqlParameter("@ActionBy",actionBy)
-        //                    };
-
-        //    CustomSqlHelper.ExecuteNonQuery(ConnectionString, "iRx_UpdateFileStatusOnApproveOrReject", parameter);
-        //}
-
-        //public  void BtachArchiveUpdateFileStatusOnApproveOrReject(int fileId, string status, string actionBy, string action)
-        //{
-        //    var parameter = new[]
-        //    {
-        //        new SqlParameter("@FileId", fileId),
-        //        new SqlParameter("@FileStatus", status) ,
-        //        new SqlParameter("@ActionBy",actionBy),
-        //        new SqlParameter("@Action",action)
-        //    };
-
-        //    CustomSqlHelper.ExecuteNonQuery(ConnectionString, "iRx_BatchArchiveFile_ApproveOrReject", parameter);
-        //}
+       
 
         public List<LookupDataDto> GetLookUpList(string functionCode)
         {
