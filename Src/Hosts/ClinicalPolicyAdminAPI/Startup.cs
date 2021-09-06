@@ -10,6 +10,7 @@ namespace ClinicalPolicyAdminAPI
     [ExcludeFromCodeCoverage]
     public class Startup
     {
+        private readonly string defaultAccessPolicy = "defaultAccessPolicy";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -23,6 +24,21 @@ namespace ClinicalPolicyAdminAPI
             services.AddControllers().AddXmlDataContractSerializerFormatters();
             services.AddSwaggerDocument();
             //services.AddControllers().AddNewtonsoftJson();
+            services.AddCors(options =>
+            {
+                options.AddPolicy(defaultAccessPolicy,
+                    builder =>
+                    {
+                        builder.WithOrigins("http://localhost:8082",
+                            "http://10.232.28.52:8082",
+                            "https://localhost:44300/"
+                            )
+                        .AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .SetIsOriginAllowedToAllowWildcardSubdomains();
+                    }
+                    );
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -35,16 +51,18 @@ namespace ClinicalPolicyAdminAPI
             }
             app.Use(async (context, next) =>
             {
-                context.Response.Headers.Add("Strict-Transport-Security", "max-age=31536000");
-                context.Response.Headers.Add("X-XSS-Protection", "1; mode=block");
-                context.Response.Headers.Add("X-Content-Type-Options", "nosniff");
-                context.Response.Headers.Add("Content-Security-Policy", "default-src 'self'");
+                context.Response.Headers.Add("Access-Control-Allow-Headers", "origin, content-type, accept, x-requested-with");
+                context.Response.Headers.Add("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+                context.Response.Headers.Add("Access-Control-Allow-Origin", "*");
+                context.Response.Headers.Add("Access-Control-Max-Age", "3600");
                 await next();
             });
            
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(defaultAccessPolicy);
 
             app.UseAuthorization();
 
