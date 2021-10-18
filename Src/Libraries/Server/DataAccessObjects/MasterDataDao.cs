@@ -51,6 +51,8 @@ namespace Server.DataAccessObjects
                 masterDataDictionary.Add("RevisionType", CreateRevisionTypeCollection(masterData.Tables[10]));
                 masterDataDictionary.Add("UpdateType", CreateUpdateTypeCollection(masterData.Tables[11]));
                 masterDataDictionary.Add("CPLob", CreateCPLobDetailsDto(masterData.Tables[12]));
+                masterDataDictionary.Add("PolicyStatus", CreatePolicyStatusDetailsDto(masterData.Tables[13]));
+
             }
 
             return masterDataDictionary;
@@ -358,6 +360,27 @@ namespace Server.DataAccessObjects
             }
 
             return cpPolicyDetailsLobCollection;
+        }
+
+        private List<PolicyStatusDto> CreatePolicyStatusDetailsDto(DataTable dataTable)
+        {
+            var PolicyStatusLobCollection = new List<PolicyStatusDto>();
+            if (dataTable != null && dataTable.Rows.Count > 0)
+            {
+                foreach (DataRow dataRow in dataTable.Rows)
+                {
+                    var policyLobDto = new PolicyStatusDto
+                    {
+                        PolicyStatusId = Convert.ToInt16(dataRow["PolicyStatusId"]),
+                        StatusCode = Convert.ToInt16(dataRow["StatusCode"]),
+                        StatusName = Convert.ToString(dataRow["StatusName"]),
+                    };
+
+                    PolicyStatusLobCollection.Add(policyLobDto);
+                }
+            }
+
+            return PolicyStatusLobCollection;
         }
 
         /// <summary>
