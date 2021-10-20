@@ -74,7 +74,6 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
             Assert.AreEqual(response, "200");
-
         }
         [Test]
         public void InvalidPolicyOwnerID_CheckPolicyOwnerMappping()
