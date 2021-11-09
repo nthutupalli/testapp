@@ -34,6 +34,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
         {
             var logResponse = Controller.HeartBeat();
             Assert.AreEqual(logResponse, "Ok");
+            
         }
 
         [Test]
