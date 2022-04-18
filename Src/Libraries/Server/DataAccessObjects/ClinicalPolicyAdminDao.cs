@@ -40,7 +40,8 @@ namespace Server.DataAccessObjects
                                                  new SqlParameter(
                                                 "@ActionType",policyLobDto.ActionType.ToString()),
                                                   new SqlParameter(
-                                                "@IsActive",policyLobDto.IsActive)
+                                                "@IsActive",policyLobDto.IsActive),
+                                                   new SqlParameter("@LobSubCategory",policyLobDto.LobSubCategory=="0"?false:true)
                     };
 
                 CustomSqlHelper.ExecuteNonQuery(ConnectionString, "iRx_SaveLobDetails", parameters);

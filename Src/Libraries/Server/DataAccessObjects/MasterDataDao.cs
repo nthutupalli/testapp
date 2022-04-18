@@ -327,6 +327,7 @@ namespace Server.DataAccessObjects
                         LobName = Convert.ToString(dataRow["LobName"]),
                         IsActive = Convert.ToBoolean(dataRow["IsActive"]),
                         Status = Convert.ToString(dataRow["Status"]),
+                        LobSubCategory=dataRow["LobType"]!=DBNull.Value? !Convert.ToBoolean(dataRow["LobType"]) ? "Primary" : "Secondary":"",
                     };
 
                     policyLobCollection.Add(policyLobDto);
