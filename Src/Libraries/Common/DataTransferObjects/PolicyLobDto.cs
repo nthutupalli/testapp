@@ -61,6 +61,10 @@ namespace Common.DataTransferObjects
 
         [DataMember]
         public string LobSubCategory { get; set; }
+
+
+        [DataMember]
+        public string PrimaryLobSubCategory { get; set; }
     }
 }
 

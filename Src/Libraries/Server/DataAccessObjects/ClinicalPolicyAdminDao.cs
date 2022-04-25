@@ -41,9 +41,10 @@ namespace Server.DataAccessObjects
                                                 "@ActionType",policyLobDto.ActionType.ToString()),
                                                   new SqlParameter(
                                                 "@IsActive",policyLobDto.IsActive),
-                                                   new SqlParameter("@LobSubCategory",policyLobDto.LobSubCategory=="0"?false:true)
+                                                 new SqlParameter("@LobSubCategory",policyLobDto.LobSubCategory=="0"?false:true)                                                 
                     };
-
+                if (policyLobDto.PrimaryLobSubCategory != null)
+                    parameters = new[] { new SqlParameter("@PrimaryLobSubCategory", policyLobDto.PrimaryLobSubCategory) };
                 CustomSqlHelper.ExecuteNonQuery(ConnectionString, "iRx_SaveLobDetails", parameters);
             }
            
