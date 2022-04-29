@@ -142,6 +142,31 @@ namespace ClinicalPolicyAdminAPI.Controllers
         }
 
         /// <summary>
+        /// PrimaryLobList
+        /// </summary>
+        /// <returns></returns>
+        [Route("PrimarySubCategoryLobList")]
+        [HttpGet]
+        public IActionResult PrimarySubCategoryLobList()
+        {
+            ResponseMessageDto objMessage = new ResponseMessageDto();
+
+            try
+            {
+                //List<PrimaryLobSubCategoryDto>() primaryLob = new List<PrimaryLobSubCategoryDto>();
+                var primaryLob = new ClinicalPolicyAdminDao(_config).PrimaryLobSubCategoryList();
+                return Ok(primaryLob);
+            }
+            catch (Exception ex)
+            {
+
+                BaseController.log(ex.Message, Constants.ErrorMessage.LogEventTypeError, Constants.ErrorMessage.LogSeverityLow, _config);
+                objMessage.Code = StatusCodes.Status500InternalServerError;
+                objMessage.Message = ex.Message;
+                return NotFound(objMessage);
+            }
+        }
+        /// <summary>
         ///  Get Customers Data For LOB mapping details
         /// </summary>
         /// <param name="lobId"></param>

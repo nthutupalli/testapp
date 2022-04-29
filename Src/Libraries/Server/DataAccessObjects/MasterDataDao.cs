@@ -52,11 +52,12 @@ namespace Server.DataAccessObjects
                 masterDataDictionary.Add("UpdateType", CreateUpdateTypeCollection(masterData.Tables[11]));
                 masterDataDictionary.Add("CPLob", CreateCPLobDetailsDto(masterData.Tables[12]));
                 masterDataDictionary.Add("PolicyStatus", CreatePolicyStatusDetailsDto(masterData.Tables[13]));
-
+              //  masterDataDictionary.Add("PrimaryLobSubCategory", CreatePrimaryLobStatusDto(masterData.Tables[14]));
             }
 
             return masterDataDictionary;
         }
+
 
         public Dictionary<string, object> LobList()
         {
@@ -74,6 +75,8 @@ namespace Server.DataAccessObjects
 
             return masterDataDictionary;
         }
+
+        
 
         public Dictionary<string, object> PolicyType()
         {
@@ -328,6 +331,7 @@ namespace Server.DataAccessObjects
                         IsActive = Convert.ToBoolean(dataRow["IsActive"]),
                         Status = Convert.ToString(dataRow["Status"]),
                         LobSubCategory=dataRow["LobType"]!=DBNull.Value? !Convert.ToBoolean(dataRow["LobType"]) ? "Primary" : "Secondary":"",
+                        PrimaryLobSubCategory=Convert.ToString(dataRow["PrimaryLobSubCategory"])
                     };
 
                     policyLobCollection.Add(policyLobDto);
@@ -337,6 +341,7 @@ namespace Server.DataAccessObjects
             return policyLobCollection;
         }
 
+       
         /// <summary>
         /// CP Policy LOB Details
         /// </summary>
