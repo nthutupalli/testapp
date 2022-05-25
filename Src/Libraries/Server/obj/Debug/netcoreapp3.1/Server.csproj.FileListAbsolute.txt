@@ -1,0 +1,12 @@
+C:\Users\NST5884\source\repos\ClinicalPolicyAdminAPI_May6th\Src\Libraries\Server\bin\Debug\netcoreapp3.1\Server.deps.json
+C:\Users\NST5884\source\repos\ClinicalPolicyAdminAPI_May6th\Src\Libraries\Server\bin\Debug\netcoreapp3.1\Server.dll
+C:\Users\NST5884\source\repos\ClinicalPolicyAdminAPI_May6th\Src\Libraries\Server\bin\Debug\netcoreapp3.1\Server.pdb
+C:\Users\NST5884\source\repos\ClinicalPolicyAdminAPI_May6th\Src\Libraries\Server\bin\Debug\netcoreapp3.1\Common.dll
+C:\Users\NST5884\source\repos\ClinicalPolicyAdminAPI_May6th\Src\Libraries\Server\bin\Debug\netcoreapp3.1\Common.pdb
+C:\Users\NST5884\source\repos\ClinicalPolicyAdminAPI_May6th\Src\Libraries\Server\obj\Debug\netcoreapp3.1\Server.csprojAssemblyReference.cache
+C:\Users\NST5884\source\repos\ClinicalPolicyAdminAPI_May6th\Src\Libraries\Server\obj\Debug\netcoreapp3.1\Server.AssemblyInfoInputs.cache
+C:\Users\NST5884\source\repos\ClinicalPolicyAdminAPI_May6th\Src\Libraries\Server\obj\Debug\netcoreapp3.1\Server.AssemblyInfo.cs
+C:\Users\NST5884\source\repos\ClinicalPolicyAdminAPI_May6th\Src\Libraries\Server\obj\Debug\netcoreapp3.1\Server.csproj.CoreCompileInputs.cache
+C:\Users\NST5884\source\repos\ClinicalPolicyAdminAPI_May6th\Src\Libraries\Server\obj\Debug\netcoreapp3.1\Server.csproj.CopyComplete
+C:\Users\NST5884\source\repos\ClinicalPolicyAdminAPI_May6th\Src\Libraries\Server\obj\Debug\netcoreapp3.1\Server.dll
+C:\Users\NST5884\source\repos\ClinicalPolicyAdminAPI_May6th\Src\Libraries\Server\obj\Debug\netcoreapp3.1\Server.pdb

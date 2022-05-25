@@ -52,7 +52,7 @@ namespace Server.DataAccessObjects
                 masterDataDictionary.Add("UpdateType", CreateUpdateTypeCollection(masterData.Tables[11]));
                 masterDataDictionary.Add("CPLob", CreateCPLobDetailsDto(masterData.Tables[12]));
                 masterDataDictionary.Add("PolicyStatus", CreatePolicyStatusDetailsDto(masterData.Tables[13]));
-              //  masterDataDictionary.Add("PrimaryLobSubCategory", CreatePrimaryLobStatusDto(masterData.Tables[14]));
+               masterDataDictionary.Add("PrimaryLobSubCategory", CreatePrimaryLobStatusDto(masterData.Tables[14]));
             }
 
             return masterDataDictionary;
@@ -684,6 +684,31 @@ namespace Server.DataAccessObjects
             }
 
             return updateTypeCollection;
+        }
+
+        /// <summary>
+        /// CreateUpdateTypeCollection
+        /// </summary>
+        /// <param name="dataTable"></param>
+        /// <returns></returns>
+        private List<PrimaryLobSubCategoryDto> CreatePrimaryLobStatusDto(DataTable dataTable)
+        {
+            var primaryLobSubCategoryDto = new List<PrimaryLobSubCategoryDto>();
+            if (dataTable != null && dataTable.Rows.Count > 0)
+            {
+                foreach (DataRow dataRow in dataTable.Rows)
+                {
+                    var primaryLobSubCatDto = new PrimaryLobSubCategoryDto
+                    {
+                        PrimaryLobId = Convert.ToInt16(dataRow["PrimaryLobId"]),
+                        PrimaryLobName = Convert.ToString(dataRow["PrimaryLobName"]),
+                    };
+
+                    primaryLobSubCategoryDto.Add(primaryLobSubCatDto);
+                }
+            }
+
+            return primaryLobSubCategoryDto;
         }
     }
 }
