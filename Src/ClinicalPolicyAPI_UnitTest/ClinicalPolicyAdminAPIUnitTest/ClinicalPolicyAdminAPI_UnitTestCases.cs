@@ -1430,6 +1430,31 @@ namespace ClinicalPolicyAdminAPIUnitTest
             Assert.AreEqual(response, "404");
         }
 
+         [Test]
+        public void SuccessPrimaryLobSubCategoryList()
+        {
+      
+        var logResponse = Controller.PrimarySubCategoryLobList() as IActionResult;
+        Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+        var jsonObj = JObject.Parse(actualJson);
+        var response = jsonObj["StatusCode"].ToString();
+        Assert.AreEqual(response, "200");
+        }
+
+         [Test]
+        public void FailureForPrimaryLobSubCategoryList()
+        {
+            
+            var logResponse = Controller.PrimarySubCategoryLobList() as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "404");
+        }
+
+
 
 
     }
