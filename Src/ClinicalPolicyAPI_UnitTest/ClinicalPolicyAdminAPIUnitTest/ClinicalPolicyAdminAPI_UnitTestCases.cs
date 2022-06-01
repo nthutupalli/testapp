@@ -1404,6 +1404,31 @@ namespace ClinicalPolicyAdminAPIUnitTest
             Assert.AreEqual(response, "404");
 
         }
+         [Test]
+         public void SuccessForGetCustomers()
+        {
+            CompositeObject.LobValue comp = new CompositeObject.LobValue();
+            comp.lobId = 4;
+            var logResponse = Controller.GetCustomers(comp) as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "200");
+        }
+
+        [Test]
+        public void FailureForGetCustomers()
+        {
+            CompositeObject.LobValue comp = new CompositeObject.LobValue();
+            comp.lobId = -4;
+            var logResponse = Controller.GetCustomers(comp) as IActionResult;
+            Assert.IsNotNull(logResponse);
+            var actualJson = JsonConvert.SerializeObject(logResponse);
+            var jsonObj = JObject.Parse(actualJson);
+            var response = jsonObj["StatusCode"].ToString();
+            Assert.AreEqual(response, "404");
+        }
 
 
 
