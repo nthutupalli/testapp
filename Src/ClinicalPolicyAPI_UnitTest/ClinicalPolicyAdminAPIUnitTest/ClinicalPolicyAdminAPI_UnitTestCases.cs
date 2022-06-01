@@ -1442,7 +1442,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
         Assert.AreEqual(response, "200");
         }
 
-         [Test]
+        /* [Test]
         public void FailureForPrimaryLobSubCategoryList()
         {
             
@@ -1452,7 +1452,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
             Assert.AreEqual(response, "404");
-        }
+        }*/
 
 
 
