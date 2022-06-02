@@ -9176,23 +9176,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\nrb4063\\.nuget\\packages\\": {},
+    "C:\\Users\\NST5884\\.nuget\\packages\\": {},
     "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\nrb4063\\source\\repos\\ClinicalPolicyAdminAPI\\Src\\ClinicalPolicyAPI_UnitTest\\ClinicalPolicyAdminAPIUnitTest\\ClinicalPolicyAdminAPIUnitTest.csproj",
+      "projectUniqueName": "C:\\Users\\NST5884\\source\\repos\\ClinicalPolicyAdminAPI_May6th\\Src\\ClinicalPolicyAPI_UnitTest\\ClinicalPolicyAdminAPIUnitTest\\ClinicalPolicyAdminAPIUnitTest.csproj",
       "projectName": "ClinicalPolicyAdminAPIUnitTest",
-      "projectPath": "C:\\Users\\nrb4063\\source\\repos\\ClinicalPolicyAdminAPI\\Src\\ClinicalPolicyAPI_UnitTest\\ClinicalPolicyAdminAPIUnitTest\\ClinicalPolicyAdminAPIUnitTest.csproj",
-      "packagesPath": "C:\\Users\\nrb4063\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\nrb4063\\source\\repos\\ClinicalPolicyAdminAPI\\Src\\ClinicalPolicyAPI_UnitTest\\ClinicalPolicyAdminAPIUnitTest\\obj\\",
+      "projectPath": "C:\\Users\\NST5884\\source\\repos\\ClinicalPolicyAdminAPI_May6th\\Src\\ClinicalPolicyAPI_UnitTest\\ClinicalPolicyAdminAPIUnitTest\\ClinicalPolicyAdminAPIUnitTest.csproj",
+      "packagesPath": "C:\\Users\\NST5884\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\NST5884\\source\\repos\\ClinicalPolicyAdminAPI_May6th\\Src\\ClinicalPolicyAPI_UnitTest\\ClinicalPolicyAdminAPIUnitTest\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\nrb4063\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\NST5884\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
@@ -9202,16 +9202,16 @@
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {},
-        "https://humana.jfrog.io/humana/api/nuget/e3_glapi-nuget": {}
+        "https://humana.jfrog.io/artifactory/pharmacy-benefit-management-npm-virtual": {}
       },
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\nrb4063\\source\\repos\\ClinicalPolicyAdminAPI\\Src\\Hosts\\ClinicalPolicyAdminAPI\\ClinicalPolicyAdminAPI.csproj": {
-              "projectPath": "C:\\Users\\nrb4063\\source\\repos\\ClinicalPolicyAdminAPI\\Src\\Hosts\\ClinicalPolicyAdminAPI\\ClinicalPolicyAdminAPI.csproj"
+            "C:\\Users\\NST5884\\source\\repos\\ClinicalPolicyAdminAPI_May6th\\Src\\Hosts\\ClinicalPolicyAdminAPI\\ClinicalPolicyAdminAPI.csproj": {
+              "projectPath": "C:\\Users\\NST5884\\source\\repos\\ClinicalPolicyAdminAPI_May6th\\Src\\Hosts\\ClinicalPolicyAdminAPI\\ClinicalPolicyAdminAPI.csproj"
             },
-            "C:\\Users\\nrb4063\\source\\repos\\ClinicalPolicyAdminAPI\\Src\\Libraries\\Common\\Common.csproj": {
-              "projectPath": "C:\\Users\\nrb4063\\source\\repos\\ClinicalPolicyAdminAPI\\Src\\Libraries\\Common\\Common.csproj"
+            "C:\\Users\\NST5884\\source\\repos\\ClinicalPolicyAdminAPI_May6th\\Src\\Libraries\\Common\\Common.csproj": {
+              "projectPath": "C:\\Users\\NST5884\\source\\repos\\ClinicalPolicyAdminAPI_May6th\\Src\\Libraries\\Common\\Common.csproj"
             }
           }
         }
@@ -9274,7 +9274,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.419\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -40,9 +40,12 @@ namespace Server.DataAccessObjects
                                                  new SqlParameter(
                                                 "@ActionType",policyLobDto.ActionType.ToString()),
                                                   new SqlParameter(
-                                                "@IsActive",policyLobDto.IsActive)
+                                                "@IsActive",policyLobDto.IsActive),
+                                                 new SqlParameter("@LobSubCategory",policyLobDto.LobSubCategory=="0"?false:true),
+                                                 new SqlParameter("@PrimaryLobSubCategory", policyLobDto.PrimaryLobSubCategory != null?policyLobDto.PrimaryLobSubCategory:string.Empty)
                     };
-
+                //if (policyLobDto.PrimaryLobSubCategory != null)
+                //    parameters =  new SqlParameter("@PrimaryLobSubCategory", policyLobDto.PrimaryLobSubCategory) ;
                 CustomSqlHelper.ExecuteNonQuery(ConnectionString, "iRx_SaveLobDetails", parameters);
             }
            
@@ -446,6 +449,52 @@ namespace Server.DataAccessObjects
             return policyRejectCodeCollection;
         }
 
+        public List<PrimaryLobSubCategoryDto> PrimaryLobSubCategoryList()
+        {
+            var masterData = new DataSet();
+            CustomSqlHelper.FillDataSet(ConnectionString, 120, "iRx_GetPrimaryLobSubCategoryDetails", masterData, new SqlParameter[0]);
+            var primaryLobSubCategoryCollection = new List<PrimaryLobSubCategoryDto>();
+            if (masterData.Tables.Count > 0)
+            {
+
+                
+                if (masterData != null && masterData.Tables.Count > 0)
+                {
+                    foreach (DataRow dataRow in masterData.Tables[0].Rows)
+                    {
+                        var primaryLobSubCategory = new PrimaryLobSubCategoryDto
+                        {
+                            PrimaryLobId = Convert.ToInt16(dataRow["PrimaryLobId"]),
+                            PrimaryLobName = Convert.ToString(dataRow["PrimaryLobName"])
+                        };
+                        primaryLobSubCategoryCollection.Add(primaryLobSubCategory);
+                    }
+                    
+                }
+                
+            }
+
+            return primaryLobSubCategoryCollection;
+        }
+
+        private List<PrimaryLobSubCategoryDto> CreatePrimaryLobStatusDto(DataTable dataTable)
+        {
+            var primaryLobSubCategoryCollection = new List<PrimaryLobSubCategoryDto>();
+            if (dataTable != null && dataTable.Rows.Count > 0)
+            {
+                foreach (DataRow dataRow in dataTable.Rows)
+                {
+                    var primaryLobSubCategory = new PrimaryLobSubCategoryDto
+                    {
+                        PrimaryLobId = Convert.ToInt16(dataRow["PrimaryLobId"]),
+                        PrimaryLobName = Convert.ToString(dataRow["PrimaryLobName"])
+                    };
+
+                    primaryLobSubCategoryCollection.Add(primaryLobSubCategory);
+                }
+            }
+            return primaryLobSubCategoryCollection;
+        }
         public  void SaveRejectCodesDetails(Collection<PolicyRejectCodeDto> rejectCodeDtoCollection)
         {
             if (rejectCodeDtoCollection == null)
