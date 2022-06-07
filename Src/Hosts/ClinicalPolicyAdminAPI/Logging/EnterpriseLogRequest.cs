@@ -1,10 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
+﻿/*
+Copyright (C) Humana - All Rights Reserved
+Unauthorized copying of this file, via any medium is strictly prohibited
+Proprietary and confidential
+Written by Firstname lastname <email@humana.com>, November 2021
+*/
+/*
+ * Enterprise
+ * Log
+ * Request
+ * Method
+ */
+using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ClinicalPolicyAPI.Logging
 {
@@ -22,7 +30,7 @@ namespace ClinicalPolicyAPI.Logging
 
         public class SourceApplicationInformation
         {
-            public int EAPMId { get; set; }
+            public int EapmId { get; set; }
             public string HostMachineName { get; set; }
             public string HostEnvironmentName { get; set; }
             public string CorrelationId { get; set; }

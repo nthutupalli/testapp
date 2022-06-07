@@ -1,3 +1,10 @@
+/*
+Copyright (C) Humana - All Rights Reserved
+Unauthorized copying of this file, via any medium is strictly prohibited
+Proprietary and confidential
+Written by Firstname lastname <email@humana.com>, November 2021
+*/
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -23,7 +30,6 @@ namespace ClinicalPolicyAdminAPI
         {
             services.AddControllers().AddXmlDataContractSerializerFormatters();
             services.AddSwaggerDocument();
-            //services.AddControllers().AddNewtonsoftJson();
             services.AddCors(options =>
             {
                 options.AddPolicy(defaultAccessPolicy,
@@ -43,7 +49,7 @@ namespace ClinicalPolicyAdminAPI
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         [ExcludeFromCodeCoverage]
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostEnvironment env)
         {
             if (env.IsDevelopment())
             {

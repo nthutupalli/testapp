@@ -1,8 +1,12 @@
-﻿using System;
+﻿/*
+Copyright (C) Humana - All Rights Reserved
+Unauthorized copying of this file, via any medium is strictly prohibited
+Proprietary and confidential
+Written by Firstname lastname <email@humana.com>, November 2021
+*/
+
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ClinicalPolicyAdminAPI.Controllers;
 using Common;
 using Common.DataTransferObjects;
 using Microsoft.AspNetCore.Http;
@@ -375,27 +379,5 @@ namespace ClinicalPolicyAdminAPI.Controllers
             }
         }
 
-
-        /// <summary>
-        /// Get ClaimCodeType Data For Policy
-        /// </summary>
-        /// <returns></returns>
-        //[Route("ClaimCodeTypeList")]
-        //[HttpGet]
-        //public IActionResult ClaimCodeTypeList()
-        //{
-
-        //    try
-        //    {
-        //        var Result = new MasterDataDao(_config).ClaimCodeType();
-        //        return Ok(Result);
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //        BaseController.log(ex.Message, Constants.ErrorMessage.LogEventTypeError, Constants.ErrorMessage.LogSeverityLow, _config);
-        //        return NotFound(StatusCodes.Status500InternalServerError);
-        //    }
-        //}
     }
 }

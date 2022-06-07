@@ -1,32 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
+﻿/*
+Copyright (C) Humana - All Rights Reserved
+Unauthorized copying of this file, via any medium is strictly prohibited
+Proprietary and confidential
+Written by Firstname lastname <email@humana.com>, November 2021
+*/
+
 using System.ComponentModel;
 using System.Runtime.Serialization;
-using System.Text;
+
 
 namespace Common
 {
     public class Constants
     {
 
-        public class ErrorMessage
+        public static class ErrorMessage
         {
             /// <summary>
             ///Enterprise Logging Error Message
             /// </summary>
-            public static string ErrorCode = "Service - Error while connecting to the server";
-            public const string LogEventTypeError = "ERROR";
-            public const string LogSeverityLow = "LOW";
+            public static readonly string ErrorCode = "Service - Error while connecting to the server";
+            public static readonly string LogEventTypeError = "ERROR";
+            public static readonly string LogSeverityLow = "LOW";
         }
-        public class Message
+        public static class Message
         {
             /// <summary>
             ///Enterprise Logging Error Message
             /// </summary>
-            public static string Success = "Success";
-            public static string Failed = "failed";
-            public static string BadRequest = "BadRequest";
-            public static string IdsValues = "Id should contain a positive value.";
+            public static readonly string Success = "Success";
+            public static readonly string Failed = "failed";
+            public static readonly string BadRequest = "BadRequest";
+            public static readonly string IdsValues = "Id should contain a positive value.";
 
 
         }

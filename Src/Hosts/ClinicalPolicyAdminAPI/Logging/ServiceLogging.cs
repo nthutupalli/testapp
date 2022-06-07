@@ -1,4 +1,11 @@
-﻿using Common;
+﻿/*
+Copyright (C) Humana - All Rights Reserved
+Unauthorized copying of this file, via any medium is strictly prohibited
+Proprietary and confidential
+Written by Firstname lastname <email@humana.com>, November 2021
+*/
+
+using Common;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System;
@@ -40,7 +47,7 @@ namespace ClinicalPolicyAPI.Logging
             logEvent.LogMetaData = metaData;
             SourceApplicationInformation sourceInfo = new SourceApplicationInformation
             {
-                EAPMId = Convert.ToInt32(_config.GetValue<int>("EAPM"), CultureInfo.InvariantCulture),
+                EapmId = Convert.ToInt32(_config.GetValue<int>("EAPM"), CultureInfo.InvariantCulture),
                 HostMachineName = Environment.MachineName,
                 HostEnvironmentName = _config.GetValue<string>("Environment").ToString(),
                 CorrelationId = Convert.ToString(Guid.NewGuid(), CultureInfo.InvariantCulture)

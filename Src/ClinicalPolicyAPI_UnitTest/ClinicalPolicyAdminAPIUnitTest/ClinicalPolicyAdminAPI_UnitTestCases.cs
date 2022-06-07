@@ -33,7 +33,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
         public void SuccessForHeartBeat()
         {
             var logResponse = Controller.HeartBeat();
-            Assert.AreEqual(logResponse, "Ok");
+            Assert.AreEqual( "Ok", logResponse);
             
         }
 
@@ -47,7 +47,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "200");
+            Assert.AreEqual( "200", response);
 
         }
         [Test]
@@ -60,7 +60,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "404");
+            Assert.AreEqual( "404", response);
 
         }
 
@@ -74,7 +74,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "200");
+            Assert.AreEqual( "200", response);
         }
         [Test]
         public void InvalidPolicyOwnerID_CheckPolicyOwnerMappping()
@@ -86,7 +86,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "404");
+            Assert.AreEqual( "404", response);
 
         }
 
@@ -101,7 +101,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "200");
+            Assert.AreEqual( "200", response);
 
         }
         [Test]
@@ -114,7 +114,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "404");
+            Assert.AreEqual( "404", response);
 
         }
 
@@ -128,7 +128,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "200");
+            Assert.AreEqual( "200", response);
 
         }
 
@@ -142,7 +142,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "404");
+            Assert.AreEqual( "404", response);
 
         }
         //[Test]
@@ -190,7 +190,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "404");
+            Assert.AreEqual( "404", response);
         }
 
 
@@ -224,7 +224,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "200");
+            Assert.AreEqual( "200", response);
         }
 
         [Test]
@@ -236,7 +236,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "404");
+            Assert.AreEqual( "404", response);
         }
 
         [Test]
@@ -247,7 +247,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "200");
+            Assert.AreEqual( "200", response);
         }
 
         [Test]
@@ -279,7 +279,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "404");
+            Assert.AreEqual( "404", response);
 
         }
 
@@ -319,7 +319,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "200");
+            Assert.AreEqual( "200", response);
 
         }
 
@@ -353,7 +353,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "404");
+            Assert.AreEqual( "404", response);
         }
 
         [Test]
@@ -386,7 +386,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "404");
+            Assert.AreEqual( "404", response);
         }
 
         [Test]
@@ -425,7 +425,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "404");
+            Assert.AreEqual( "404", response);
         }
 
         [Test]
@@ -457,7 +457,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "200");
+            Assert.AreEqual( "200", response);
 
         }
 
@@ -476,7 +476,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "404");
+            Assert.AreEqual( "404", response);
 
         }
 
@@ -492,7 +492,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "404");
+            Assert.AreEqual( "404", response);
         }
 
         [Test]
@@ -525,7 +525,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "404");
+            Assert.AreEqual( "404", response);
         }
 
       
@@ -559,7 +559,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "200");
+            Assert.AreEqual( "200", response);
 
         }
 
@@ -573,7 +573,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "404");
+            Assert.AreEqual( "404", response);
 
         }
 
@@ -606,7 +606,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "404");          
+            Assert.AreEqual( "404", response);          
 
         }
 
@@ -626,7 +626,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "200");
+            Assert.AreEqual( "200", response);
         }
 
         /// <summary>
@@ -645,7 +645,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "404");
+            Assert.AreEqual( "404", response);
         }
 
 
@@ -667,7 +667,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "200");
+            Assert.AreEqual( "200", response);
         }
 
         /// <summary>
@@ -685,7 +685,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "404");
+            Assert.AreEqual( "404", response);
         }
 
 
@@ -707,7 +707,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "200");
+            Assert.AreEqual( "200", response);
         }
 
         /// <summary>
@@ -725,7 +725,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "404");
+            Assert.AreEqual( "404", response);
         }
 
 
@@ -761,7 +761,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "200");
+            Assert.AreEqual( "200", response);
         }
 
         /// <summary>
@@ -779,7 +779,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "404");
+            Assert.AreEqual( "404", response);
         }
 
 
@@ -805,7 +805,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "404");
+            Assert.AreEqual( "404", response);
         }
         /// <summary>
         /// NUnit Test for SavePolicyOwner
@@ -842,7 +842,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "200");
+            Assert.AreEqual( "200", response);
         }
 
         /// <summary>
@@ -860,7 +860,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "404");
+            Assert.AreEqual( "404", response);
         }
 
         /// <summary>
@@ -888,7 +888,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "404");
+            Assert.AreEqual( "404", response);
         }
         /// <summary>
         /// NUnit Test for RuleLookBackPeriodList
@@ -903,7 +903,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "200");
+            Assert.AreEqual( "200", response);
         }
 
         /// <summary>
@@ -919,7 +919,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "200");
+            Assert.AreEqual( "200", response);
         }
 
         /// <summary>
@@ -935,7 +935,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "200");
+            Assert.AreEqual( "200", response);
         }
 
         /// <summary>
@@ -955,7 +955,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "200");
+            Assert.AreEqual( "200", response);
         }
 
         /// <summary>
@@ -975,7 +975,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "404");
+            Assert.AreEqual( "404", response);
         }
 
         /// <summary>
@@ -1020,7 +1020,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "200");
+            Assert.AreEqual( "200", response);
         }
 
         [Test]
@@ -1036,7 +1036,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "404");
+            Assert.AreEqual( "404", response);
         }
 
         /// <summary>
@@ -1053,7 +1053,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "404");
+            Assert.AreEqual( "404", response);
         }
         /// <summary>
         /// NUnit Test for RejectCodeList
@@ -1068,7 +1068,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "200");
+            Assert.AreEqual( "200", response);
         }
         
 
@@ -1084,7 +1084,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "404");
+            Assert.AreEqual( "404", response);
         }
 
         /// <summary>
@@ -1100,7 +1100,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "200");
+            Assert.AreEqual( "200", response);
         }
 
         /// <summary>
@@ -1116,7 +1116,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "200");
+            Assert.AreEqual( "200", response);
         }
 
         /// <summary>
@@ -1132,7 +1132,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "200");
+            Assert.AreEqual( "200", response);
         }
         /// <summary>
         /// NUnit Test for lookuplist
@@ -1149,7 +1149,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            //Assert.AreEqual(response, "200");
+            //Assert.AreEqual( "200", response);
         }
 
         /// <summary>
@@ -1167,7 +1167,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "404");
+            Assert.AreEqual( "404", response);
         }
 
         /// <summary>
@@ -1183,7 +1183,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "200");
+            Assert.AreEqual( "200", response);
         }
 
         /// <summary>
@@ -1199,7 +1199,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "200");
+            Assert.AreEqual( "200", response);
         }
 
         /// <summary>
@@ -1215,7 +1215,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "200");
+            Assert.AreEqual( "200", response);
         }
 
         /// <summary>
@@ -1231,7 +1231,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "200");
+            Assert.AreEqual( "200", response);
         }
 
         /// <summary>
@@ -1247,7 +1247,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "200");
+            Assert.AreEqual( "200", response);
         }
 
         /// <summary>
@@ -1276,7 +1276,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "200");
+            Assert.AreEqual( "200", response);
         }
 
         /// <summary>
@@ -1292,7 +1292,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "200");
+            Assert.AreEqual( "200", response);
         }
 
         [Test]
@@ -1310,7 +1310,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "200");
+            Assert.AreEqual( "200", response);
 
         }
 
@@ -1325,7 +1325,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "404");
+            Assert.AreEqual( "404", response);
 
         }
 
@@ -1339,7 +1339,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "404");
+            Assert.AreEqual( "404", response);
 
         }
 
@@ -1353,7 +1353,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "404");
+            Assert.AreEqual( "404", response);
 
         }
 
@@ -1372,7 +1372,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "200");
+            Assert.AreEqual( "200", response);
 
         }
 
@@ -1387,7 +1387,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "404");
+            Assert.AreEqual( "404", response);
 
         }
 
@@ -1401,7 +1401,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "404");
+            Assert.AreEqual( "404", response);
 
         }
          [Test]
@@ -1451,7 +1451,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
             var actualJson = JsonConvert.SerializeObject(logResponse);
             var jsonObj = JObject.Parse(actualJson);
             var response = jsonObj["StatusCode"].ToString();
-            Assert.AreEqual(response, "404");
+            Assert.AreEqual( "404", response);
         }*/
 
 
