@@ -1,4 +1,13 @@
-﻿using ClinicalPolicyAPI.Logging;
+﻿/*
+Copyright (C) Humana - All Rights Reserved
+Unauthorized copying of this file, via any medium is strictly prohibited
+Proprietary and confidential
+Written by Firstname lastname <email@humana.com>, November 2021
+*/
+/* 
+ * Base Controller
+ */
+using ClinicalPolicyAPI.Logging;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 

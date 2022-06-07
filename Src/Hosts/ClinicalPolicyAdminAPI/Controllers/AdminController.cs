@@ -1,4 +1,11 @@
-﻿using Common;
+﻿/*
+Copyright (C) Humana - All Rights Reserved
+Unauthorized copying of this file, via any medium is strictly prohibited
+Proprietary and confidential
+Written by Firstname lastname <email@humana.com>, November 2021
+*/
+
+using Common;
 using Common.DataTransferObjects;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -153,7 +160,7 @@ namespace ClinicalPolicyAdminAPI.Controllers
 
             try
             {
-                //List<PrimaryLobSubCategoryDto>() primaryLob = new List<PrimaryLobSubCategoryDto>();
+               
                 var primaryLob = new ClinicalPolicyAdminDao(_config).PrimaryLobSubCategoryList();
                 return Ok(primaryLob);
             }
