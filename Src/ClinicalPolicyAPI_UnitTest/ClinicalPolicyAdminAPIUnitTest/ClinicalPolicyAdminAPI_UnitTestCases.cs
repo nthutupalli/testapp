@@ -313,7 +313,8 @@ namespace ClinicalPolicyAdminAPIUnitTest
 
             composite.ArgusCustomerDtoCollection = CustomerData;
             composite.ArgusClientDtoCollection = ClientData;
-            composite.lobId = 3;
+           // composite.lobId = 3;
+            composite.LobId = 3;
             var logResponse = Controller.SaveCustomerClientMapping(composite) as IActionResult;
             Assert.IsNotNull(logResponse);
             var actualJson = JsonConvert.SerializeObject(logResponse);
@@ -347,7 +348,8 @@ namespace ClinicalPolicyAdminAPIUnitTest
 
 
             composite.ArgusClientDtoCollection = ClientData;
-            composite.lobId = 5;
+            //composite.lobId = 5;
+            composite.LobId = 5;
             var logResponse = Controller.SaveCustomerClientMapping(composite) as IActionResult;
             Assert.IsNotNull(logResponse);
             var actualJson = JsonConvert.SerializeObject(logResponse);
@@ -380,7 +382,8 @@ namespace ClinicalPolicyAdminAPIUnitTest
 
 
             composite.ArgusClientDtoCollection = ClientData;
-            composite.lobId = -5;
+            //composite.lobId = -5;
+            composite.LobId = -5;
             var logResponse = Controller.SaveCustomerClientMapping(composite) as IActionResult;
             Assert.IsNotNull(logResponse);
             var actualJson = JsonConvert.SerializeObject(logResponse);
@@ -419,7 +422,8 @@ namespace ClinicalPolicyAdminAPIUnitTest
 
             composite.ArgusCustomerDtoCollection = CustomerData;
             composite.ArgusClientDtoCollection = ClientData;
-            composite.lobId = 5;
+           // composite.lobId = 5;
+            composite.LobId = 5;
             var logResponse = Controller.SaveCustomerClientMapping(composite) as IActionResult;
             Assert.IsNotNull(logResponse);
             var actualJson = JsonConvert.SerializeObject(logResponse);
@@ -948,7 +952,8 @@ namespace ClinicalPolicyAdminAPIUnitTest
         {
 
             CompositeObject.AvailableRejectCodes composite = new CompositeObject.AvailableRejectCodes();
-            composite.policyTypeId = 3;
+           
+            composite.PolicyTypeId = 3;
 
             var logResponse = Controller.AvailableRejectCodes(composite) as IActionResult;
             Assert.IsNotNull(logResponse);
@@ -968,7 +973,8 @@ namespace ClinicalPolicyAdminAPIUnitTest
         {
 
             CompositeObject.AvailableRejectCodes composite = new CompositeObject.AvailableRejectCodes();
-            composite.policyTypeId = -3;
+           
+            composite.PolicyTypeId = -3;
 
             var logResponse = Controller.AvailableRejectCodes(composite) as IActionResult;
             Assert.IsNotNull(logResponse);

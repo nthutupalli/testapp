@@ -5,8 +5,7 @@ Proprietary and confidential
 Written by Firstname lastname <email@humana.com>, November 2021
 */
 using System;
-using System.Collections.Generic;
-using System.Text;
+
 
 namespace Common.DataTransferObjects
 {
@@ -25,6 +24,6 @@ namespace Common.DataTransferObjects
         /// <summary>
         /// Action Type
         /// </summary>
-        //public Constants.ActionType ActionType { get; set; }
+      
     }
 }

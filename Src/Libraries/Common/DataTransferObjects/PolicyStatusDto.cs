@@ -5,9 +5,10 @@ Proprietary and confidential
 Written by Firstname lastname <email@humana.com>, November 2021
 */
 
-using System;
-using System.Collections.Generic;
-using System.Text;
+
+//Policy Status DTO
+//Policy Status DTO
+//Policy Status DTO
 
 namespace Common.DataTransferObjects
 {

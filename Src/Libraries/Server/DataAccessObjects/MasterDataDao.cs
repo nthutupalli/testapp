@@ -7,17 +7,13 @@ Written by Firstname lastname <email@humana.com>, November 2021
 
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Data;
 using Server.VaultManager;
 using Common.DataTransferObjects;
 using System.Data.SqlClient;
-using Common.Utility;
 using Common;
-using System.Linq;
 using Microsoft.Extensions.Configuration;
-using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
+
 
 namespace Server.DataAccessObjects
 {
@@ -40,7 +36,7 @@ namespace Server.DataAccessObjects
             var masterDataDictionary =
                 new Dictionary<string, object>();
             var masterData = new DataSet();
-           // masterData.Locale = CultureInfo.InvariantCulture;
+           
 
 
             CustomSqlHelper.FillDataSet(ConnectionString, 120, "iRx_GetPolicyMasterDetails", masterData, new SqlParameter[0]);
@@ -57,7 +53,7 @@ namespace Server.DataAccessObjects
                 masterDataDictionary.Add("Template", CreatePolicyTemplateCollection(masterData.Tables[7]));
                 masterDataDictionary.Add("RuleConcept", CreateRuleConceptCollection(masterData.Tables[8]));
                 masterDataDictionary.Add("PolicyTypeDefault", CreatePolicyDefaultCollection(masterData.Tables[9]));
-                //masterDataDictionary.Add("ClaimCodeType", CreateClaimCodeTypeCollection(masterData.Tables[10]));
+                
                 masterDataDictionary.Add("RevisionType", CreateRevisionTypeCollection(masterData.Tables[10]));
                 masterDataDictionary.Add("UpdateType", CreateUpdateTypeCollection(masterData.Tables[11]));
                 masterDataDictionary.Add("CPLob", CreateCPLobDetailsDto(masterData.Tables[12]));
@@ -249,22 +245,7 @@ namespace Server.DataAccessObjects
         }
 
 
-        //public Dictionary<string, object> ClaimCodeType()
-        //{
-        //    var masterDataDictionary =
-        //        new Dictionary<string, object>();
-        //    var masterData = new DataSet();
-
-        //    CustomSqlHelper.FillDataSet(ConnectionString, 120, "iRx_GetPolicyMasterDetails", masterData, new SqlParameter[0]);
-
-        //    if (masterData.Tables.Count > 0)
-        //    {
-        //        masterDataDictionary.Add("ClaimCodeType", CreateClaimCodeTypeCollection(masterData.Tables[10]));
-               
-        //    }
-
-        //    return masterDataDictionary;
-        //}
+        
 
         public Dictionary<string, object> RevisionType()
         {

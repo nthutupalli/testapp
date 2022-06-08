@@ -9,8 +9,11 @@ using System;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 
+//Composite object
+
 namespace Common.DataTransferObjects
 {
+    
     public class CompositeObject
     {
         public class SaveCustomerClientMapping
@@ -20,7 +23,7 @@ namespace Common.DataTransferObjects
             [DataMember]
             public Collection<ArgusClientDto> ArgusClientDtoCollection { get; set; }
             [DataMember]
-            public Int16 lobId { get; set; }
+            public Int16 LobId { get; set; }
         }
         public class SaveRejectCodeMapping
         {
@@ -39,11 +42,13 @@ namespace Common.DataTransferObjects
        
         public class LobValue
         {
+            //LOBID
             [DataMember]
             public Int16 lobId { get; set; }
         }
         public class PoliyOwnerIdValue
         {
+            //PolicyOwnerID
             [DataMember]
             public Int16 PoliyOwnerId { get; set; }
         }
@@ -60,7 +65,8 @@ namespace Common.DataTransferObjects
         public class AvailableRejectCodes
         {
             [DataMember]
-            public Int16 policyTypeId { get; set; }
+           
+            public Int16 PolicyTypeId { get; set; }
         }
     }
 }

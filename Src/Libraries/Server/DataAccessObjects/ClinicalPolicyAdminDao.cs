@@ -54,8 +54,7 @@ namespace Server.DataAccessObjects
                                                  new SqlParameter("@LobSubCategory",policyLobDto.LobSubCategory=="0"?false:true),
                                                  new SqlParameter("@PrimaryLobSubCategory", policyLobDto.PrimaryLobSubCategory != null?policyLobDto.PrimaryLobSubCategory:string.Empty)
                     };
-                //if (policyLobDto.PrimaryLobSubCategory != null)
-                //    parameters =  new SqlParameter("@PrimaryLobSubCategory", policyLobDto.PrimaryLobSubCategory) ;
+                
                 CustomSqlHelper.ExecuteNonQuery(ConnectionString, "iRx_SaveLobDetails", parameters);
             }
            
@@ -79,8 +78,7 @@ namespace Server.DataAccessObjects
         }
         public bool CheckIfPolicyExists(int lobId)
         {
-            //var parameter = new SqlParameter("@LobId", lobId);
-            //return Convert.ToBoolean(SqlHelper.ExecuteScalar(ConnectionString, "iRx_CheckIfPolicyExistsforLOB", parameter));
+            
 
             SqlConnection conn = null;
             const string sqlCommand = "iRx_CheckIfPolicyExistsforLOB";
@@ -288,7 +286,7 @@ namespace Server.DataAccessObjects
         public  List<FormularyDetailsDto> GetSavedFormularyIdDetails(int planYear, int? lobId)
         {
             var formularyDetailList = new List<FormularyDetailsDto>();
-            //var searchResultList = new List<FormularyDetailsDto>();
+            
             SqlConnection conn = null;
             const string sqlCommand = "iRx_GetSavedLobFormularyDetail";
             using (conn = new SqlConnection(ConnectionString))
@@ -311,7 +309,7 @@ namespace Server.DataAccessObjects
                 {
                     while (searchResult.Read())
                     {
-                        //searchResultList.Add(string.Format("{0};{1};{2}", searchResult["DosageFormId"], searchResult["DosageFormDesc"], searchResult["BrandName"]));
+                        
                         FormularyDetailsDto formularydetails = new FormularyDetailsDto();
                         formularydetails.UserFormId = searchResult["UserFormId"].ToString();
                         formularydetails.FormName = searchResult["FormName"].ToString();

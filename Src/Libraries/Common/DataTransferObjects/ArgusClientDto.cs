@@ -6,8 +6,6 @@ Written by Firstname lastname <email@humana.com>, November 2021
 */
 
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Common.DataTransferObjects
 {
