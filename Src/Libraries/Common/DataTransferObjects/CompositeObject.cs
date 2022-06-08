@@ -25,7 +25,7 @@ namespace Common.DataTransferObjects
         }
         public class SaveRejectCodeMapping
         {
-            private Collection<PolicyRejectCodeDto> policyRejectCodeCollection { get; set; }
+            public Collection<PolicyRejectCodeDto> policyRejectCodeCollection { get; set; }
             [DataMember]
             public Int16 policyTypeId { get; set; }
         }
