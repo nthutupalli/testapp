@@ -32,7 +32,10 @@ namespace Server.DataAccessObjects
         public void SaveLob(Collection<PolicyLobDto> policyLobDtoCollection)
         {
             if (policyLobDtoCollection == null)
-                throw new ArgumentNullException("policyLobDtoCollection");
+            {
+                throw new ArgumentNullException(nameof(policyLobDtoCollection));
+            }
+                
 
             foreach (var policyLobDto in policyLobDtoCollection.Where(policyLobDto => policyLobDto.ActionType != Constants.ActionType.None))
             {
@@ -80,7 +83,7 @@ namespace Server.DataAccessObjects
             //return Convert.ToBoolean(SqlHelper.ExecuteScalar(ConnectionString, "iRx_CheckIfPolicyExistsforLOB", parameter));
 
             SqlConnection conn = null;
-            string sqlCommand = "iRx_CheckIfPolicyExistsforLOB";
+            const string sqlCommand = "iRx_CheckIfPolicyExistsforLOB";
             using (conn = new SqlConnection(ConnectionString))
             {
                 conn.Open();
@@ -218,10 +221,14 @@ namespace Server.DataAccessObjects
                     FormularyDetailsDto formularydetails = new FormularyDetailsDto();
 
                     if (dataRow.Table.Columns.Contains("UserFormId"))
+                    {
                         formularydetails.UserFormId = dataRow["UserFormId"].ToString();
+                    }
 
                     if (dataRow.Table.Columns.Contains("FormName"))
+                    {
                         formularydetails.FormName = dataRow["FormName"].ToString();
+                    }
                     formularyDetailList.Add(formularydetails);
                 }
             }
@@ -283,7 +290,7 @@ namespace Server.DataAccessObjects
             var formularyDetailList = new List<FormularyDetailsDto>();
             //var searchResultList = new List<FormularyDetailsDto>();
             SqlConnection conn = null;
-            string sqlCommand = "iRx_GetSavedLobFormularyDetail";
+            const string sqlCommand = "iRx_GetSavedLobFormularyDetail";
             using (conn = new SqlConnection(ConnectionString))
             {
                 conn.Open();
@@ -318,7 +325,7 @@ namespace Server.DataAccessObjects
         public  void SaveFormularyMappingDetails(DataTable formularyMappingDto)
         {
             SqlConnection conn = null;
-            string sqlCommand = "dbo.iRx_SaveFormularyMapping";
+            const string sqlCommand = "dbo.iRx_SaveFormularyMapping";
             using (conn = new SqlConnection(ConnectionString))
             {
                 conn.Open();
@@ -335,7 +342,10 @@ namespace Server.DataAccessObjects
         public void SaveLookBackPeriod(Collection<RuleLookBackPeriodDto> ruleLookBackPeriodDtoCollection)
         {
             if (ruleLookBackPeriodDtoCollection == null)
-                throw new ArgumentNullException("ruleLookBackPeriodDtoCollection");
+            {
+                throw new ArgumentNullException(nameof(ruleLookBackPeriodDtoCollection));
+            }
+                
 
             foreach (var ruleLookbackPeriodDto in ruleLookBackPeriodDtoCollection.Where(ruleLookBackPeriodDto => ruleLookBackPeriodDto.ActionType != Constants.ActionType.None))
             {
@@ -392,7 +402,9 @@ namespace Server.DataAccessObjects
                                        parameters);
 
             if (therapeuticCategoryDataSet.Tables[0].Rows.Count > 0)
+            {
                 return true;
+            }
 
             return false;
         }
@@ -400,7 +412,10 @@ namespace Server.DataAccessObjects
         public void SavePolicyOwnerGrid(Collection<PolicyOwnerDto> policyOwnerDtoCollection)
         {
             if (policyOwnerDtoCollection == null)
-                throw new ArgumentNullException("policyOwnerDtoCollection");
+            {
+                throw new ArgumentNullException(nameof(policyOwnerDtoCollection));
+            }
+                
 
             foreach (var policyOwnerDto in policyOwnerDtoCollection.Where(policyOwnerDto => policyOwnerDto.ActionType != Constants.ActionType.None))
             {
@@ -505,7 +520,10 @@ namespace Server.DataAccessObjects
         public  void SaveRejectCodesDetails(Collection<PolicyRejectCodeDto> rejectCodeDtoCollection)
         {
             if (rejectCodeDtoCollection == null)
-                throw new ArgumentNullException("rejectCodeDtoCollection");
+            {
+                throw new ArgumentNullException(nameof(rejectCodeDtoCollection));
+            }
+                
 
             foreach (var rejectCodeDto in rejectCodeDtoCollection.Where(rejectCodeDto => rejectCodeDto.ActionType != Constants.ActionType.None))
             {
@@ -530,7 +548,10 @@ namespace Server.DataAccessObjects
         public  void SaveMappedRejectCodeDetails(Collection<PolicyRejectCodeDto> policyRejectCodeCollection, Int16 policyTypeId)
         {
             if (policyRejectCodeCollection == null)
-                throw new ArgumentNullException("policyRejectCodeCollection");
+            {
+                throw new ArgumentNullException(nameof(policyRejectCodeCollection));
+            }
+                
 
             foreach (var policyRejectCodeDto in policyRejectCodeCollection.Where(rejectCodeDto => rejectCodeDto.ActionType != Constants.ActionType.None))
             {
@@ -561,7 +582,10 @@ namespace Server.DataAccessObjects
                                        parameters);
 
             if (therapeuticCategoryDataSet.Tables[0].Rows.Count > 0)
+            {
                 return true;
+            }
+                
 
             return false;
         }
@@ -570,7 +594,10 @@ namespace Server.DataAccessObjects
         public  void SaveTherapeuticCategory(Collection<TherapeuticCategoryDto> therapeuticCategoryDtoCollection)
         {
             if (therapeuticCategoryDtoCollection == null)
-                throw new ArgumentNullException("therapeuticCategoryDtoCollection");
+            {
+                throw new ArgumentNullException(nameof(therapeuticCategoryDtoCollection));
+            }
+                
 
             foreach (var therapeuticCategoryDto in therapeuticCategoryDtoCollection.Where(therapeuticCategoryDto => therapeuticCategoryDto.ActionType != Constants.ActionType.None))
             {
@@ -604,7 +631,10 @@ namespace Server.DataAccessObjects
                                        parameters);
 
             if (therapeuticCategoryDataSet.Tables[0].Rows.Count > 0)
+            {
                 return true;
+            }
+               
 
             return false;
         }
@@ -612,7 +642,10 @@ namespace Server.DataAccessObjects
         public  void SaveSubCategory(Collection<SubCategoryDto> subCategoryDtoCollection)
         {
             if (subCategoryDtoCollection == null)
-                throw new ArgumentNullException("subCategoryDtoCollection");
+            {
+                throw new ArgumentNullException(nameof(subCategoryDtoCollection));
+            }
+                
 
             foreach (var subCategoryDto in subCategoryDtoCollection.Where(subCategoryDto => subCategoryDto.ActionType != Constants.ActionType.None))
             {
@@ -635,7 +668,10 @@ namespace Server.DataAccessObjects
         public void SavePolicyTemplate(PolicyTemplateDto policyTemplateDto)
         {
             if (policyTemplateDto == null)
-                throw new ArgumentNullException("policyTemplateDto");
+            {
+                throw new ArgumentNullException(nameof(policyTemplateDto));
+            }
+                
 
             var parameters = new[]
                     {
