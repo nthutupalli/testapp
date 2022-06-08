@@ -71,7 +71,7 @@ namespace ClinicalPolicyAPI.Logging
             {
                 HttpContent ercontent = new StringContent(jsonErrorRequest);
                 // ReSharper disable once UnusedVariable
-               
+                HttpResponseMessage response = AysncLog(elUrl, ercontent).Result;
 
             }
             catch (Exception ex)
