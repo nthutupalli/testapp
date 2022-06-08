@@ -40,8 +40,7 @@ namespace Server.DataAccessObjects
             var masterDataDictionary =
                 new Dictionary<string, object>();
             var masterData = new DataSet();
-           // masterData.Locale = CultureInfo.InvariantCulture;
-
+           
 
             CustomSqlHelper.FillDataSet(ConnectionString, 120, "iRx_GetPolicyMasterDetails", masterData, new SqlParameter[0]);
 
