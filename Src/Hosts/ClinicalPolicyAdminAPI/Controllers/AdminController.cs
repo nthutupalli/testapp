@@ -132,8 +132,7 @@ namespace ClinicalPolicyAdminAPI.Controllers
             ResponseMessageDto objMessage = new ResponseMessageDto();
             try
             {
-                FormularyMappingDto mappingDto = new FormularyMappingDto();
-                mappingDto = new ClinicalPolicyAdminDao(_config).GetFormularyDetails();
+                FormularyMappingDto mappingDto = new ClinicalPolicyAdminDao(_config).GetFormularyDetails();
                 return Ok(mappingDto);
 
 
@@ -185,17 +184,25 @@ namespace ClinicalPolicyAdminAPI.Controllers
             ResponseMessageDto objMessage = new ResponseMessageDto();
             try
             {
-                if (composite.lobId > 0)
+                if (composite != null)
                 {
-                    Collection<ArgusCustomerDto> response = new ClinicalPolicyAdminDao(_config).GetCustomers(composite.lobId);
-                    return Ok(response);
+                    if (composite.lobId > 0)
+                    {
+                        Collection<ArgusCustomerDto> response = new ClinicalPolicyAdminDao(_config).GetCustomers(composite.lobId);
+                        return Ok(response);
+                    }
+                    else
+                    {
+                        objMessage.Code = StatusCodes.Status400BadRequest;
+                        objMessage.Message = Constants.Message.BadRequest;
+                        return NotFound(objMessage);
+                    }
                 }
                 else
                 {
-                    objMessage.Code = StatusCodes.Status400BadRequest;
-                    objMessage.Message = Constants.Message.BadRequest;
-                    return NotFound(objMessage);
+                    return NotFound();
                 }
+                
 
             }
             catch (Exception ex)
