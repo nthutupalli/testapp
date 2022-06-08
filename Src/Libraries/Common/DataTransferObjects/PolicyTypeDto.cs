@@ -25,6 +25,6 @@ namespace Common.DataTransferObjects
         /// <summary>
         /// Action Type
         /// </summary>
-        //public Constants.ActionType ActionType { get; set; }
+      
     }
 }
