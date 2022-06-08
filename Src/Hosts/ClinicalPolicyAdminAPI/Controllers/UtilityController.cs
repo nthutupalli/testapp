@@ -39,6 +39,8 @@ namespace ClinicalPolicyAdminAPI.Controllers
 
             try
             {
+                if(lookupDto!=null)
+                { 
                 if (string.IsNullOrEmpty(lookupDto.functionCode))
                 {
                     return NotFound(StatusCodes.Status400BadRequest);
@@ -47,6 +49,12 @@ namespace ClinicalPolicyAdminAPI.Controllers
                 {
                     var Result = new ClinicalPolicyAdminDao(_config).GetLookUpList(lookupDto.functionCode);
                     return Ok(Result);
+                }
+                }
+
+                else
+                {
+                    return NotFound();
                 }
 
             }

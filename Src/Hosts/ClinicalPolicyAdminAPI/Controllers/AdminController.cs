@@ -277,11 +277,18 @@ namespace ClinicalPolicyAdminAPI.Controllers
 
             try
             {
+                if (composite != null)
+                {
+                    List<FormularyDetailsDto> response = new ClinicalPolicyAdminDao(_config).GetUserFormularyIdDetails(composite.planYear, composite.lobId);
+                    return Ok(response);
+                }
 
-                List<FormularyDetailsDto> response = new ClinicalPolicyAdminDao(_config).GetUserFormularyIdDetails(composite.planYear, composite.lobId);
-                return Ok(response);
+                else
+                {
+                    return NotFound();
+                }
 
-            }
+        }
             catch (Exception ex)
             {
 
@@ -304,9 +311,16 @@ namespace ClinicalPolicyAdminAPI.Controllers
             ResponseMessageDto objMessage = new ResponseMessageDto();
             try
             {
-
+                if (composite != null)
+                { 
                 List<FormularyDetailsDto> response = new ClinicalPolicyAdminDao(_config).GetSavedFormularyIdDetails(composite.planYear, composite.lobId);
                 return Ok(response);
+                }
+
+                else
+                {
+                    return NotFound();
+                }
 
             }
             catch (Exception ex)
@@ -332,6 +346,8 @@ namespace ClinicalPolicyAdminAPI.Controllers
 
             try
             {
+                if (composite != null)
+                { 
                 if (composite.ArgusCustomerDtoCollection != null && composite.lobId > 0)
                 {
                     Collection<ArgusCustomerDto> ArgusCustomerDtoCollection = composite.ArgusCustomerDtoCollection;
@@ -347,6 +363,12 @@ namespace ClinicalPolicyAdminAPI.Controllers
                     objMessage.Code = StatusCodes.Status400BadRequest;
                     objMessage.Message = Constants.Message.BadRequest;
                     return NotFound(objMessage);
+                }
+                }
+
+                else
+                {
+                    return NotFound();
                 }
 
 
