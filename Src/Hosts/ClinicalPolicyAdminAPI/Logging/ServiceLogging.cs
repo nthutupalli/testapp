@@ -86,13 +86,13 @@ namespace ClinicalPolicyAPI.Logging
             throw new NotImplementedException();
         }
 
-        private async Task<HttpResponseMessage> AysncLog(string requestUrl, HttpContent httpContent)
+        private async Task<HttpResponseMessage> AysncLog(string requestURL, HttpContent httpContent)
         {
             HttpClient httpClient = new HttpClient();
             HttpResponseMessage response = new HttpResponseMessage();
             try
             {
-                response = await httpClient.PostAsync(requestUrl, httpContent).ConfigureAwait(false);
+                response = await httpClient.PostAsync(requestURL, httpContent).ConfigureAwait(false);
             }
             catch (HttpRequestException hre)
             {
