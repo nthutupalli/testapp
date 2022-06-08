@@ -42,7 +42,7 @@ namespace Server.VaultManager
         /// <summary>
         /// There really should only be one instance of the manager running. 
         /// </summary>
-        static VaultConfigurationManager _instanceConnection;
+         VaultConfigurationManager _instanceConnection;
 
         /// <summary>
         /// The Vault client implementation.
@@ -80,7 +80,7 @@ namespace Server.VaultManager
             }
         }
 
-        static VaultConfigurationManager _instanceAppSetting;
+         VaultConfigurationManager _instanceAppSetting;
 
         /// <summary>
         /// The Vault client implementation.
