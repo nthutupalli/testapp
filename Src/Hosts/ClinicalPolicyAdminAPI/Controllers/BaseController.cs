@@ -13,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace ClinicalPolicyAdminAPI.Controllers
 {
+    //Routing
     [Route("api/Base")]
     [ApiController]
     public class BaseController : ControllerBase

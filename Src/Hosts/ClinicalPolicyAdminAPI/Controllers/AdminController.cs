@@ -312,7 +312,7 @@ namespace ClinicalPolicyAdminAPI.Controllers
             try
             {
                 if (composite.ArgusCustomerDtoCollection != null && composite.LobId > 0)
-                  //if (composite.ArgusCustomerDtoCollection != null && composite.lobId > 0)
+                  
                 {
                     Collection<ArgusCustomerDto> ArgusCustomerDtoCollection = composite.ArgusCustomerDtoCollection;
                     Collection<ArgusClientDto> ArgusClientDtoCollection = composite.ArgusClientDtoCollection;
@@ -516,7 +516,7 @@ namespace ClinicalPolicyAdminAPI.Controllers
             try
             {
                 if (composite.PolicyTypeId > 0)
-                  //if (composite.policyTypeId > 0)
+                  
                 {
                     Collection<PolicyRejectCodeDto> response = new ClinicalPolicyAdminDao(_config).GetPolicyTypeRejectCodeMapping(composite.PolicyTypeId);
                     return Ok(response);

@@ -14,6 +14,8 @@ using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 
+//Logging
+
 namespace ClinicalPolicyAPI.Logging
 {
     [ExcludeFromCodeCoverage]

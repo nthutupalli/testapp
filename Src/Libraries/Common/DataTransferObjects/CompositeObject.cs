@@ -9,6 +9,8 @@ using System;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 
+//Composite object
+
 namespace Common.DataTransferObjects
 {
     

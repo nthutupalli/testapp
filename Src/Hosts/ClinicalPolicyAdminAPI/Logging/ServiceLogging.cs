@@ -20,6 +20,9 @@ using System.Text;
 using System.Threading.Tasks;
 using static ClinicalPolicyAPI.Logging.EnterpriseLogRequest;
 
+//Servcice logging
+//Logging
+
 namespace ClinicalPolicyAPI.Logging
 {
     [ExcludeFromCodeCoverage]
