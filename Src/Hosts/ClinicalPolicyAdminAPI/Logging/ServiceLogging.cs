@@ -9,14 +9,10 @@ using Common;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Configuration;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using static ClinicalPolicyAPI.Logging.EnterpriseLogRequest;
 
@@ -52,7 +48,7 @@ namespace ClinicalPolicyAPI.Logging
             {
                 EapmId = Convert.ToInt32(_config.GetValue<int>("EAPM"), CultureInfo.InvariantCulture),
                 HostMachineName = Environment.MachineName,
-                HostEnvironmentName = _config.GetValue<string>("Environment").ToString(),
+                HostEnvironmentName = _config.GetValue<string>("Environment"),
                 CorrelationId = Convert.ToString(Guid.NewGuid(), CultureInfo.InvariantCulture)
             };
             logEvent.SourceApplicationInformation = new SourceApplicationInformation();
@@ -75,7 +71,7 @@ namespace ClinicalPolicyAPI.Logging
             {
                 HttpContent ercontent = new StringContent(jsonErrorRequest);
                 // ReSharper disable once UnusedVariable
-                HttpResponseMessage response = AysncLog(elUrl, ercontent).Result;
+               
 
             }
             catch (Exception ex)
