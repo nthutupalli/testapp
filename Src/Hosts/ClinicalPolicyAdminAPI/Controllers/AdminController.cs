@@ -311,11 +311,12 @@ namespace ClinicalPolicyAdminAPI.Controllers
 
             try
             {
-                if (composite.ArgusCustomerDtoCollection != null && composite.lobId > 0)
+                if (composite.ArgusCustomerDtoCollection != null && composite.LobId > 0)
+                  //if (composite.ArgusCustomerDtoCollection != null && composite.lobId > 0)
                 {
                     Collection<ArgusCustomerDto> ArgusCustomerDtoCollection = composite.ArgusCustomerDtoCollection;
                     Collection<ArgusClientDto> ArgusClientDtoCollection = composite.ArgusClientDtoCollection;
-                    Int16 lobId = composite.lobId;
+                    Int16 lobId = composite.LobId;
                     new ClinicalPolicyAdminDao(_config).SaveLobMappingDetails(ArgusCustomerDtoCollection, ArgusClientDtoCollection, lobId);
                     objMessage.Code = StatusCodes.Status200OK;
                     objMessage.Message = Constants.Message.Success;
@@ -514,9 +515,10 @@ namespace ClinicalPolicyAdminAPI.Controllers
             ResponseMessageDto objMessage = new ResponseMessageDto();
             try
             {
-                if (composite.policyTypeId > 0)
+                if (composite.PolicyTypeId > 0)
+                  //if (composite.policyTypeId > 0)
                 {
-                    Collection<PolicyRejectCodeDto> response = new ClinicalPolicyAdminDao(_config).GetPolicyTypeRejectCodeMapping(composite.policyTypeId);
+                    Collection<PolicyRejectCodeDto> response = new ClinicalPolicyAdminDao(_config).GetPolicyTypeRejectCodeMapping(composite.PolicyTypeId);
                     return Ok(response);
                 }
                 else
