@@ -42,7 +42,7 @@ namespace Server.VaultManager
         /// <summary>
         /// There really should only be one instance of the manager running. 
         /// </summary>
-        static VaultConfigurationManager _instanceConnection;
+         VaultConfigurationManager _instanceConnection;
 
         /// <summary>
         /// The Vault client implementation.
@@ -57,7 +57,10 @@ namespace Server.VaultManager
                 lock (LockObject)
                 {
                     if (_instanceConnection == null)
+                    {
                         _instanceConnection = new VaultConfigurationManager(_config);
+                    }
+                        
 
                     return _instanceConnection;
                 }
@@ -69,12 +72,15 @@ namespace Server.VaultManager
             get
             {
                 if (connectionStrings == null || RefreshCollectionDate <= DateTime.Now)
+                {
                     connectionStrings = InvokeVaultSecrets(secretPathConnection);
+                }
+                    
                 return connectionStrings;
             }
         }
 
-        static VaultConfigurationManager _instanceAppSetting;
+         VaultConfigurationManager _instanceAppSetting;
 
         /// <summary>
         /// The Vault client implementation.
@@ -88,7 +94,10 @@ namespace Server.VaultManager
                 lock (LockObject)
                 {
                     if (_instanceAppSetting == null)
+                    {
                         _instanceAppSetting = new VaultConfigurationManager(_config);
+                    }
+                        
 
                     return _instanceAppSetting;
                 }
@@ -100,7 +109,10 @@ namespace Server.VaultManager
             get
             {
                 if (appsettings == null || RefreshCollectionDate <= DateTime.Now)
+                {
                     appsettings = InvokeVaultSecrets(secretPathAppSettings);
+                }
+                    
                 return appsettings;
             }
         }
