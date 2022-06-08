@@ -21,6 +21,7 @@ namespace Common.Utility
             {
                 if ((myValue != null))
                 {
+                    //myValue.ToString() == string.Empty
                     if (!(string.IsNullOrEmpty(myValue.ToString()))) //myValue.ToString() == string.Empty
                     {
                         return myValue;
