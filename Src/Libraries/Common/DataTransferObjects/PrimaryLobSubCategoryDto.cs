@@ -9,6 +9,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
+//Primary Sub category DTO
+//Primary Sub category DTO
+
 namespace Common.DataTransferObjects
 {
     using System;
