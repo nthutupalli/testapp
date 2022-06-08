@@ -58,16 +58,23 @@ namespace ClinicalPolicyAdminAPI.Controllers
             ResponseMessageDto objMessage = new ResponseMessageDto();
             try
             {
-                if (composite.lobId > 0)
+                if (composite != null)
                 {
-                    bool response = new ClinicalPolicyAdminDao(_config).CheckIfPolicyExists(composite.lobId);
-                    return Ok(response);
+                    if (composite.lobId > 0)
+                    {
+                        bool response = new ClinicalPolicyAdminDao(_config).CheckIfPolicyExists(composite.lobId);
+                        return Ok(response);
+                    }
+                    else
+                    {
+                        objMessage.Code = StatusCodes.Status400BadRequest;
+                        objMessage.Message = Constants.Message.BadRequest;
+                        return NotFound(objMessage);
+                    }
                 }
                 else
                 {
-                    objMessage.Code = StatusCodes.Status400BadRequest;
-                    objMessage.Message = Constants.Message.BadRequest;
-                    return NotFound(objMessage);
+                    return NotFound();
                 }
             }
             catch (Exception ex)
@@ -226,6 +233,8 @@ namespace ClinicalPolicyAdminAPI.Controllers
             ResponseMessageDto objMessage = new ResponseMessageDto();
             try
             {
+                if (composite != null)
+                { 
                 if (composite.lobId > 0)
                 {
                     Collection<ArgusClientDto> response = new ClinicalPolicyAdminDao(_config).GetAvailableClients(composite.lobId);
@@ -236,6 +245,11 @@ namespace ClinicalPolicyAdminAPI.Controllers
                     objMessage.Code = StatusCodes.Status400BadRequest;
                     objMessage.Message = Constants.Message.BadRequest;
                     return NotFound(objMessage);
+                }
+                }
+                else
+                {
+                    return NotFound();
                 }
 
             }
@@ -442,6 +456,8 @@ namespace ClinicalPolicyAdminAPI.Controllers
             ResponseMessageDto objMessage = new ResponseMessageDto();
             try
             {
+                if (composite != null)
+                {
                 if (composite.PoliyOwnerId > 0)
                 {
                     bool response = new ClinicalPolicyAdminDao(_config).CheckPolicyOwnerPolicyMapping(composite.PoliyOwnerId);
@@ -452,6 +468,11 @@ namespace ClinicalPolicyAdminAPI.Controllers
                     objMessage.Code = StatusCodes.Status400BadRequest;
                     objMessage.Message = Constants.Message.BadRequest;
                     return NotFound(objMessage);
+                }
+                }
+                else
+                {
+                    return NotFound();
                 }
             }
             catch (Exception ex)
@@ -521,6 +542,8 @@ namespace ClinicalPolicyAdminAPI.Controllers
             ResponseMessageDto objMessage = new ResponseMessageDto();
             try
             {
+                if (composite != null)
+                { 
                 if (composite.policyTypeId > 0)
                 {
                     Collection<PolicyRejectCodeDto> response = new ClinicalPolicyAdminDao(_config).GetPolicyTypeRejectCodeMapping(composite.policyTypeId);
@@ -531,6 +554,11 @@ namespace ClinicalPolicyAdminAPI.Controllers
                     objMessage.Code = StatusCodes.Status400BadRequest;
                     objMessage.Message = Constants.Message.BadRequest;
                     return NotFound(objMessage);
+                }
+                }
+                else
+                {
+                    return NotFound();
                 }
             }
             catch (Exception ex)
@@ -595,6 +623,8 @@ namespace ClinicalPolicyAdminAPI.Controllers
             ResponseMessageDto objMessage = new ResponseMessageDto();
             try
             {
+                if (composite != null)
+                { 
                 if (composite.policyRejectCodeCollection != null && composite.policyTypeId > 0)
                 {
                     new ClinicalPolicyAdminDao(_config).SaveMappedRejectCodeDetails(composite.policyRejectCodeCollection, composite.policyTypeId);
@@ -608,6 +638,11 @@ namespace ClinicalPolicyAdminAPI.Controllers
                     objMessage.Code = StatusCodes.Status400BadRequest;
                     objMessage.Message = Constants.Message.BadRequest;
                     return NotFound(objMessage);
+                }
+                }
+                else
+                {
+                    return NotFound();
                 }
 
             }
@@ -635,6 +670,8 @@ namespace ClinicalPolicyAdminAPI.Controllers
             ResponseMessageDto objMessage = new ResponseMessageDto();
             try
             {
+                if(composite != null)
+                { 
                 if (composite.therapeuticCategoryId > 0)
                 {
                     bool response = new ClinicalPolicyAdminDao(_config).CheckTherapeuticCategoryPolicyMapping(composite.therapeuticCategoryId);
@@ -645,6 +682,11 @@ namespace ClinicalPolicyAdminAPI.Controllers
                     objMessage.Code = StatusCodes.Status400BadRequest;
                     objMessage.Message = Constants.Message.BadRequest;
                     return NotFound(objMessage);
+                }
+                }
+                else
+                {
+                    return NotFound();
                 }
             }
             catch (Exception ex)
@@ -712,6 +754,8 @@ namespace ClinicalPolicyAdminAPI.Controllers
             ResponseMessageDto objMessage = new ResponseMessageDto();
             try
             {
+                if (composite != null)
+                { 
                 if (composite.subCategoryId > 0)
                 {
                     bool response = new ClinicalPolicyAdminDao(_config).CheckSubCategoryPolicyMapping(composite.subCategoryId);
@@ -722,6 +766,11 @@ namespace ClinicalPolicyAdminAPI.Controllers
                     objMessage.Code = StatusCodes.Status400BadRequest;
                     objMessage.Message = Constants.Message.BadRequest;
                     return NotFound(objMessage);
+                }
+                }
+                else
+                {
+                    return NotFound();
                 }
             }
             catch (Exception ex)
