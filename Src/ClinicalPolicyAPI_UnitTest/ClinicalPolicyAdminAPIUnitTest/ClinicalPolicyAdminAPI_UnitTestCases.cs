@@ -952,7 +952,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
         {
 
             CompositeObject.AvailableRejectCodes composite = new CompositeObject.AvailableRejectCodes();
-           // composite.policyTypeId = 3;
+           
             composite.PolicyTypeId = 3;
 
             var logResponse = Controller.AvailableRejectCodes(composite) as IActionResult;
@@ -973,7 +973,7 @@ namespace ClinicalPolicyAdminAPIUnitTest
         {
 
             CompositeObject.AvailableRejectCodes composite = new CompositeObject.AvailableRejectCodes();
-           // composite.policyTypeId = -3;
+           
             composite.PolicyTypeId = -3;
 
             var logResponse = Controller.AvailableRejectCodes(composite) as IActionResult;

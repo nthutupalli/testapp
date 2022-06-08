@@ -12,6 +12,7 @@ using System.Text;
 
 namespace Common.DataTransferObjects
 {
+    //Formulary Details DTO
     public class FormularyDetailsDto
     {
         [DataMember]
