@@ -11,6 +11,9 @@ using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 using System.Text;
 
+//Response Message DTo
+//Response Message DTo
+
 namespace Common.DataTransferObjects
 {
     [ExcludeFromCodeCoverage]
