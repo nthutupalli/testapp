@@ -25,7 +25,7 @@ namespace Server.DataAccessObjects
 
         private readonly IConfiguration _config;
         private readonly string ConnectionString = string.Empty;
-        int count = 120;
+        readonly int count = 120;
         
         //Clinical Policy Admin Dao Method
         public ClinicalPolicyAdminDao(IConfiguration config)
@@ -385,27 +385,7 @@ namespace Server.DataAccessObjects
             }
         }
         
-        //private static Collection<PolicyLobDto> CreatePolicyLobDto(DataTable dataTable)
-        //{
-        //    var policyLobCollection = new Collection<PolicyLobDto>();
-        //    if (dataTable != null && dataTable.Rows.Count > 0)
-        //    {
-        //        foreach (DataRow dataRow in dataTable.Rows)
-        //        {
-        //            var policyLobDto = new PolicyLobDto
-        //            {
-        //                LobId = Convert.ToInt16(dataRow["ID"]),
-        //                LobName = Convert.ToString(dataRow["Name"]),
-        //                IsActive = Convert.ToBoolean(dataRow["IsActive"]),
-        //                Status = Convert.ToString(dataRow["Status"]),
-        //            };
-
-        //            policyLobCollection.Add(policyLobDto);
-        //        }
-        //    }
-
-        //    return policyLobCollection;
-        //}
+        
 
         public  bool CheckPolicyOwnerPolicyMapping(Int16 policyOwnerId)
         {
@@ -522,24 +502,7 @@ namespace Server.DataAccessObjects
             return primaryLobSubCategoryCollection;
         }
 
-        //private List<PrimaryLobSubCategoryDto> CreatePrimaryLobStatusDto(DataTable dataTable)
-        //{
-        //    var primaryLobSubCategoryCollection = new List<PrimaryLobSubCategoryDto>();
-        //    if (dataTable != null && dataTable.Rows.Count > 0)
-        //    {
-        //        foreach (DataRow dataRow in dataTable.Rows)
-        //        {
-        //            var primaryLobSubCategory = new PrimaryLobSubCategoryDto
-        //            {
-        //                PrimaryLobId = Convert.ToInt16(dataRow["PrimaryLobId"]),
-        //                PrimaryLobName = Convert.ToString(dataRow["PrimaryLobName"])
-        //            };
-
-        //            primaryLobSubCategoryCollection.Add(primaryLobSubCategory);
-        //        }
-        //    }
-        //    return primaryLobSubCategoryCollection;
-        //}
+        
         public  void SaveRejectCodesDetails(Collection<PolicyRejectCodeDto> rejectCodeDtoCollection)
         {
             if (rejectCodeDtoCollection == null)

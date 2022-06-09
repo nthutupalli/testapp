@@ -23,6 +23,21 @@ namespace Server.DataAccessObjects
         private readonly IConfiguration _config;
         private readonly string ConnectionString = string.Empty;
         readonly int count = 120;
+        const int PosZero = 0;
+        const int PosOne = 1;
+        const int PosTwo = 2;
+        const int PosThree = 3;
+        const int PosFour = 4;
+        const int PosFive = 5;
+        const int PosSix = 6;
+        const int PosSeven = 7;
+        const int PosEight = 8;
+        const int PosNine = 9;
+        const int PosTen = 10;
+        const int PosEleven = 11;
+        const int PosTwelve = 12;
+        const int PosThirteen = 13;
+        const int PosFourteen = 14;
         public MasterDataDao(IConfiguration config)
         {
             _config = config;
@@ -44,21 +59,7 @@ namespace Server.DataAccessObjects
            
 
             CustomSqlHelper.FillDataSet(ConnectionString, count, "iRx_GetPolicyMasterDetails", masterData, new SqlParameter[0]);
-           const int PosZero = 0;
-            const int PosOne = 1;
-            const int PosTwo = 2;
-            const int PosThree = 3;
-            const int PosFour = 4;
-            const int PosFive = 5;
-            const int PosSix = 6;
-            const int PosSeven = 7;
-            const int PosEight = 8;
-            const int PosNine = 9;
-            const int PosTen = 10;
-            const int PosEleven = 11;
-            const int PosTwelve = 12;
-            const int PosThirteen = 13;
-            const int PosFourteen = 14;
+           
 
             if (masterData.Tables.Count > 0)
             {
@@ -94,12 +95,12 @@ namespace Server.DataAccessObjects
 
             
 
-            CustomSqlHelper.FillDataSet(ConnectionString, count, "iRx_GetPolicyMasterDetails", masterData, new SqlParameter[0]);
+            CustomSqlHelper.FillDataSet(ConnectionString, count, "iRx_GetPolicyMasterDetails", masterData, new SqlParameter[PosZero]);
 
 
             if (masterData.Tables.Count > 0)
             {
-                masterDataDictionary.Add("Lob", CreatePolicyLobDto(masterData.Tables[0]));
+                masterDataDictionary.Add("Lob", CreatePolicyLobDto(masterData.Tables[PosZero]));
                
             }
 
@@ -115,13 +116,12 @@ namespace Server.DataAccessObjects
             var masterData = new DataSet();
 
             masterData.Locale = CultureInfo.InvariantCulture;
-            CustomSqlHelper.FillDataSet(ConnectionString, 120, "iRx_GetPolicyMasterDetails", masterData, new SqlParameter[0]);
-
+            
 
             CustomSqlHelper.FillDataSet(ConnectionString, count, "iRx_GetPolicyMasterDetails", masterData, new SqlParameter[0]);
              if (masterData.Tables.Count > 0)
             {
-                masterDataDictionary.Add("PolicyType", CreatePolicyTypeDto(masterData.Tables[1]));
+                masterDataDictionary.Add("PolicyType", CreatePolicyTypeDto(masterData.Tables[PosOne]));
                
             }
 
@@ -140,7 +140,7 @@ namespace Server.DataAccessObjects
             if (masterData.Tables.Count > 0)
             {
                
-                masterDataDictionary.Add("TherapeuticCategory", CreateTherapeuticCategoryCollection(masterData.Tables[2]));
+                masterDataDictionary.Add("TherapeuticCategory", CreateTherapeuticCategoryCollection(masterData.Tables[PosTwo]));
                 
             }
 
@@ -159,7 +159,7 @@ namespace Server.DataAccessObjects
             if (masterData.Tables.Count > 0)
             {
                
-                masterDataDictionary.Add("SubCategory", CreateSubCategoryCollection(masterData.Tables[3]));
+                masterDataDictionary.Add("SubCategory", CreateSubCategoryCollection(masterData.Tables[PosThree]));
 
             }
 
@@ -177,7 +177,7 @@ namespace Server.DataAccessObjects
        if (masterData.Tables.Count > 0)
             {
               
-                masterDataDictionary.Add("PolicyOwner", CreatePolicyOwnerCollection(masterData.Tables[4]));
+                masterDataDictionary.Add("PolicyOwner", CreatePolicyOwnerCollection(masterData.Tables[PosFour]));
                
             }
 
@@ -197,7 +197,7 @@ namespace Server.DataAccessObjects
             if (masterData.Tables.Count > 0)
             {
               
-                masterDataDictionary.Add("RuleLookBackPeriod", CreateRuleLookBackPeriodCollection(masterData.Tables[5]));
+                masterDataDictionary.Add("RuleLookBackPeriod", CreateRuleLookBackPeriodCollection(masterData.Tables[PosFive]));
                
             }
 
@@ -216,7 +216,7 @@ namespace Server.DataAccessObjects
 
             if (masterData.Tables.Count > 0)
             {
-                masterDataDictionary.Add("RejectCode", CreatePolicyRejectCodeCollection(masterData.Tables[6]));
+                masterDataDictionary.Add("RejectCode", CreatePolicyRejectCodeCollection(masterData.Tables[PosSix]));
                
             }
 
@@ -235,7 +235,7 @@ namespace Server.DataAccessObjects
            if (masterData.Tables.Count > 0)
             {
               
-                masterDataDictionary.Add("Template", CreatePolicyTemplateCollection(masterData.Tables[7]));
+                masterDataDictionary.Add("Template", CreatePolicyTemplateCollection(masterData.Tables[PosSeven]));
                
             }
 
@@ -254,7 +254,7 @@ namespace Server.DataAccessObjects
             if (masterData.Tables.Count > 0)
             {
               
-                masterDataDictionary.Add("RuleConcept", CreateRuleConceptCollection(masterData.Tables[8]));
+                masterDataDictionary.Add("RuleConcept", CreateRuleConceptCollection(masterData.Tables[PosEight]));
                
             }
 
@@ -274,7 +274,7 @@ namespace Server.DataAccessObjects
             if (masterData.Tables.Count > 0)
             {
                
-                masterDataDictionary.Add("PolicyTypeDefault", CreatePolicyDefaultCollection(masterData.Tables[9]));
+                masterDataDictionary.Add("PolicyTypeDefault", CreatePolicyDefaultCollection(masterData.Tables[PosNine]));
                 
             }
 
@@ -315,7 +315,7 @@ namespace Server.DataAccessObjects
             if (masterData.Tables.Count > 0)
             {
                
-                masterDataDictionary.Add("RevisionType", CreateRevisionTypeCollection(masterData.Tables[10]));
+                masterDataDictionary.Add("RevisionType", CreateRevisionTypeCollection(masterData.Tables[PosTen]));
                 
             }
 
@@ -334,7 +334,7 @@ namespace Server.DataAccessObjects
             if (masterData.Tables.Count > 0)
             {
                
-                masterDataDictionary.Add("UpdateType", CreateUpdateTypeCollection(masterData.Tables[11]));
+                masterDataDictionary.Add("UpdateType", CreateUpdateTypeCollection(masterData.Tables[PosEleven]));
                
             }
 
@@ -354,7 +354,7 @@ namespace Server.DataAccessObjects
             if (masterData.Tables.Count > 0)
             {
               
-                masterDataDictionary.Add("CPLob", CreateCPLobDetailsDto(masterData.Tables[12]));
+                masterDataDictionary.Add("CPLob", CreateCPLobDetailsDto(masterData.Tables[PosTwelve]));
             }
 
             return masterDataDictionary;

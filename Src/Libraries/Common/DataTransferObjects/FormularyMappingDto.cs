@@ -72,8 +72,8 @@ namespace Common.DataTransferObjects
         /// <summary>
         /// SelectedFormName
         /// </summary>
-        [DataMember]
-        private string SelectedFormName;
+        
+        
 
 
 
@@ -94,8 +94,7 @@ namespace Common.DataTransferObjects
         /// <summary>
         /// UserId
         /// </summary>
-        [DataMember]
-        private string UserId;
+        
 
         /// <summary>
         /// UserFormId
@@ -113,8 +112,7 @@ namespace Common.DataTransferObjects
         /// <summary>
         /// SelectedUserFormId
         /// </summary>
-        [DataMember]
-        private string SelectedUserFormId;
+        
 
         [DataMember]
         public DataTable SlectedFormularyIds { get; set; }
