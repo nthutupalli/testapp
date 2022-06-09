@@ -25,6 +25,7 @@ namespace Server.DataAccessObjects
     {
         private readonly IConfiguration _config;
         private readonly string ConnectionString = string.Empty;
+        int count = 120;
         public MasterDataDao(IConfiguration config)
         {
             _config = config;
@@ -42,7 +43,7 @@ namespace Server.DataAccessObjects
             var masterData = new DataSet();
            
 
-            CustomSqlHelper.FillDataSet(ConnectionString, 120, "iRx_GetPolicyMasterDetails", masterData, new SqlParameter[0]);
+            CustomSqlHelper.FillDataSet(ConnectionString, count, "iRx_GetPolicyMasterDetails", masterData, new SqlParameter[0]);
 
             if (masterData.Tables.Count > 0)
             {
@@ -74,7 +75,7 @@ namespace Server.DataAccessObjects
                 new Dictionary<string, object>();
             var masterData = new DataSet();
 
-            CustomSqlHelper.FillDataSet(ConnectionString, 120, "iRx_GetPolicyMasterDetails", masterData, new SqlParameter[0]);
+            CustomSqlHelper.FillDataSet(ConnectionString, count, "iRx_GetPolicyMasterDetails", masterData, new SqlParameter[0]);
 
             if (masterData.Tables.Count > 0)
             {
@@ -93,7 +94,7 @@ namespace Server.DataAccessObjects
                 new Dictionary<string, object>();
             var masterData = new DataSet();
 
-            CustomSqlHelper.FillDataSet(ConnectionString, 120, "iRx_GetPolicyMasterDetails", masterData, new SqlParameter[0]);
+            CustomSqlHelper.FillDataSet(ConnectionString, count, "iRx_GetPolicyMasterDetails", masterData, new SqlParameter[0]);
 
             if (masterData.Tables.Count > 0)
             {
@@ -110,7 +111,7 @@ namespace Server.DataAccessObjects
                 new Dictionary<string, object>();
             var masterData = new DataSet();
 
-            CustomSqlHelper.FillDataSet(ConnectionString, 120, "iRx_GetPolicyMasterDetails", masterData, new SqlParameter[0]);
+            CustomSqlHelper.FillDataSet(ConnectionString, count, "iRx_GetPolicyMasterDetails", masterData, new SqlParameter[0]);
 
             if (masterData.Tables.Count > 0)
             {
@@ -128,7 +129,7 @@ namespace Server.DataAccessObjects
                 new Dictionary<string, object>();
             var masterData = new DataSet();
 
-            CustomSqlHelper.FillDataSet(ConnectionString, 120, "iRx_GetPolicyMasterDetails", masterData, new SqlParameter[0]);
+            CustomSqlHelper.FillDataSet(ConnectionString, count, "iRx_GetPolicyMasterDetails", masterData, new SqlParameter[0]);
 
             if (masterData.Tables.Count > 0)
             {
@@ -146,7 +147,7 @@ namespace Server.DataAccessObjects
                 new Dictionary<string, object>();
             var masterData = new DataSet();
 
-            CustomSqlHelper.FillDataSet(ConnectionString, 120, "iRx_GetPolicyMasterDetails", masterData, new SqlParameter[0]);
+            CustomSqlHelper.FillDataSet(ConnectionString, count, "iRx_GetPolicyMasterDetails", masterData, new SqlParameter[0]);
 
             if (masterData.Tables.Count > 0)
             {
@@ -164,7 +165,7 @@ namespace Server.DataAccessObjects
                 new Dictionary<string, object>();
             var masterData = new DataSet();
 
-            CustomSqlHelper.FillDataSet(ConnectionString, 120, "iRx_GetPolicyMasterDetails", masterData, new SqlParameter[0]);
+            CustomSqlHelper.FillDataSet(ConnectionString, count, "iRx_GetPolicyMasterDetails", masterData, new SqlParameter[0]);
 
             if (masterData.Tables.Count > 0)
             {
@@ -182,7 +183,7 @@ namespace Server.DataAccessObjects
                 new Dictionary<string, object>();
             var masterData = new DataSet();
 
-            CustomSqlHelper.FillDataSet(ConnectionString, 120, "iRx_GetPolicyMasterDetails", masterData, new SqlParameter[0]);
+            CustomSqlHelper.FillDataSet(ConnectionString, count, "iRx_GetPolicyMasterDetails", masterData, new SqlParameter[0]);
 
             if (masterData.Tables.Count > 0)
             {
@@ -199,7 +200,7 @@ namespace Server.DataAccessObjects
                 new Dictionary<string, object>();
             var masterData = new DataSet();
 
-            CustomSqlHelper.FillDataSet(ConnectionString, 120, "iRx_GetPolicyMasterDetails", masterData, new SqlParameter[0]);
+            CustomSqlHelper.FillDataSet(ConnectionString, count, "iRx_GetPolicyMasterDetails", masterData, new SqlParameter[0]);
 
             if (masterData.Tables.Count > 0)
             {
@@ -217,7 +218,7 @@ namespace Server.DataAccessObjects
                 new Dictionary<string, object>();
             var masterData = new DataSet();
 
-            CustomSqlHelper.FillDataSet(ConnectionString, 120, "iRx_GetPolicyMasterDetails", masterData, new SqlParameter[0]);
+            CustomSqlHelper.FillDataSet(ConnectionString, count, "iRx_GetPolicyMasterDetails", masterData, new SqlParameter[0]);
 
             if (masterData.Tables.Count > 0)
             {
@@ -235,7 +236,7 @@ namespace Server.DataAccessObjects
                 new Dictionary<string, object>();
             var masterData = new DataSet();
 
-            CustomSqlHelper.FillDataSet(ConnectionString, 120, "iRx_GetPolicyMasterDetails", masterData, new SqlParameter[0]);
+            CustomSqlHelper.FillDataSet(ConnectionString, count, "iRx_GetPolicyMasterDetails", masterData, new SqlParameter[0]);
 
             if (masterData.Tables.Count > 0)
             {
@@ -254,7 +255,7 @@ namespace Server.DataAccessObjects
         //        new Dictionary<string, object>();
         //    var masterData = new DataSet();
 
-        //    CustomSqlHelper.FillDataSet(ConnectionString, 120, "iRx_GetPolicyMasterDetails", masterData, new SqlParameter[0]);
+        //    CustomSqlHelper.FillDataSet(ConnectionString, count, "iRx_GetPolicyMasterDetails", masterData, new SqlParameter[0]);
 
         //    if (masterData.Tables.Count > 0)
         //    {
@@ -271,7 +272,7 @@ namespace Server.DataAccessObjects
                 new Dictionary<string, object>();
             var masterData = new DataSet();
 
-            CustomSqlHelper.FillDataSet(ConnectionString, 120, "iRx_GetPolicyMasterDetails", masterData, new SqlParameter[0]);
+            CustomSqlHelper.FillDataSet(ConnectionString, count, "iRx_GetPolicyMasterDetails", masterData, new SqlParameter[0]);
 
             if (masterData.Tables.Count > 0)
             {
@@ -289,7 +290,7 @@ namespace Server.DataAccessObjects
                 new Dictionary<string, object>();
             var masterData = new DataSet();
 
-            CustomSqlHelper.FillDataSet(ConnectionString, 120, "iRx_GetPolicyMasterDetails", masterData, new SqlParameter[0]);
+            CustomSqlHelper.FillDataSet(ConnectionString, count, "iRx_GetPolicyMasterDetails", masterData, new SqlParameter[0]);
 
             if (masterData.Tables.Count > 0)
             {
@@ -307,7 +308,7 @@ namespace Server.DataAccessObjects
                 new Dictionary<string, object>();
             var masterData = new DataSet();
 
-            CustomSqlHelper.FillDataSet(ConnectionString, 120, "iRx_GetPolicyMasterDetails", masterData, new SqlParameter[0]);
+            CustomSqlHelper.FillDataSet(ConnectionString, count, "iRx_GetPolicyMasterDetails", masterData, new SqlParameter[0]);
 
             if (masterData.Tables.Count > 0)
             {

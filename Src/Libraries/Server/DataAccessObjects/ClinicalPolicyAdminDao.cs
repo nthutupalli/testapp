@@ -24,21 +24,29 @@ namespace Server.DataAccessObjects
 
         private readonly IConfiguration _config;
         private readonly string ConnectionString = string.Empty;
+        int count = 120;
+        
+        //Clinical Policy Admin Dao Method
         public ClinicalPolicyAdminDao(IConfiguration config)
         {
             _config = config;
+            //Connection String
             ConnectionString = new VaultConfigurationManager(_config).InstanceConnection.ConnectionString["CFConnectionString"].ToString();
         }
+
+        //Save LOB Method
         public void SaveLob(Collection<PolicyLobDto> policyLobDtoCollection)
         {
             if (policyLobDtoCollection == null)
             {
+                //Exception
                 throw new ArgumentNullException(nameof(policyLobDtoCollection));
             }
                 
 
             foreach (var policyLobDto in policyLobDtoCollection.Where(policyLobDto => policyLobDto.ActionType != Constants.ActionType.None))
             {
+                //Parameters
                 var parameters = new[]
                     {
                         new SqlParameter(
@@ -54,18 +62,18 @@ namespace Server.DataAccessObjects
                                                  new SqlParameter("@LobSubCategory",policyLobDto.LobSubCategory=="0"?false:true),
                                                  new SqlParameter("@PrimaryLobSubCategory", policyLobDto.PrimaryLobSubCategory != null?policyLobDto.PrimaryLobSubCategory:string.Empty)
                     };
-                //if (policyLobDto.PrimaryLobSubCategory != null)
-                //    parameters =  new SqlParameter("@PrimaryLobSubCategory", policyLobDto.PrimaryLobSubCategory) ;
                 CustomSqlHelper.ExecuteNonQuery(ConnectionString, "iRx_SaveLobDetails", parameters);
             }
            
         }
+
+        //Get Formulary Details Method
         public FormularyMappingDto GetFormularyDetails()
         {
             var policyResults = new DataSet();
             var formularyMappingDto = new FormularyMappingDto();
             CustomSqlHelper.FillDataSet(
-               ConnectionString, 120, "iRx_GetFormularyPlanYear", policyResults);
+               ConnectionString, count, "iRx_GetFormularyPlanYear", policyResults);
 
             if (policyResults.Tables.Count > 0)
             {
@@ -77,11 +85,14 @@ namespace Server.DataAccessObjects
 
             return formularyMappingDto;
         }
+
+        //CheckIf Policy Exists Method
         public bool CheckIfPolicyExists(int lobId)
         {
             //var parameter = new SqlParameter("@LobId", lobId);
             //return Convert.ToBoolean(SqlHelper.ExecuteScalar(ConnectionString, "iRx_CheckIfPolicyExistsforLOB", parameter));
-
+            
+            //SQL connection
             SqlConnection conn = null;
             const string sqlCommand = "iRx_CheckIfPolicyExistsforLOB";
             using (conn = new SqlConnection(ConnectionString))
@@ -99,7 +110,7 @@ namespace Server.DataAccessObjects
 
             }
         }
-
+        //GetCustomers Method
         public Collection<ArgusCustomerDto> GetCustomers(Int16 lobId)
         {
             var masterData = new DataSet();
@@ -109,7 +120,7 @@ namespace Server.DataAccessObjects
                     new SqlParameter(
                         "@LobId", lobId)
                 };
-            CustomSqlHelper.FillDataSet(ConnectionString, 120, "iRx_GetLobMappingDetails", masterData,
+            CustomSqlHelper.FillDataSet(ConnectionString, count, "iRx_GetLobMappingDetails", masterData,
                                         parameters);
 
             if (masterData.Tables.Count > 0)
@@ -119,18 +130,19 @@ namespace Server.DataAccessObjects
             }
             return null;
 
-            
         }
+
+        //GetAvailableClients Method
         public Collection<ArgusClientDto> GetAvailableClients(Int16 lobId)
         {
             var masterData = new DataSet();
-
+            //Parameters
             var parameters = new[]
                 {
                     new SqlParameter(
                         "@LobId", lobId)
                 };
-            CustomSqlHelper.FillDataSet(ConnectionString, 120, "iRx_GetLobMappingDetails", masterData,
+            CustomSqlHelper.FillDataSet(ConnectionString, count, "iRx_GetLobMappingDetails", masterData,
                                         parameters);
 
             if (masterData.Tables.Count > 0)
@@ -148,6 +160,8 @@ namespace Server.DataAccessObjects
         /// </summary>
         /// <param name="dataTable"></param>
         /// <returns></returns>
+        
+        //CreateArgusCustomer Method
         private  Collection<ArgusCustomerDto> CreateArgusCustomerDto(DataTable dataTable)
         {
             var argusCustomerCollection = new Collection<ArgusCustomerDto>();
@@ -174,6 +188,8 @@ namespace Server.DataAccessObjects
         /// </summary>
         /// <param name="dataTable"></param>
         /// <returns></returns>
+        
+        //CreateArgusClientDto Method
         private  Collection<ArgusClientDto> CreateArgusClientDto(DataTable dataTable)
         {
             var argusCustomerCollection = new Collection<ArgusClientDto>();
@@ -200,7 +216,7 @@ namespace Server.DataAccessObjects
         ///  Get user FormId Details as per plan year
         /// </summary>
         /// <param name="policyTypeId"></param>
-        public  List<FormularyDetailsDto> GetUserFormularyIdDetails(int planYear, int? lobId)
+        public  IList<FormularyDetailsDto> GetUserFormularyIdDetails(int planYear, int? lobId)
         {
             var formularyDetailList = new List<FormularyDetailsDto>();
             var policyResults = new DataSet();
@@ -211,7 +227,7 @@ namespace Server.DataAccessObjects
                     };
             var formularyMappingDto = new FormularyMappingDto();
             CustomSqlHelper.FillDataSet(
-               ConnectionString, 120, "iRx_GetUserFormularyIdDetails", policyResults, parameters);
+               ConnectionString, count, "iRx_GetUserFormularyIdDetails", policyResults, parameters);
 
 
             if (policyResults.Tables[0].Rows.Count > 0)
@@ -285,7 +301,7 @@ namespace Server.DataAccessObjects
 
         }
 
-        public  List<FormularyDetailsDto> GetSavedFormularyIdDetails(int planYear, int? lobId)
+        public  IList<FormularyDetailsDto> GetSavedFormularyIdDetails(int planYear, int? lobId)
         {
             var formularyDetailList = new List<FormularyDetailsDto>();
             //var searchResultList = new List<FormularyDetailsDto>();
@@ -366,27 +382,27 @@ namespace Server.DataAccessObjects
             }
         }
         
-        private static Collection<PolicyLobDto> CreatePolicyLobDto(DataTable dataTable)
-        {
-            var policyLobCollection = new Collection<PolicyLobDto>();
-            if (dataTable != null && dataTable.Rows.Count > 0)
-            {
-                foreach (DataRow dataRow in dataTable.Rows)
-                {
-                    var policyLobDto = new PolicyLobDto
-                    {
-                        LobId = Convert.ToInt16(dataRow["ID"]),
-                        LobName = Convert.ToString(dataRow["Name"]),
-                        IsActive = Convert.ToBoolean(dataRow["IsActive"]),
-                        Status = Convert.ToString(dataRow["Status"]),
-                    };
+        //private static Collection<PolicyLobDto> CreatePolicyLobDto(DataTable dataTable)
+        //{
+        //    var policyLobCollection = new Collection<PolicyLobDto>();
+        //    if (dataTable != null && dataTable.Rows.Count > 0)
+        //    {
+        //        foreach (DataRow dataRow in dataTable.Rows)
+        //        {
+        //            var policyLobDto = new PolicyLobDto
+        //            {
+        //                LobId = Convert.ToInt16(dataRow["ID"]),
+        //                LobName = Convert.ToString(dataRow["Name"]),
+        //                IsActive = Convert.ToBoolean(dataRow["IsActive"]),
+        //                Status = Convert.ToString(dataRow["Status"]),
+        //            };
 
-                    policyLobCollection.Add(policyLobDto);
-                }
-            }
+        //            policyLobCollection.Add(policyLobDto);
+        //        }
+        //    }
 
-            return policyLobCollection;
-        }
+        //    return policyLobCollection;
+        //}
 
         public  bool CheckPolicyOwnerPolicyMapping(Int16 policyOwnerId)
         {
@@ -398,7 +414,7 @@ namespace Server.DataAccessObjects
                         "@PolicyOwnerId", policyOwnerId)
                 };
 
-            CustomSqlHelper.FillDataSet(ConnectionString, 120, "iRx_CheckPolicyOwnerPolicyMapping", therapeuticCategoryDataSet,
+            CustomSqlHelper.FillDataSet(ConnectionString, count, "iRx_CheckPolicyOwnerPolicyMapping", therapeuticCategoryDataSet,
                                        parameters);
 
             if (therapeuticCategoryDataSet.Tables[0].Rows.Count > 0)
@@ -449,7 +465,7 @@ namespace Server.DataAccessObjects
                     new SqlParameter(
                         "@PolicyTypeId", policyTypeId)
                 };
-            CustomSqlHelper.FillDataSet(ConnectionString, 120, "iRx_GetRejectCodeMappingDetails", masterData,
+            CustomSqlHelper.FillDataSet(ConnectionString, count, "iRx_GetRejectCodeMappingDetails", masterData,
                                         parameters);
 
             if (masterData.Tables[0].Rows.Count > 0)
@@ -474,11 +490,9 @@ namespace Server.DataAccessObjects
         public List<PrimaryLobSubCategoryDto> PrimaryLobSubCategoryList()
         {
             var masterData = new DataSet();
-            CustomSqlHelper.FillDataSet(ConnectionString, 120, "iRx_GetPrimaryLobSubCategoryDetails", masterData, new SqlParameter[0]);
+            CustomSqlHelper.FillDataSet(ConnectionString, count, "iRx_GetPrimaryLobSubCategoryDetails", masterData, new SqlParameter[0]);
             var primaryLobSubCategoryCollection = new List<PrimaryLobSubCategoryDto>();
-            if (masterData.Tables.Count > 0)
-            {
-
+            
                 
                 if (masterData != null && masterData.Tables.Count > 0)
                 {
@@ -494,29 +508,29 @@ namespace Server.DataAccessObjects
                     
                 }
                 
-            }
+            
 
             return primaryLobSubCategoryCollection;
         }
 
-        private List<PrimaryLobSubCategoryDto> CreatePrimaryLobStatusDto(DataTable dataTable)
-        {
-            var primaryLobSubCategoryCollection = new List<PrimaryLobSubCategoryDto>();
-            if (dataTable != null && dataTable.Rows.Count > 0)
-            {
-                foreach (DataRow dataRow in dataTable.Rows)
-                {
-                    var primaryLobSubCategory = new PrimaryLobSubCategoryDto
-                    {
-                        PrimaryLobId = Convert.ToInt16(dataRow["PrimaryLobId"]),
-                        PrimaryLobName = Convert.ToString(dataRow["PrimaryLobName"])
-                    };
+        //private List<PrimaryLobSubCategoryDto> CreatePrimaryLobStatusDto(DataTable dataTable)
+        //{
+        //    var primaryLobSubCategoryCollection = new List<PrimaryLobSubCategoryDto>();
+        //    if (dataTable != null && dataTable.Rows.Count > 0)
+        //    {
+        //        foreach (DataRow dataRow in dataTable.Rows)
+        //        {
+        //            var primaryLobSubCategory = new PrimaryLobSubCategoryDto
+        //            {
+        //                PrimaryLobId = Convert.ToInt16(dataRow["PrimaryLobId"]),
+        //                PrimaryLobName = Convert.ToString(dataRow["PrimaryLobName"])
+        //            };
 
-                    primaryLobSubCategoryCollection.Add(primaryLobSubCategory);
-                }
-            }
-            return primaryLobSubCategoryCollection;
-        }
+        //            primaryLobSubCategoryCollection.Add(primaryLobSubCategory);
+        //        }
+        //    }
+        //    return primaryLobSubCategoryCollection;
+        //}
         public  void SaveRejectCodesDetails(Collection<PolicyRejectCodeDto> rejectCodeDtoCollection)
         {
             if (rejectCodeDtoCollection == null)
@@ -578,7 +592,7 @@ namespace Server.DataAccessObjects
                         "@TherapeuticCategoryId", therapeuticCategoryId)
                 };
 
-            CustomSqlHelper.FillDataSet(ConnectionString, 120, "iRx_CheckTherapeuticCategoryPolicyMapping", therapeuticCategoryDataSet,
+            CustomSqlHelper.FillDataSet(ConnectionString, count, "iRx_CheckTherapeuticCategoryPolicyMapping", therapeuticCategoryDataSet,
                                        parameters);
 
             if (therapeuticCategoryDataSet.Tables[0].Rows.Count > 0)
@@ -627,7 +641,7 @@ namespace Server.DataAccessObjects
                         "@SubCategoryId", subCategoryId)
                 };
 
-            CustomSqlHelper.FillDataSet(ConnectionString, 120, "iRx_CheckSubCategoryPolicyMapping", therapeuticCategoryDataSet,
+            CustomSqlHelper.FillDataSet(ConnectionString, count, "iRx_CheckSubCategoryPolicyMapping", therapeuticCategoryDataSet,
                                        parameters);
 
             if (therapeuticCategoryDataSet.Tables[0].Rows.Count > 0)
@@ -705,7 +719,7 @@ namespace Server.DataAccessObjects
                             };
             var masterData = new DataSet();
 
-            CustomSqlHelper.FillDataSet(ConnectionString, 120, "iRx_GetPolicyMasterDetails_API", masterData, parameter);
+            CustomSqlHelper.FillDataSet(ConnectionString, count, "iRx_GetPolicyMasterDetails_API", masterData, parameter);
             var policyTypeCollection = new List<LookupDataDto>();
             if (masterData != null && masterData.Tables[0].Rows.Count > 0)
             {

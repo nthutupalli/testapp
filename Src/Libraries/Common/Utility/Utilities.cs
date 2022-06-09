@@ -17,15 +17,9 @@ namespace Common.Utility
         [ExcludeFromCodeCoverage]
         public static object IsNull(object myValue, object myReplacement)
         {
-            if ((!ReferenceEquals(myValue, DBNull.Value)))
+            if ((!ReferenceEquals(myValue, DBNull.Value)) && (myValue != null) && !(string.IsNullOrEmpty(myValue.ToString())))
             {
-                if ((myValue != null))
-                {
-                    if (!(string.IsNullOrEmpty(myValue.ToString()))) //myValue.ToString() == string.Empty
-                    {
-                        return myValue;
-                    }
-                }
+                return myValue;
             }
 
             return myReplacement;
