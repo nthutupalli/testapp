@@ -139,7 +139,7 @@ namespace Server.VaultManager
 
                 return conString;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return new Dictionary<string, dynamic>();
             }

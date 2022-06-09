@@ -62,7 +62,7 @@ namespace ClinicalPolicyAdminAPI.Controllers
                 {
                     if (composite.lobId > 0)
                     {
-                        bool response = new ClinicalPolicyAdminDao(_config).CheckIfPolicyExists(composite.lobId);
+                        bool response = new ClinicalPolicyAdminDaos(_config).CheckIfPolicyExists(composite.lobId);
                         return Ok(response);
                     }
                     else
@@ -102,7 +102,7 @@ namespace ClinicalPolicyAdminAPI.Controllers
             {
                 if (policyLobDtoCollection != null)
                 {
-                    new ClinicalPolicyAdminDao(_config).SaveLob(policyLobDtoCollection);
+                    new ClinicalPolicyAdminDaos(_config).SaveLob(policyLobDtoCollection);
                     objMessage.Code = StatusCodes.Status200OK;
                     objMessage.Message = Constants.Message.Success;
                     return Ok(objMessage);
@@ -139,7 +139,7 @@ namespace ClinicalPolicyAdminAPI.Controllers
             ResponseMessageDto objMessage = new ResponseMessageDto();
             try
             {
-                FormularyMappingDto mappingDto = new ClinicalPolicyAdminDao(_config).GetFormularyDetails();
+                FormularyMappingDto mappingDto = new ClinicalPolicyAdminDaos(_config).GetFormularyDetails();
                 return Ok(mappingDto);
 
 
@@ -195,7 +195,7 @@ namespace ClinicalPolicyAdminAPI.Controllers
                 {
                     if (composite.lobId > 0)
                     {
-                        Collection<ArgusCustomerDto> response = new ClinicalPolicyAdminDao(_config).GetCustomers(composite.lobId);
+                        Collection<ArgusCustomerDto> response = new ClinicalPolicyAdminDaos(_config).GetCustomers(composite.lobId);
                         return Ok(response);
                     }
                     else
@@ -237,7 +237,7 @@ namespace ClinicalPolicyAdminAPI.Controllers
                 { 
                 if (composite.lobId > 0)
                 {
-                    Collection<ArgusClientDto> response = new ClinicalPolicyAdminDao(_config).GetAvailableClients(composite.lobId);
+                    Collection<ArgusClientDto> response = new ClinicalPolicyAdminDaos(_config).GetAvailableClients(composite.lobId);
                     return Ok(response);
                 }
                 else
@@ -279,7 +279,7 @@ namespace ClinicalPolicyAdminAPI.Controllers
             {
                 if (composite != null)
                 {
-                    List<FormularyDetailsDto> response = (List<FormularyDetailsDto>)new ClinicalPolicyAdminDao(_config).GetUserFormularyIdDetails(composite.planYear, composite.lobId);
+                    List<FormularyDetailsDto> response = (List<FormularyDetailsDto>)new ClinicalPolicyAdminDaos(_config).GetUserFormularyIdDetails(composite.planYear, composite.lobId);
                     return Ok(response);
                 }
 
