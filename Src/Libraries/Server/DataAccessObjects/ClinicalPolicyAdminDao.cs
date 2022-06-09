@@ -14,8 +14,9 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Globalization;
+
 
 namespace Server.DataAccessObjects
 {
@@ -29,6 +30,7 @@ namespace Server.DataAccessObjects
         //Clinical Policy Admin Dao Method
         public ClinicalPolicyAdminDao(IConfiguration config)
         {
+            
             _config = config;
             //Connection String
             ConnectionString = new VaultConfigurationManager(_config).InstanceConnection.ConnectionString["CFConnectionString"].ToString();
@@ -62,6 +64,7 @@ namespace Server.DataAccessObjects
                                                  new SqlParameter("@LobSubCategory",policyLobDto.LobSubCategory=="0"?false:true),
                                                  new SqlParameter("@PrimaryLobSubCategory", policyLobDto.PrimaryLobSubCategory != null?policyLobDto.PrimaryLobSubCategory:string.Empty)
                     };
+                
                 CustomSqlHelper.ExecuteNonQuery(ConnectionString, "iRx_SaveLobDetails", parameters);
             }
            
@@ -71,6 +74,7 @@ namespace Server.DataAccessObjects
         public FormularyMappingDto GetFormularyDetails()
         {
             var policyResults = new DataSet();
+            policyResults.Locale = CultureInfo.InvariantCulture;
             var formularyMappingDto = new FormularyMappingDto();
             CustomSqlHelper.FillDataSet(
                ConnectionString, count, "iRx_GetFormularyPlanYear", policyResults);
@@ -89,10 +93,7 @@ namespace Server.DataAccessObjects
         //CheckIf Policy Exists Method
         public bool CheckIfPolicyExists(int lobId)
         {
-            //var parameter = new SqlParameter("@LobId", lobId);
-            //return Convert.ToBoolean(SqlHelper.ExecuteScalar(ConnectionString, "iRx_CheckIfPolicyExistsforLOB", parameter));
             
-            //SQL connection
             SqlConnection conn = null;
             const string sqlCommand = "iRx_CheckIfPolicyExistsforLOB";
             using (conn = new SqlConnection(ConnectionString))
@@ -114,6 +115,7 @@ namespace Server.DataAccessObjects
         public Collection<ArgusCustomerDto> GetCustomers(Int16 lobId)
         {
             var masterData = new DataSet();
+            masterData.Locale = CultureInfo.InvariantCulture;
 
             var parameters = new[]
                 {
@@ -136,7 +138,7 @@ namespace Server.DataAccessObjects
         public Collection<ArgusClientDto> GetAvailableClients(Int16 lobId)
         {
             var masterData = new DataSet();
-            //Parameters
+            masterData.Locale = CultureInfo.InvariantCulture;
             var parameters = new[]
                 {
                     new SqlParameter(
@@ -220,6 +222,7 @@ namespace Server.DataAccessObjects
         {
             var formularyDetailList = new List<FormularyDetailsDto>();
             var policyResults = new DataSet();
+            policyResults.Locale = CultureInfo.InvariantCulture;
             var parameters = new[]
                     {
                         new SqlParameter("@PlanYear",planYear),
@@ -304,7 +307,7 @@ namespace Server.DataAccessObjects
         public  IList<FormularyDetailsDto> GetSavedFormularyIdDetails(int planYear, int? lobId)
         {
             var formularyDetailList = new List<FormularyDetailsDto>();
-            //var searchResultList = new List<FormularyDetailsDto>();
+            
             SqlConnection conn = null;
             const string sqlCommand = "iRx_GetSavedLobFormularyDetail";
             using (conn = new SqlConnection(ConnectionString))
@@ -327,7 +330,7 @@ namespace Server.DataAccessObjects
                 {
                     while (searchResult.Read())
                     {
-                        //searchResultList.Add(string.Format("{0};{1};{2}", searchResult["DosageFormId"], searchResult["DosageFormDesc"], searchResult["BrandName"]));
+                        
                         FormularyDetailsDto formularydetails = new FormularyDetailsDto();
                         formularydetails.UserFormId = searchResult["UserFormId"].ToString();
                         formularydetails.FormName = searchResult["FormName"].ToString();
@@ -407,6 +410,7 @@ namespace Server.DataAccessObjects
         public  bool CheckPolicyOwnerPolicyMapping(Int16 policyOwnerId)
         {
             var therapeuticCategoryDataSet = new DataSet();
+            therapeuticCategoryDataSet.Locale = CultureInfo.InvariantCulture;
 
             var parameters = new[]
                 {
@@ -459,6 +463,7 @@ namespace Server.DataAccessObjects
         {
             var policyRejectCodeCollection = new Collection<PolicyRejectCodeDto>();
             var masterData = new DataSet();
+            masterData.Locale = CultureInfo.InvariantCulture;
 
             var parameters = new[]
                 {
@@ -490,8 +495,12 @@ namespace Server.DataAccessObjects
         public List<PrimaryLobSubCategoryDto> PrimaryLobSubCategoryList()
         {
             var masterData = new DataSet();
+
+            masterData.Locale = CultureInfo.InvariantCulture;
+            
+
             CustomSqlHelper.FillDataSet(ConnectionString, count, "iRx_GetPrimaryLobSubCategoryDetails", masterData, new SqlParameter[0]);
-            var primaryLobSubCategoryCollection = new List<PrimaryLobSubCategoryDto>();
+         var primaryLobSubCategoryCollection = new List<PrimaryLobSubCategoryDto>();
             
                 
                 if (masterData != null && masterData.Tables.Count > 0)
@@ -585,6 +594,7 @@ namespace Server.DataAccessObjects
         public  bool CheckTherapeuticCategoryPolicyMapping(Int16 therapeuticCategoryId)
         {
             var therapeuticCategoryDataSet = new DataSet();
+            therapeuticCategoryDataSet.Locale = CultureInfo.InvariantCulture;
 
             var parameters = new[]
                 {
@@ -634,6 +644,7 @@ namespace Server.DataAccessObjects
         public  bool CheckSubCategoryPolicyMapping(Int16 subCategoryId)
         {
             var therapeuticCategoryDataSet = new DataSet();
+            therapeuticCategoryDataSet.Locale = CultureInfo.InvariantCulture;
 
             var parameters = new[]
                 {
@@ -718,6 +729,9 @@ namespace Server.DataAccessObjects
 
                             };
             var masterData = new DataSet();
+         masterData.Locale = CultureInfo.InvariantCulture;
+
+           
 
             CustomSqlHelper.FillDataSet(ConnectionString, count, "iRx_GetPolicyMasterDetails_API", masterData, parameter);
             var policyTypeCollection = new List<LookupDataDto>();

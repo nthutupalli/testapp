@@ -8,7 +8,6 @@ Written by Firstname lastname <email@humana.com>, November 2021
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Diagnostics.CodeAnalysis;
 using System.Net;
 using VaultSharp;
@@ -23,11 +22,11 @@ namespace Server.VaultManager
 
         private readonly IConfiguration _config;
         readonly object LockObject = new object();
-        private readonly string VaultUriValue = string.Empty;
+        private readonly string VaultUriValue= string.Empty;
         private readonly string TokenValue = string.Empty;
-        private readonly string secretPathConnection = string.Empty;
+        private readonly string secretPathConnection= string.Empty;
         private readonly string secretPathAppSettings = string.Empty;
-        private readonly int RefreshIntervalHours = 0;
+        private readonly int RefreshIntervalHours= 0;
         public VaultConfigurationManager(IConfiguration config)
         {
             _config = config;

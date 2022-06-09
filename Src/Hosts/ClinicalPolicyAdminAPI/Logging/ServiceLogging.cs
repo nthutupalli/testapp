@@ -9,16 +9,15 @@ using Common;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Configuration;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using static ClinicalPolicyAPI.Logging.EnterpriseLogRequest;
+
+//Servcice logging
+//Logging
 
 namespace ClinicalPolicyAPI.Logging
 {
@@ -49,7 +48,7 @@ namespace ClinicalPolicyAPI.Logging
             {
                 EapmId = Convert.ToInt32(_config.GetValue<int>("EAPM"), CultureInfo.InvariantCulture),
                 HostMachineName = Environment.MachineName,
-                HostEnvironmentName = _config.GetValue<string>("Environment").ToString(),
+                HostEnvironmentName = _config.GetValue<string>("Environment"),
                 CorrelationId = Convert.ToString(Guid.NewGuid(), CultureInfo.InvariantCulture)
             };
             logEvent.SourceApplicationInformation = new SourceApplicationInformation();
