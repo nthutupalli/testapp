@@ -22,11 +22,11 @@ namespace Server.VaultManager
 
         private readonly IConfiguration _config;
         readonly object LockObject = new object();
-        private readonly string VaultUriValue;
-        private readonly string TokenValue ;
-        private readonly string secretPathConnection;
-        private readonly string secretPathAppSettings ;
-        private readonly int RefreshIntervalHours;
+        private readonly string VaultUriValue= string.Empty;
+        private readonly string TokenValue = string.Empty;
+        private readonly string secretPathConnection= string.Empty;
+        private readonly string secretPathAppSettings = string.Empty;
+        private readonly int RefreshIntervalHours= 0;
         public VaultConfigurationManager(IConfiguration config)
         {
             _config = config;

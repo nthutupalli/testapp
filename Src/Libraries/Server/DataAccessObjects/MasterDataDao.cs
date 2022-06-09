@@ -13,6 +13,7 @@ using Common.DataTransferObjects;
 using System.Data.SqlClient;
 using Common;
 using Microsoft.Extensions.Configuration;
+using System.Globalization;
 
 
 namespace Server.DataAccessObjects
@@ -36,7 +37,7 @@ namespace Server.DataAccessObjects
             var masterDataDictionary =
                 new Dictionary<string, object>();
             var masterData = new DataSet();
-           
+            masterData.Locale = CultureInfo.InvariantCulture;
 
 
             CustomSqlHelper.FillDataSet(ConnectionString, 120, "iRx_GetPolicyMasterDetails", masterData, new SqlParameter[0]);
