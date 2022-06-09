@@ -14,7 +14,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
 namespace Server.DataAccessObjects
@@ -26,6 +25,7 @@ namespace Server.DataAccessObjects
         private readonly string ConnectionString = string.Empty;
         public ClinicalPolicyAdminDao(IConfiguration config)
         {
+            
             _config = config;
             ConnectionString = new VaultConfigurationManager(_config).InstanceConnection.ConnectionString["CFConnectionString"].ToString();
         }
