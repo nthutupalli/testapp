@@ -44,21 +44,21 @@ namespace Server.DataAccessObjects
            
 
             CustomSqlHelper.FillDataSet(ConnectionString, count, "iRx_GetPolicyMasterDetails", masterData, new SqlParameter[0]);
-            int PosZero = 0;
-            int PosOne = 1;
-            int PosTwo = 2;
-            int PosThree = 3;
-            int PosFour = 4;
-            int PosFive = 5;
-            int PosSix = 6;
-            int PosSeven = 7;
-            int PosEight = 8;
-            int PosNine = 9;
-            int PosTen = 10;
-            int PosEleven = 11;
-            int PosTwelve = 12;
-            int PosThirteen = 13;
-            int PosFourteen = 14;
+           const int PosZero = 0;
+            const int PosOne = 1;
+            const int PosTwo = 2;
+            const int PosThree = 3;
+            const int PosFour = 4;
+            const int PosFive = 5;
+            const int PosSix = 6;
+            const int PosSeven = 7;
+            const int PosEight = 8;
+            const int PosNine = 9;
+            const int PosTen = 10;
+            const int PosEleven = 11;
+            const int PosTwelve = 12;
+            const int PosThirteen = 13;
+            const int PosFourteen = 14;
 
             if (masterData.Tables.Count > 0)
             {

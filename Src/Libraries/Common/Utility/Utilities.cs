@@ -13,8 +13,10 @@ using System.Text;
 namespace Common.Utility
 {
     public static class Utilities
+
     {
         [ExcludeFromCodeCoverage]
+        //Exclide from Code Coverage
         public static object IsNull(object myValue, object myReplacement)
         {
             if ((!ReferenceEquals(myValue, DBNull.Value)) && (myValue != null) && !(string.IsNullOrEmpty(myValue.ToString())))
