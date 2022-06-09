@@ -10,15 +10,3 @@ C:\Users\NST5884\source\repos\ClinicalPolicyAdminAPI_May6th\Src\Libraries\Server
 C:\Users\NST5884\source\repos\ClinicalPolicyAdminAPI_May6th\Src\Libraries\Server\obj\Debug\netcoreapp3.1\Server.csproj.CopyComplete
 C:\Users\NST5884\source\repos\ClinicalPolicyAdminAPI_May6th\Src\Libraries\Server\obj\Debug\netcoreapp3.1\Server.dll
 C:\Users\NST5884\source\repos\ClinicalPolicyAdminAPI_May6th\Src\Libraries\Server\obj\Debug\netcoreapp3.1\Server.pdb
-C:\Users\ATR6090\Source\Repos\ClinicalPolicyAdminAPI_Sonar_new2\Src\Libraries\Server\bin\Debug\netcoreapp3.1\Server.deps.json
-C:\Users\ATR6090\Source\Repos\ClinicalPolicyAdminAPI_Sonar_new2\Src\Libraries\Server\bin\Debug\netcoreapp3.1\Server.dll
-C:\Users\ATR6090\Source\Repos\ClinicalPolicyAdminAPI_Sonar_new2\Src\Libraries\Server\bin\Debug\netcoreapp3.1\Server.pdb
-C:\Users\ATR6090\Source\Repos\ClinicalPolicyAdminAPI_Sonar_new2\Src\Libraries\Server\bin\Debug\netcoreapp3.1\Common.dll
-C:\Users\ATR6090\Source\Repos\ClinicalPolicyAdminAPI_Sonar_new2\Src\Libraries\Server\bin\Debug\netcoreapp3.1\Common.pdb
-C:\Users\ATR6090\Source\Repos\ClinicalPolicyAdminAPI_Sonar_new2\Src\Libraries\Server\obj\Debug\netcoreapp3.1\Server.csprojAssemblyReference.cache
-C:\Users\ATR6090\Source\Repos\ClinicalPolicyAdminAPI_Sonar_new2\Src\Libraries\Server\obj\Debug\netcoreapp3.1\Server.AssemblyInfoInputs.cache
-C:\Users\ATR6090\Source\Repos\ClinicalPolicyAdminAPI_Sonar_new2\Src\Libraries\Server\obj\Debug\netcoreapp3.1\Server.AssemblyInfo.cs
-C:\Users\ATR6090\Source\Repos\ClinicalPolicyAdminAPI_Sonar_new2\Src\Libraries\Server\obj\Debug\netcoreapp3.1\Server.csproj.CoreCompileInputs.cache
-C:\Users\ATR6090\Source\Repos\ClinicalPolicyAdminAPI_Sonar_new2\Src\Libraries\Server\obj\Debug\netcoreapp3.1\Server.csproj.CopyComplete
-C:\Users\ATR6090\Source\Repos\ClinicalPolicyAdminAPI_Sonar_new2\Src\Libraries\Server\obj\Debug\netcoreapp3.1\Server.dll
-C:\Users\ATR6090\Source\Repos\ClinicalPolicyAdminAPI_Sonar_new2\Src\Libraries\Server\obj\Debug\netcoreapp3.1\Server.pdb

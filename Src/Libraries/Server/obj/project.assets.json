@@ -982,41 +982,39 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ATR6090\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\NST5884\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ATR6090\\Source\\Repos\\ClinicalPolicyAdminAPI_Sonar_new2\\Src\\Libraries\\Server\\Server.csproj",
+      "projectUniqueName": "C:\\Users\\NST5884\\source\\repos\\ClinicalPolicyAdminAPI_May6th\\Src\\Libraries\\Server\\Server.csproj",
       "projectName": "Server",
-      "projectPath": "C:\\Users\\ATR6090\\Source\\Repos\\ClinicalPolicyAdminAPI_Sonar_new2\\Src\\Libraries\\Server\\Server.csproj",
-      "packagesPath": "C:\\Users\\ATR6090\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ATR6090\\Source\\Repos\\ClinicalPolicyAdminAPI_Sonar_new2\\Src\\Libraries\\Server\\obj\\",
+      "projectPath": "C:\\Users\\NST5884\\source\\repos\\ClinicalPolicyAdminAPI_May6th\\Src\\Libraries\\Server\\Server.csproj",
+      "packagesPath": "C:\\Users\\NST5884\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\NST5884\\source\\repos\\ClinicalPolicyAdminAPI_May6th\\Src\\Libraries\\Server\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "C:\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\ATR6090\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\NST5884\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {},
+        "https://humana.jfrog.io/artifactory/pharmacy-benefit-management-npm-virtual": {}
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\ATR6090\\Source\\Repos\\ClinicalPolicyAdminAPI_Sonar_new2\\Src\\Libraries\\Common\\Common.csproj": {
-              "projectPath": "C:\\Users\\ATR6090\\Source\\Repos\\ClinicalPolicyAdminAPI_Sonar_new2\\Src\\Libraries\\Common\\Common.csproj"
+            "C:\\Users\\NST5884\\source\\repos\\ClinicalPolicyAdminAPI_May6th\\Src\\Libraries\\Common\\Common.csproj": {
+              "projectPath": "C:\\Users\\NST5884\\source\\repos\\ClinicalPolicyAdminAPI_May6th\\Src\\Libraries\\Common\\Common.csproj"
             }
           }
         }
@@ -1029,7 +1027,6 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
-        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "Microsoft.Extensions.Configuration.Abstractions": {
             "target": "Package",
@@ -1063,7 +1060,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.214\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.419\\RuntimeIdentifierGraph.json"
       }
     }
   }

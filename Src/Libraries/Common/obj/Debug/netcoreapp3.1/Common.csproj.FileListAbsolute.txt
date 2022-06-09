@@ -7,12 +7,3 @@ C:\Users\NST5884\source\repos\ClinicalPolicyAdminAPI_May6th\Src\Libraries\Common
 C:\Users\NST5884\source\repos\ClinicalPolicyAdminAPI_May6th\Src\Libraries\Common\obj\Debug\netcoreapp3.1\Common.csproj.CoreCompileInputs.cache
 C:\Users\NST5884\source\repos\ClinicalPolicyAdminAPI_May6th\Src\Libraries\Common\obj\Debug\netcoreapp3.1\Common.dll
 C:\Users\NST5884\source\repos\ClinicalPolicyAdminAPI_May6th\Src\Libraries\Common\obj\Debug\netcoreapp3.1\Common.pdb
-C:\Users\ATR6090\Source\Repos\ClinicalPolicyAdminAPI_Sonar_new2\Src\Libraries\Common\bin\Debug\netcoreapp3.1\Common.deps.json
-C:\Users\ATR6090\Source\Repos\ClinicalPolicyAdminAPI_Sonar_new2\Src\Libraries\Common\bin\Debug\netcoreapp3.1\Common.dll
-C:\Users\ATR6090\Source\Repos\ClinicalPolicyAdminAPI_Sonar_new2\Src\Libraries\Common\bin\Debug\netcoreapp3.1\Common.pdb
-C:\Users\ATR6090\Source\Repos\ClinicalPolicyAdminAPI_Sonar_new2\Src\Libraries\Common\obj\Debug\netcoreapp3.1\Common.csprojAssemblyReference.cache
-C:\Users\ATR6090\Source\Repos\ClinicalPolicyAdminAPI_Sonar_new2\Src\Libraries\Common\obj\Debug\netcoreapp3.1\Common.AssemblyInfoInputs.cache
-C:\Users\ATR6090\Source\Repos\ClinicalPolicyAdminAPI_Sonar_new2\Src\Libraries\Common\obj\Debug\netcoreapp3.1\Common.AssemblyInfo.cs
-C:\Users\ATR6090\Source\Repos\ClinicalPolicyAdminAPI_Sonar_new2\Src\Libraries\Common\obj\Debug\netcoreapp3.1\Common.csproj.CoreCompileInputs.cache
-C:\Users\ATR6090\Source\Repos\ClinicalPolicyAdminAPI_Sonar_new2\Src\Libraries\Common\obj\Debug\netcoreapp3.1\Common.dll
-C:\Users\ATR6090\Source\Repos\ClinicalPolicyAdminAPI_Sonar_new2\Src\Libraries\Common\obj\Debug\netcoreapp3.1\Common.pdb
