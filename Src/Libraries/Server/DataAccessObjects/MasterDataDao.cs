@@ -22,7 +22,7 @@ namespace Server.DataAccessObjects
     {
         private readonly IConfiguration _config;
         private readonly string ConnectionString = string.Empty;
-        int count = 120;
+        readonly int count = 120;
         public MasterDataDao(IConfiguration config)
         {
             _config = config;
@@ -41,28 +41,43 @@ namespace Server.DataAccessObjects
             masterData.Locale = CultureInfo.InvariantCulture;
 
 
-           // CustomSqlHelper.FillDataSet(ConnectionString, 120, "iRx_GetPolicyMasterDetails", masterData, new SqlParameter[0]);
-
+           
 
             CustomSqlHelper.FillDataSet(ConnectionString, count, "iRx_GetPolicyMasterDetails", masterData, new SqlParameter[0]);
+            int PosZero = 0;
+            int PosOne = 1;
+            int PosTwo = 2;
+            int PosThree = 3;
+            int PosFour = 4;
+            int PosFive = 5;
+            int PosSix = 6;
+            int PosSeven = 7;
+            int PosEight = 8;
+            int PosNine = 9;
+            int PosTen = 10;
+            int PosEleven = 11;
+            int PosTwelve = 12;
+            int PosThirteen = 13;
+            int PosFourteen = 14;
+
             if (masterData.Tables.Count > 0)
             {
-                masterDataDictionary.Add("Lob", CreatePolicyLobDto(masterData.Tables[0]));
-                masterDataDictionary.Add("PolicyType", CreatePolicyTypeDto(masterData.Tables[1]));
-                masterDataDictionary.Add("TherapeuticCategory", CreateTherapeuticCategoryCollection(masterData.Tables[2]));
-                masterDataDictionary.Add("SubCategory", CreateSubCategoryCollection(masterData.Tables[3]));
-                masterDataDictionary.Add("PolicyOwner", CreatePolicyOwnerCollection(masterData.Tables[4]));
-                masterDataDictionary.Add("RuleLookBackPeriod", CreateRuleLookBackPeriodCollection(masterData.Tables[5]));
-                masterDataDictionary.Add("RejectCode", CreatePolicyRejectCodeCollection(masterData.Tables[6]));
-                masterDataDictionary.Add("Template", CreatePolicyTemplateCollection(masterData.Tables[7]));
-                masterDataDictionary.Add("RuleConcept", CreateRuleConceptCollection(masterData.Tables[8]));
-                masterDataDictionary.Add("PolicyTypeDefault", CreatePolicyDefaultCollection(masterData.Tables[9]));
+                masterDataDictionary.Add("Lob", CreatePolicyLobDto(masterData.Tables[PosZero]));
+                masterDataDictionary.Add("PolicyType", CreatePolicyTypeDto(masterData.Tables[PosOne]));
+                masterDataDictionary.Add("TherapeuticCategory", CreateTherapeuticCategoryCollection(masterData.Tables[PosTwo]));
+                masterDataDictionary.Add("SubCategory", CreateSubCategoryCollection(masterData.Tables[PosThree]));
+                masterDataDictionary.Add("PolicyOwner", CreatePolicyOwnerCollection(masterData.Tables[PosFour]));
+                masterDataDictionary.Add("RuleLookBackPeriod", CreateRuleLookBackPeriodCollection(masterData.Tables[PosFive]));
+                masterDataDictionary.Add("RejectCode", CreatePolicyRejectCodeCollection(masterData.Tables[PosSix]));
+                masterDataDictionary.Add("Template", CreatePolicyTemplateCollection(masterData.Tables[PosSeven]));
+                masterDataDictionary.Add("RuleConcept", CreateRuleConceptCollection(masterData.Tables[PosEight]));
+                masterDataDictionary.Add("PolicyTypeDefault", CreatePolicyDefaultCollection(masterData.Tables[PosNine]));
                 
-                masterDataDictionary.Add("RevisionType", CreateRevisionTypeCollection(masterData.Tables[10]));
-                masterDataDictionary.Add("UpdateType", CreateUpdateTypeCollection(masterData.Tables[11]));
-                masterDataDictionary.Add("CPLob", CreateCPLobDetailsDto(masterData.Tables[12]));
-                masterDataDictionary.Add("PolicyStatus", CreatePolicyStatusDetailsDto(masterData.Tables[13]));
-               masterDataDictionary.Add("PrimaryLobSubCategory", CreatePrimaryLobStatusDto(masterData.Tables[14]));
+                masterDataDictionary.Add("RevisionType", CreateRevisionTypeCollection(masterData.Tables[PosTen]));
+                masterDataDictionary.Add("UpdateType", CreateUpdateTypeCollection(masterData.Tables[PosEleven]));
+                masterDataDictionary.Add("CPLob", CreateCPLobDetailsDto(masterData.Tables[PosTwelve]));
+                masterDataDictionary.Add("PolicyStatus", CreatePolicyStatusDetailsDto(masterData.Tables[PosThirteen]));
+               masterDataDictionary.Add("PrimaryLobSubCategory", CreatePrimaryLobStatusDto(masterData.Tables[PosFourteen]));
             }
 
             return masterDataDictionary;
