@@ -279,7 +279,7 @@ namespace ClinicalPolicyAdminAPI.Controllers
             {
                 if (composite != null)
                 {
-                    List<FormularyDetailsDto> response = new ClinicalPolicyAdminDao(_config).GetUserFormularyIdDetails(composite.planYear, composite.lobId);
+                    List<FormularyDetailsDto> response = (List<FormularyDetailsDto>)new ClinicalPolicyAdminDao(_config).GetUserFormularyIdDetails(composite.planYear, composite.lobId);
                     return Ok(response);
                 }
 
@@ -313,7 +313,7 @@ namespace ClinicalPolicyAdminAPI.Controllers
             {
                 if (composite != null)
                 { 
-                List<FormularyDetailsDto> response = new ClinicalPolicyAdminDao(_config).GetSavedFormularyIdDetails(composite.planYear, composite.lobId);
+                List<FormularyDetailsDto> response = (List<FormularyDetailsDto>)new ClinicalPolicyAdminDao(_config).GetSavedFormularyIdDetails(composite.planYear, composite.lobId);
                 return Ok(response);
                 }
 

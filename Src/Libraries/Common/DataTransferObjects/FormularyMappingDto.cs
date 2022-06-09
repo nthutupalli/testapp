@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
-
+using System.Text;
 
 namespace Common.DataTransferObjects
 {
@@ -22,11 +22,11 @@ namespace Common.DataTransferObjects
     [ExcludeFromCodeCoverage]
     public class FormularyMappingDto
     {
-        private List<int> lobId;
-        private List<string> lobName;
-        private List<int> planYear;
-        private List<string> userFormId;
-        private List<string> formName;
+        private IList<int> lobId;
+        private IList<string> lobName;
+        private IList<int> planYear;
+        private IList<string> userFormId;
+        private IList<string> formName;
 
 
 
@@ -34,7 +34,7 @@ namespace Common.DataTransferObjects
         /// LOBId
         /// </summary>
         [DataMember]
-        public List<int> LOBId
+        public IList<int> LOBId
         {
             get { return lobId ?? (lobId = new List<int>()); }
             set
@@ -47,7 +47,7 @@ namespace Common.DataTransferObjects
         /// LOBName
         /// </summary>
         [DataMember]
-        public List<string> LOBName
+        public IList<string> LOBName
         {
             get { return lobName ?? (lobName = new List<string>()); }
             set
@@ -60,7 +60,7 @@ namespace Common.DataTransferObjects
         /// FormName
         /// </summary>
         [DataMember]
-        public List<string> FormName
+        public IList<string> FormName
         {
             get { return formName ?? (formName = new List<string>()); }
             set
@@ -73,7 +73,7 @@ namespace Common.DataTransferObjects
         /// SelectedFormName
         /// </summary>
         [DataMember]
-        public string SelectedFormName;
+        private string SelectedFormName;
 
 
 
@@ -82,7 +82,7 @@ namespace Common.DataTransferObjects
         /// PlanYear
         /// </summary>
         [DataMember]
-        public List<int> PlanYear
+        public IList<int> PlanYear
         {
             get { return planYear ?? (planYear = new List<int>()); }
             set
@@ -95,13 +95,13 @@ namespace Common.DataTransferObjects
         /// UserId
         /// </summary>
         [DataMember]
-        public string UserId;
+        private string UserId;
 
         /// <summary>
         /// UserFormId
         /// </summary>
         [DataMember]
-        public List<string> UserFormId
+        public IList<string> UserFormId
         {
             get { return userFormId ?? (userFormId = new List<string>()); }
             set
@@ -114,7 +114,7 @@ namespace Common.DataTransferObjects
         /// SelectedUserFormId
         /// </summary>
         [DataMember]
-        public  string SelectedUserFormId;
+        private string SelectedUserFormId;
 
         [DataMember]
         public DataTable SlectedFormularyIds { get; set; }

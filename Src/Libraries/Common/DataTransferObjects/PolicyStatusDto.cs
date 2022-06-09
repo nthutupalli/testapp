@@ -14,6 +14,7 @@ namespace Common.DataTransferObjects
 {
     public class PolicyStatusDto
     {
+        //PolicyStatusId
         public int PolicyStatusId { get; set; }
         public int StatusCode { get; set; }
         public string StatusName { get; set; }
