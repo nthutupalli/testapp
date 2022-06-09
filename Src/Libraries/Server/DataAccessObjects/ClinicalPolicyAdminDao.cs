@@ -15,6 +15,8 @@ using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Globalization;
+
 
 namespace Server.DataAccessObjects
 {
@@ -62,6 +64,7 @@ namespace Server.DataAccessObjects
         public FormularyMappingDto GetFormularyDetails()
         {
             var policyResults = new DataSet();
+            policyResults.Locale = CultureInfo.InvariantCulture;
             var formularyMappingDto = new FormularyMappingDto();
             CustomSqlHelper.FillDataSet(
                ConnectionString, 120, "iRx_GetFormularyPlanYear", policyResults);
@@ -101,6 +104,7 @@ namespace Server.DataAccessObjects
         public Collection<ArgusCustomerDto> GetCustomers(Int16 lobId)
         {
             var masterData = new DataSet();
+            masterData.Locale = CultureInfo.InvariantCulture;
 
             var parameters = new[]
                 {
@@ -122,6 +126,7 @@ namespace Server.DataAccessObjects
         public Collection<ArgusClientDto> GetAvailableClients(Int16 lobId)
         {
             var masterData = new DataSet();
+            masterData.Locale = CultureInfo.InvariantCulture;
 
             var parameters = new[]
                 {
@@ -202,6 +207,7 @@ namespace Server.DataAccessObjects
         {
             var formularyDetailList = new List<FormularyDetailsDto>();
             var policyResults = new DataSet();
+            policyResults.Locale = CultureInfo.InvariantCulture;
             var parameters = new[]
                     {
                         new SqlParameter("@PlanYear",planYear),
@@ -389,6 +395,7 @@ namespace Server.DataAccessObjects
         public  bool CheckPolicyOwnerPolicyMapping(Int16 policyOwnerId)
         {
             var therapeuticCategoryDataSet = new DataSet();
+            therapeuticCategoryDataSet.Locale = CultureInfo.InvariantCulture;
 
             var parameters = new[]
                 {
@@ -441,6 +448,7 @@ namespace Server.DataAccessObjects
         {
             var policyRejectCodeCollection = new Collection<PolicyRejectCodeDto>();
             var masterData = new DataSet();
+            masterData.Locale = CultureInfo.InvariantCulture;
 
             var parameters = new[]
                 {
@@ -472,6 +480,7 @@ namespace Server.DataAccessObjects
         public List<PrimaryLobSubCategoryDto> PrimaryLobSubCategoryList()
         {
             var masterData = new DataSet();
+            masterData.Locale = CultureInfo.InvariantCulture;
             CustomSqlHelper.FillDataSet(ConnectionString, 120, "iRx_GetPrimaryLobSubCategoryDetails", masterData, new SqlParameter[0]);
             var primaryLobSubCategoryCollection = new List<PrimaryLobSubCategoryDto>();
             if (masterData.Tables.Count > 0)
@@ -569,6 +578,7 @@ namespace Server.DataAccessObjects
         public  bool CheckTherapeuticCategoryPolicyMapping(Int16 therapeuticCategoryId)
         {
             var therapeuticCategoryDataSet = new DataSet();
+            therapeuticCategoryDataSet.Locale = CultureInfo.InvariantCulture;
 
             var parameters = new[]
                 {
@@ -618,6 +628,7 @@ namespace Server.DataAccessObjects
         public  bool CheckSubCategoryPolicyMapping(Int16 subCategoryId)
         {
             var therapeuticCategoryDataSet = new DataSet();
+            therapeuticCategoryDataSet.Locale = CultureInfo.InvariantCulture;
 
             var parameters = new[]
                 {
@@ -702,6 +713,7 @@ namespace Server.DataAccessObjects
 
                             };
             var masterData = new DataSet();
+            masterData.Locale = CultureInfo.InvariantCulture;
 
             CustomSqlHelper.FillDataSet(ConnectionString, 120, "iRx_GetPolicyMasterDetails_API", masterData, parameter);
             var policyTypeCollection = new List<LookupDataDto>();
