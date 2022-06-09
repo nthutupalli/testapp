@@ -282,22 +282,7 @@ namespace Server.DataAccessObjects
         }
 
 
-        //public Dictionary<string, object> ClaimCodeType()
-        //{
-        //    var masterDataDictionary =
-        //        new Dictionary<string, object>();
-        //    var masterData = new DataSet();
-
-        //    CustomSqlHelper.FillDataSet(ConnectionString, count, "iRx_GetPolicyMasterDetails", masterData, new SqlParameter[0]);
-
-        //    if (masterData.Tables.Count > 0)
-        //    {
-        //        masterDataDictionary.Add("ClaimCodeType", CreateClaimCodeTypeCollection(masterData.Tables[10]));
-               
-        //    }
-
-        //    return masterDataDictionary;
-        //}
+        
 
 
         

@@ -88,6 +88,7 @@ namespace Server.DataAccessObjects
             }
 
             return formularyMappingDto;
+            //returns formulary mapping dto
         }
 
         //CheckIf Policy Exists Method
@@ -99,6 +100,7 @@ namespace Server.DataAccessObjects
             using (conn = new SqlConnection(ConnectionString))
             {
                 conn.Open();
+                //opens a connection
                 SqlCommand cmd = new SqlCommand(sqlCommand, conn);
                 cmd.CommandType = CommandType.StoredProcedure;
                 var param1 = new SqlParameter("@LobId", lobId)
@@ -183,6 +185,7 @@ namespace Server.DataAccessObjects
             }
 
             return argusCustomerCollection;
+            //returns argus customer collection
         }
 
         /// <summary>
@@ -221,6 +224,7 @@ namespace Server.DataAccessObjects
         public  IList<FormularyDetailsDto> GetUserFormularyIdDetails(int planYear, int? lobId)
         {
             var formularyDetailList = new List<FormularyDetailsDto>();
+            //new list of type zformulary Details dto
             var policyResults = new DataSet();
             policyResults.Locale = CultureInfo.InvariantCulture;
             var parameters = new[]
@@ -254,7 +258,7 @@ namespace Server.DataAccessObjects
 
             return formularyDetailList;
         }
-
+        //Save LOB Mappings
         public  void SaveLobMappingDetails(Collection<ArgusCustomerDto> ArgusCustomerDtoCollection,Collection<ArgusClientDto> ArgusClientDtoCollection,Int16 lobId)
         {
            
@@ -303,7 +307,7 @@ namespace Server.DataAccessObjects
             }
 
         }
-
+        //Formulary details
         public  IList<FormularyDetailsDto> GetSavedFormularyIdDetails(int planYear, int? lobId)
         {
             var formularyDetailList = new List<FormularyDetailsDto>();
